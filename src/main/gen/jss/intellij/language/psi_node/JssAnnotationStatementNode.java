@@ -8,18 +8,18 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import jss.intellij.language.mixin.MixinAttribute;
+import jss.intellij.language.mixin.MixinAnnotation;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssAttributeStatementNode extends MixinAttribute implements JssAttributeStatement {
+public class JssAnnotationStatementNode extends MixinAnnotation implements JssAnnotationStatement {
 
-  public JssAttributeStatementNode(@NotNull ASTNode node) {
+  public JssAnnotationStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitAttributeStatement(this);
+    visitor.visitAnnotationStatement(this);
   }
 
   @Override
@@ -30,20 +30,20 @@ public class JssAttributeStatementNode extends MixinAttribute implements JssAttr
 
   @Override
   @NotNull
-  public JssKey getKey() {
-    return findNotNullChildByClass(JssKey.class);
+  public JssAnnotation getAnnotation() {
+    return findNotNullChildByClass(JssAnnotation.class);
   }
 
   @Override
   @NotNull
-  public JssSet getSet() {
-    return findNotNullChildByClass(JssSet.class);
+  public JssIdentifier getIdentifier() {
+    return findNotNullChildByClass(JssIdentifier.class);
   }
 
   @Override
-  @NotNull
-  public JssValue getValue() {
-    return findNotNullChildByClass(JssValue.class);
+  @Nullable
+  public JssTypeHint getTypeHint() {
+    return findChildByClass(JssTypeHint.class);
   }
 
 }

@@ -8,42 +8,24 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import jss.intellij.language.mixin.MixinAttribute;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssAttributeStatementNode extends MixinAttribute implements JssAttributeStatement {
+public class JssAnnotationNode extends ASTWrapperPsiElement implements JssAnnotation {
 
-  public JssAttributeStatementNode(@NotNull ASTNode node) {
+  public JssAnnotationNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitAttributeStatement(this);
+    visitor.visitAnnotation(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssKey getKey() {
-    return findNotNullChildByClass(JssKey.class);
-  }
-
-  @Override
-  @NotNull
-  public JssSet getSet() {
-    return findNotNullChildByClass(JssSet.class);
-  }
-
-  @Override
-  @NotNull
-  public JssValue getValue() {
-    return findNotNullChildByClass(JssValue.class);
   }
 
 }

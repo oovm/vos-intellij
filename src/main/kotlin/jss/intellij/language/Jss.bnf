@@ -24,6 +24,7 @@
         // literal
         URL = 'Url'
         SYMBOL = 'Symbol'
+        REFERENCE = 'Reference'
         STRING = 'String'
         BYTE = 'Byte'
         INTEGER = 'Integer'
@@ -56,6 +57,7 @@ private statement ::=
     schema_statement
   | property_statement
   | def_statement
+  | annotation
 //  | COMMENT_DOCUMENT
   | object
   | ignore;
@@ -67,6 +69,11 @@ schema_statement ::= schema identifier [type_hint] schema_block {
 };
 private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
+// ---------------------------------------------------------------------------------------------------------------------
+annotation_statement ::= annotation identifier [type_hint] annotation_block {
+    mixin = "jss.intellij.language.mixin.MixinAnnotation"
+};
+annotation ::= ANNOTATION_SYMBOL
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
 property_statement ::= property key [type_hint] [properties_block] {
@@ -83,7 +90,7 @@ def_statement ::= ("def"|"define"|"definition") key [type_hint] [properties_bloc
 // ---------------------------------------------------------------------------------------------------------------------
 // <KEY>: <VALUE>
 attribute_statement ::= key set value {
-    mixin = "jss.intellij.language.mixin.MixinAnnotation"
+    mixin = "jss.intellij.language.mixin.MixinAttribute"
 };
 // ---------------------------------------------------------------------------------------------------------------------
 kv_pair ::= key set value;

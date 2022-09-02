@@ -30,6 +30,7 @@ COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 URL= [A-Za-z0-9]+:"//"[\-\p{XID_Continue}./?&#]+
 SYMBOL=[\p{XID_Start}_$][\p{XID_Continue}_$]*
+REFERENCE=#[\p{XID_Continue}_$/]*
 STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
@@ -61,6 +62,7 @@ SIGN=[+-]
   {COMMENT}               { return COMMENT; }
   {COMMENT_BLOCK}         { return COMMENT_BLOCK; }
   {URL}                   { return URL; }
+  {REFERENCE}             { return REFERENCE; }
   {SYMBOL}                { return SYMBOL; }
   {STRING}                { return STRING; }
   {BYTE}                  { return BYTE; }

@@ -25,7 +25,7 @@ data class FormatContext(val commonSettings: CommonCodeStyleSettings, val spacin
             JssTypes.BRACKET_L,
             JssTypes.COLON,
         )
-        private val remove_space_newline_after = TokenSet.create(JssTypes.IDIOM_MARK, JssTypes.DOT)
+        private val remove_space_newline_after = TokenSet.create(JssTypes.DOT)
 
         private val separators = TokenSet.create(JssTypes.COMMA, JssTypes.SEMICOLON)
 

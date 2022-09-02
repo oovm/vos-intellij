@@ -29,8 +29,7 @@ object JssParserDefinition : ParserDefinition {
     )
 
     override fun getStringLiteralElements(): TokenSet = TokenSet.create(
-        JssTypes.STRING_INLINE,
-        JssTypes.STRING_MULTI
+        JssTypes.STRING,
     )
 
     override fun getWhitespaceTokens(): TokenSet {

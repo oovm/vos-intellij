@@ -8,6 +8,8 @@ import jss.intellij.language.psi_node.*;
 
 public interface JssTypes {
 
+  IElementType ANNOTATION = new JssElementType("ANNOTATION");
+  IElementType ANNOTATION_STATEMENT = new JssElementType("ANNOTATION_STATEMENT");
   IElementType ARRAY = new JssElementType("ARRAY");
   IElementType ATTRIBUTE_STATEMENT = new JssElementType("ATTRIBUTE_STATEMENT");
   IElementType BOOLEAN = new JssElementType("BOOLEAN");
@@ -33,6 +35,8 @@ public interface JssTypes {
   IElementType ACCENT = new JssElementType("^");
   IElementType ANGLE_L = new JssElementType("<");
   IElementType ANGLE_R = new JssElementType(">");
+  IElementType ANNOTATION_BLOCK = new JssElementType("annotation_block");
+  IElementType ANNOTATION_SYMBOL = new JssElementType("ANNOTATION_SYMBOL");
   IElementType AT = new JssElementType("@");
   IElementType BRACE_L = new JssElementType("{");
   IElementType BRACE_R = new JssElementType("}");
@@ -54,6 +58,7 @@ public interface JssTypes {
   IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
   IElementType RAW_STRING_2 = new JssElementType("RAW_STRING_2");
   IElementType RAW_STRING_3 = new JssElementType("RAW_STRING_3");
+  IElementType REFERENCE = new JssElementType("Reference");
   IElementType SEMICOLON = new JssElementType(";");
   IElementType SIGN = new JssElementType("SIGN");
   IElementType STAR = new JssElementType("*");
@@ -64,7 +69,13 @@ public interface JssTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ARRAY) {
+      if (type == ANNOTATION) {
+        return new JssAnnotationNode(node);
+      }
+      else if (type == ANNOTATION_STATEMENT) {
+        return new JssAnnotationStatementNode(node);
+      }
+      else if (type == ARRAY) {
         return new JssArrayNode(node);
       }
       else if (type == ATTRIBUTE_STATEMENT) {

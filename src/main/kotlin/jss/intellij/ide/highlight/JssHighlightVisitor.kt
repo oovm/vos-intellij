@@ -10,7 +10,8 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
-import jss.intellij.language.psi_node.JssPropertiesStatementNode
+import jss.intellij.language.psi_node.JssAttributeStatementNode
+
 
 class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
@@ -43,20 +44,15 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         highlight(ty, JssColor.TYPE_HINT)
     }
 
-    override fun visitPropertiesStatement(o: JssPropertiesStatement) {
+    override fun visitPropertyStatement(o: JssPropertyStatement) {
         highlight(o.property, JssColor.KEYWORD)
         highlight(o.key, JssColor.SYM_PROP)
     }
 
-    override fun visitIdiomStatement(o: JssIdiomStatement) {
-        highlight(o.idiomMark, JssColor.IDIOM_MARK)
-        highlight(o.identifier, JssColor.IDIOM_SYMBOL)
-    }
-
-    override fun visitAnnoStatement(o: JssAnnoStatement) {
+    override fun visitAttributeStatement(o: JssAttributeStatement) {
+        val o = o as JssAttributeStatementNode;
         highlight(o.firstChild, JssColor.SYM_ANNO)
     }
-
 
     override fun visitKvPair(o: JssKvPair) {
         highlight(o.firstChild, JssColor.SYM_PROP)

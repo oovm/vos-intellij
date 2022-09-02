@@ -147,10 +147,10 @@ public class _JssLexer implements FlexLexer {
 
   /* The ZZ_CMAP_A table has 1816 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\3\1\2\2\1\1\2\2\0\1\3\1\0\1\15\1\10\1\11\1\0\1\10\1\0\1\30\1\31\1"+
-    "\5\1\26\1\43\1\27\1\24\1\4\1\17\11\6\1\7\1\42\1\36\1\41\1\37\1\10\1\44\1\21"+
-    "\1\22\2\21\1\25\1\22\10\12\1\20\10\12\1\20\2\12\1\32\1\16\1\33\1\40\1\23\1"+
-    "\0\1\21\1\22\2\21\1\25\1\22\1\12\1\20\2\12\1\34\1\0\1\35\7\0\1\1\2\0\1\3\11"+
+    "\11\0\1\3\1\2\2\1\1\2\2\0\1\3\1\0\1\16\1\15\1\11\1\0\1\10\1\0\1\31\1\32\1"+
+    "\5\1\27\1\44\1\30\1\25\1\4\1\20\11\6\1\7\1\43\1\37\1\42\1\40\1\10\1\45\1\22"+
+    "\1\23\2\22\1\26\1\23\10\12\1\21\10\12\1\21\2\12\1\33\1\17\1\34\1\41\1\24\1"+
+    "\0\1\22\1\23\2\22\1\26\1\23\1\12\1\21\2\12\1\35\1\0\1\36\7\0\1\1\2\0\1\3\11"+
     "\0\1\13\12\0\1\13\1\0\1\14\17\13\1\0\2\13\4\0\4\13\6\0\5\13\7\0\1\13\1\0\1"+
     "\13\1\0\10\14\5\13\1\0\2\13\3\0\3\13\1\0\1\13\6\0\1\13\1\14\3\13\1\0\1\13"+
     "\1\0\4\13\1\0\13\13\1\0\3\13\1\0\5\14\2\0\6\13\1\0\7\13\1\0\1\13\7\0\15\14"+
@@ -198,14 +198,14 @@ public class _JssLexer implements FlexLexer {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\1\2\1\1\1\3\1\4\1\5\2\6"+
-    "\1\1\1\4\1\7\1\10\1\11\1\12\1\13\1\14"+
+    "\1\7\1\1\1\4\1\10\1\11\1\12\1\13\1\14"+
     "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24"+
-    "\1\25\1\26\3\0\1\4\1\27\1\0\1\30\3\0"+
-    "\1\27\1\26\1\31\3\0\1\32\1\0\1\33\1\0"+
-    "\1\32\1\27\1\34";
+    "\1\25\1\26\1\27\3\0\1\4\1\30\1\0\1\31"+
+    "\3\0\1\30\1\27\1\32\3\0\1\33\1\0\1\34"+
+    "\1\0\1\33\1\30\1\35";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[50];
+    int [] result = new int[51];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -230,16 +230,16 @@ public class _JssLexer implements FlexLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\45\0\112\0\157\0\45\0\224\0\45\0\271"+
-    "\0\336\0\u0103\0\u0128\0\u014d\0\45\0\45\0\45\0\45"+
-    "\0\45\0\45\0\45\0\45\0\45\0\45\0\45\0\45"+
-    "\0\45\0\45\0\u0172\0\u0197\0\u01bc\0\u01e1\0\u0206\0\u022b"+
-    "\0\u0103\0\45\0\u0250\0\u0275\0\u029a\0\u02bf\0\u02e4\0\u0309"+
-    "\0\u032e\0\u0353\0\u0378\0\u039d\0\u03c2\0\45\0\u03e7\0\u040c"+
-    "\0\u03c2\0\u03e7";
+    "\0\0\0\46\0\114\0\162\0\46\0\230\0\46\0\276"+
+    "\0\344\0\u010a\0\u0130\0\u0156\0\u017c\0\46\0\46\0\46"+
+    "\0\46\0\46\0\46\0\46\0\46\0\46\0\46\0\46"+
+    "\0\46\0\46\0\46\0\u01a2\0\u01c8\0\u01ee\0\u0214\0\u023a"+
+    "\0\u0260\0\u0130\0\46\0\u0286\0\u02ac\0\u02d2\0\u02f8\0\u031e"+
+    "\0\u0344\0\u036a\0\u0390\0\u03b6\0\u03dc\0\u0402\0\46\0\u0428"+
+    "\0\u044e\0\u0402\0\u0428";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[50];
+    int [] result = new int[51];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -263,34 +263,35 @@ public class _JssLexer implements FlexLexer {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\3\3\1\4\1\5\1\6\1\7\1\2\1\10"+
-    "\1\11\1\10\1\2\1\12\1\2\1\13\3\11\1\10"+
-    "\1\14\1\11\2\15\1\16\1\17\1\20\1\21\1\22"+
+    "\1\11\1\10\1\2\1\12\1\13\1\2\1\14\3\11"+
+    "\1\10\1\15\1\11\2\16\1\17\1\20\1\21\1\22"+
     "\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32"+
-    "\46\0\3\3\45\0\1\33\1\34\45\0\1\6\1\35"+
-    "\2\0\1\36\4\0\1\6\3\36\1\37\1\40\1\36"+
-    "\25\0\1\10\2\0\4\10\2\0\5\10\1\0\1\10"+
-    "\25\0\1\11\1\35\1\0\1\10\1\11\2\10\2\0"+
-    "\4\11\1\10\1\0\1\11\17\0\15\41\1\42\1\43"+
-    "\26\41\6\0\1\44\1\35\2\0\1\36\4\0\1\44"+
-    "\1\45\1\36\1\45\1\0\1\40\1\36\25\0\1\46"+
-    "\10\0\1\46\25\0\2\47\1\0\1\47\1\50\40\47"+
-    "\5\34\1\51\37\34\4\0\1\52\46\0\1\36\1\35"+
-    "\2\0\1\36\4\0\4\36\2\0\1\36\25\0\1\37"+
-    "\10\0\1\37\3\0\1\37\26\0\1\53\1\40\10\0"+
-    "\1\40\25\0\1\41\2\0\42\41\6\0\1\44\1\35"+
-    "\2\0\1\36\4\0\1\44\3\36\1\0\1\40\1\36"+
-    "\25\0\1\54\1\35\2\0\1\36\4\0\1\54\1\36"+
-    "\2\54\2\0\1\54\25\0\1\46\10\0\1\46\5\0"+
-    "\1\55\17\0\2\47\1\0\42\47\2\50\1\0\42\50"+
-    "\4\34\1\56\1\51\37\34\4\0\1\57\45\0\1\55"+
-    "\45\0\1\54\1\35\2\0\1\36\4\0\1\54\1\36"+
-    "\2\54\1\60\1\0\1\54\25\0\1\61\10\0\1\61"+
-    "\31\0\1\62\1\0\1\62\1\0\1\62\1\0\3\62"+
-    "\2\0\7\62\1\0\1\62\23\0\1\60\10\0\1\60"+
-    "\1\0\3\60\1\0\1\60\17\0";
+    "\1\33\47\0\3\3\46\0\1\34\1\35\46\0\1\6"+
+    "\1\36\2\0\1\37\5\0\1\6\3\37\1\40\1\41"+
+    "\1\37\25\0\1\10\2\0\4\10\3\0\5\10\1\0"+
+    "\1\10\25\0\1\11\1\36\1\0\1\10\1\11\2\10"+
+    "\3\0\4\11\1\10\1\0\1\11\23\0\1\12\1\0"+
+    "\1\12\2\0\4\12\3\0\5\12\1\0\1\12\17\0"+
+    "\16\42\1\43\1\44\26\42\6\0\1\45\1\36\2\0"+
+    "\1\37\5\0\1\45\1\46\1\37\1\46\1\0\1\41"+
+    "\1\37\25\0\1\47\11\0\1\47\25\0\2\50\1\0"+
+    "\1\50\1\51\41\50\5\35\1\52\40\35\4\0\1\53"+
+    "\47\0\1\37\1\36\2\0\1\37\5\0\4\37\2\0"+
+    "\1\37\25\0\1\40\11\0\1\40\3\0\1\40\26\0"+
+    "\1\54\1\41\11\0\1\41\25\0\1\42\2\0\43\42"+
+    "\6\0\1\45\1\36\2\0\1\37\5\0\1\45\3\37"+
+    "\1\0\1\41\1\37\25\0\1\55\1\36\2\0\1\37"+
+    "\5\0\1\55\1\37\2\55\2\0\1\55\25\0\1\47"+
+    "\11\0\1\47\5\0\1\56\17\0\2\50\1\0\43\50"+
+    "\2\51\1\0\43\51\4\35\1\57\1\52\40\35\4\0"+
+    "\1\60\46\0\1\56\46\0\1\55\1\36\2\0\1\37"+
+    "\5\0\1\55\1\37\2\55\1\61\1\0\1\55\25\0"+
+    "\1\62\11\0\1\62\31\0\1\63\1\0\1\63\1\0"+
+    "\1\63\1\0\4\63\2\0\7\63\1\0\1\63\23\0"+
+    "\1\61\11\0\1\61\1\0\3\61\1\0\1\61\17\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1073];
+    int [] result = new int[1140];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -328,12 +329,12 @@ public class _JssLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\2\1\1\11\1\1\1\11\5\1\16\11"+
+    "\1\0\1\11\2\1\1\11\1\1\1\11\6\1\16\11"+
     "\1\1\3\0\2\1\1\0\1\11\3\0\3\1\3\0"+
     "\1\1\1\0\1\11\1\0\3\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[50];
+    int [] result = new int[51];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -642,142 +643,147 @@ public class _JssLexer implements FlexLexer {
             { return BAD_CHARACTER;
             } 
             // fall through
-          case 29: break;
+          case 30: break;
           case 2: 
             { return WHITE_SPACE;
             } 
             // fall through
-          case 30: break;
+          case 31: break;
           case 3: 
             { return STAR;
             } 
             // fall through
-          case 31: break;
+          case 32: break;
           case 4: 
             { return INTEGER;
             } 
             // fall through
-          case 32: break;
+          case 33: break;
           case 5: 
             { return COLON;
             } 
             // fall through
-          case 33: break;
+          case 34: break;
           case 6: 
             { return SYMBOL;
             } 
             // fall through
-          case 34: break;
-          case 7: 
-            { return DOT;
-            } 
-            // fall through
           case 35: break;
-          case 8: 
-            { return SIGN;
+          case 7: 
+            { return REFERENCE;
             } 
             // fall through
           case 36: break;
-          case 9: 
-            { return PARENTHESIS_L;
+          case 8: 
+            { return DOT;
             } 
             // fall through
           case 37: break;
-          case 10: 
-            { return PARENTHESIS_R;
+          case 9: 
+            { return SIGN;
             } 
             // fall through
           case 38: break;
-          case 11: 
-            { return BRACKET_L;
+          case 10: 
+            { return PARENTHESIS_L;
             } 
             // fall through
           case 39: break;
-          case 12: 
-            { return BRACKET_R;
+          case 11: 
+            { return PARENTHESIS_R;
             } 
             // fall through
           case 40: break;
-          case 13: 
-            { return BRACE_L;
+          case 12: 
+            { return BRACKET_L;
             } 
             // fall through
           case 41: break;
-          case 14: 
-            { return BRACE_R;
+          case 13: 
+            { return BRACKET_R;
             } 
             // fall through
           case 42: break;
-          case 15: 
-            { return ANGLE_L;
+          case 14: 
+            { return BRACE_L;
             } 
             // fall through
           case 43: break;
-          case 16: 
-            { return ANGLE_R;
+          case 15: 
+            { return BRACE_R;
             } 
             // fall through
           case 44: break;
-          case 17: 
-            { return ACCENT;
+          case 16: 
+            { return ANGLE_L;
             } 
             // fall through
           case 45: break;
-          case 18: 
-            { return EQ;
+          case 17: 
+            { return ANGLE_R;
             } 
             // fall through
           case 46: break;
-          case 19: 
-            { return SEMICOLON;
+          case 18: 
+            { return ACCENT;
             } 
             // fall through
           case 47: break;
-          case 20: 
-            { return COMMA;
+          case 19: 
+            { return EQ;
             } 
             // fall through
           case 48: break;
-          case 21: 
-            { return AT;
+          case 20: 
+            { return SEMICOLON;
             } 
             // fall through
           case 49: break;
-          case 22: 
-            { return COMMENT;
+          case 21: 
+            { return COMMA;
             } 
             // fall through
           case 50: break;
-          case 23: 
-            { return DECIMAL;
+          case 22: 
+            { return AT;
             } 
             // fall through
           case 51: break;
-          case 24: 
-            { return STRING;
+          case 23: 
+            { return COMMENT;
             } 
             // fall through
           case 52: break;
-          case 25: 
-            { return COMMENT_DOCUMENT;
+          case 24: 
+            { return DECIMAL;
             } 
             // fall through
           case 53: break;
-          case 26: 
-            { return BYTE;
+          case 25: 
+            { return STRING;
             } 
             // fall through
           case 54: break;
-          case 27: 
-            { return COMMENT_BLOCK;
+          case 26: 
+            { return COMMENT_DOCUMENT;
             } 
             // fall through
           case 55: break;
-          case 28: 
-            { return URL;
+          case 27: 
+            { return BYTE;
             } 
             // fall through
           case 56: break;
+          case 28: 
+            { return COMMENT_BLOCK;
+            } 
+            // fall through
+          case 57: break;
+          case 29: 
+            { return URL;
+            } 
+            // fall through
+          case 58: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
