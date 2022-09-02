@@ -29,7 +29,7 @@ COMMENT_DOCUMENT=("///")[^\r\n]*
 COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 URL= [A-Za-z0-9]+:"//"[\-\p{XID_Continue}./?&#]+
-SYMBOL=[\p{XID_Start}_][\p{XID_Continue}_]*
+SYMBOL=[\p{XID_Start}_$][\p{XID_Continue}_$]*
 STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
@@ -53,7 +53,6 @@ SIGN=[+-]
   ":"                     { return COLON; }
   ";"                     { return SEMICOLON; }
   ","                     { return COMMA; }
-  "$"                     { return DOLLAR; }
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }

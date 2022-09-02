@@ -29,9 +29,15 @@ public class JssKvPairNode extends ASTWrapperPsiElement implements JssKvPair {
   }
 
   @Override
-  @Nullable
-  public JssStringInline getStringInline() {
-    return findChildByClass(JssStringInline.class);
+  @NotNull
+  public JssKey getKey() {
+    return findNotNullChildByClass(JssKey.class);
+  }
+
+  @Override
+  @NotNull
+  public JssSet getSet() {
+    return findNotNullChildByClass(JssSet.class);
   }
 
   @Override

@@ -7,11 +7,11 @@ import com.intellij.psi.PsiElement;
 
 public class JssVisitor extends PsiElementVisitor {
 
-  public void visitAnnoStatement(@NotNull JssAnnoStatement o) {
+  public void visitArray(@NotNull JssArray o) {
     visitPsiElement(o);
   }
 
-  public void visitArray(@NotNull JssArray o) {
+  public void visitAttributeStatement(@NotNull JssAttributeStatement o) {
     visitPsiElement(o);
   }
 
@@ -35,14 +35,6 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitIdiomMark(@NotNull JssIdiomMark o) {
-    visitPsiElement(o);
-  }
-
-  public void visitIdiomStatement(@NotNull JssIdiomStatement o) {
-    visitPsiElement(o);
-  }
-
   public void visitKey(@NotNull JssKey o) {
     visitPsiElement(o);
   }
@@ -63,11 +55,11 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
+  public void visitProperty(@NotNull JssProperty o) {
     visitPsiElement(o);
   }
 
-  public void visitProperty(@NotNull JssProperty o) {
+  public void visitPropertyStatement(@NotNull JssPropertyStatement o) {
     visitPsiElement(o);
   }
 
@@ -79,11 +71,11 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitStringInline(@NotNull JssStringInline o) {
+  public void visitSet(@NotNull JssSet o) {
     visitPsiElement(o);
   }
 
-  public void visitStringMulti(@NotNull JssStringMulti o) {
+  public void visitString(@NotNull JssString o) {
     visitPsiElement(o);
   }
 

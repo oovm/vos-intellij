@@ -8,26 +8,24 @@ import jss.intellij.language.psi_node.*;
 
 public interface JssTypes {
 
-  IElementType ANNO_STATEMENT = new JssElementType("ANNO_STATEMENT");
   IElementType ARRAY = new JssElementType("ARRAY");
+  IElementType ATTRIBUTE_STATEMENT = new JssElementType("ATTRIBUTE_STATEMENT");
   IElementType BOOLEAN = new JssElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
   IElementType BRACKET_BLOCK = new JssElementType("BRACKET_BLOCK");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
-  IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
-  IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType KEY = new JssElementType("KEY");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
   IElementType OBJECT = new JssElementType("OBJECT");
-  IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
   IElementType PROPERTY = new JssElementType("PROPERTY");
+  IElementType PROPERTY_STATEMENT = new JssElementType("PROPERTY_STATEMENT");
   IElementType SCHEMA = new JssElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
-  IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
-  IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
+  IElementType SET = new JssElementType("SET");
+  IElementType STRING = new JssElementType("STRING");
   IElementType TYPE_HINT = new JssElementType("TYPE_HINT");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
@@ -53,6 +51,9 @@ public interface JssTypes {
   IElementType INTEGER = new JssElementType("Integer");
   IElementType PARENTHESIS_L = new JssElementType("(");
   IElementType PARENTHESIS_R = new JssElementType(")");
+  IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
+  IElementType RAW_STRING_2 = new JssElementType("RAW_STRING_2");
+  IElementType RAW_STRING_3 = new JssElementType("RAW_STRING_3");
   IElementType SEMICOLON = new JssElementType(";");
   IElementType SIGN = new JssElementType("SIGN");
   IElementType STAR = new JssElementType("*");
@@ -63,11 +64,11 @@ public interface JssTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ANNO_STATEMENT) {
-        return new JssAnnoStatementNode(node);
-      }
-      else if (type == ARRAY) {
+      if (type == ARRAY) {
         return new JssArrayNode(node);
+      }
+      else if (type == ATTRIBUTE_STATEMENT) {
+        return new JssAttributeStatementNode(node);
       }
       else if (type == BOOLEAN) {
         return new JssBooleanNode(node);
@@ -84,12 +85,6 @@ public interface JssTypes {
       else if (type == IDENTIFIER) {
         return new JssIdentifierNode(node);
       }
-      else if (type == IDIOM_MARK) {
-        return new JssIdiomMarkNode(node);
-      }
-      else if (type == IDIOM_STATEMENT) {
-        return new JssIdiomStatementNode(node);
-      }
       else if (type == KEY) {
         return new JssKeyNode(node);
       }
@@ -105,11 +100,11 @@ public interface JssTypes {
       else if (type == OBJECT) {
         return new JssObjectNode(node);
       }
-      else if (type == PROPERTIES_STATEMENT) {
-        return new JssPropertiesStatementNode(node);
-      }
       else if (type == PROPERTY) {
         return new JssPropertyNode(node);
+      }
+      else if (type == PROPERTY_STATEMENT) {
+        return new JssPropertyStatementNode(node);
       }
       else if (type == SCHEMA) {
         return new JssSchemaNode(node);
@@ -117,11 +112,11 @@ public interface JssTypes {
       else if (type == SCHEMA_STATEMENT) {
         return new JssSchemaStatementNode(node);
       }
-      else if (type == STRING_INLINE) {
-        return new JssStringInlineNode(node);
+      else if (type == SET) {
+        return new JssSetNode(node);
       }
-      else if (type == STRING_MULTI) {
-        return new JssStringMultiNode(node);
+      else if (type == STRING) {
+        return new JssStringNode(node);
       }
       else if (type == TYPE_HINT) {
         return new JssTypeHintNode(node);

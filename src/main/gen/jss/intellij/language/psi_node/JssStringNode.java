@@ -8,18 +8,18 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinString;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssStringInlineNode extends ASTWrapperPsiElement implements JssStringInline {
+public class JssStringNode extends MixinString implements JssString {
 
-  public JssStringInlineNode(@NotNull ASTNode node) {
+  public JssStringNode(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitStringInline(this);
+    visitor.visitString(this);
   }
 
   @Override

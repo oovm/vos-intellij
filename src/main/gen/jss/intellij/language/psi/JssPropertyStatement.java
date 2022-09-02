@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssPropertiesStatement extends PsiElement {
+public interface JssPropertyStatement extends PsiElement {
 
   @Nullable
   JssBraceBlock getBraceBlock();

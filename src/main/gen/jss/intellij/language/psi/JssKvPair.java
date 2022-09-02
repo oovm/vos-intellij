@@ -7,8 +7,11 @@ import com.intellij.psi.PsiElement;
 
 public interface JssKvPair extends PsiElement {
 
-  @Nullable
-  JssStringInline getStringInline();
+  @NotNull
+  JssKey getKey();
+
+  @NotNull
+  JssSet getSet();
 
   @NotNull
   JssValue getValue();

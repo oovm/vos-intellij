@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinArray;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssArrayNode extends ASTWrapperPsiElement implements JssArray {
+public class JssArrayNode extends MixinArray implements JssArray {
 
   public JssArrayNode(@NotNull ASTNode node) {
     super(node);

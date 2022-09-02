@@ -54,7 +54,7 @@ JSS ::= statement*;
 
 private statement ::=
     schema_statement
-  | properties_statement
+  | property_statement
   | def_statement
 //  | COMMENT_DOCUMENT
   | object
@@ -69,28 +69,20 @@ private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= property key [type_hint] [properties_block] {
+property_statement ::= property key [type_hint] [properties_block] {
     mixin = "jss.intellij.language.mixin.MixinProperty"
 };
 property ::= "properties" | "property" | "prop" | "field" | DOT;
 private properties_block ::= <<brace_block properties_inner ignore>>;
 private properties_inner ::=
-    idiom_statement
-  | properties_statement
-  | anno_statement
-  | kv_pair // consider as anno
+    property_statement
+  | attribute_statement
   ;
 // ---------------------------------------------------------------------------------------------------------------------
 def_statement ::= ("def"|"define"|"definition") key [type_hint] [properties_block];
 // ---------------------------------------------------------------------------------------------------------------------
-// $schema: https://json-schema.org/draft/2020-12/schema
-idiom_statement ::= idiom_mark identifier [COLON] value {
-    mixin = "jss.intellij.language.mixin.MixinIdiom"
-};
-idiom_mark ::= DOLLAR;
-// ---------------------------------------------------------------------------------------------------------------------
 // <KEY>: <VALUE>
-anno_statement ::= key set value {
+attribute_statement ::= key set value {
     mixin = "jss.intellij.language.mixin.MixinAnnotation"
 };
 // ---------------------------------------------------------------------------------------------------------------------

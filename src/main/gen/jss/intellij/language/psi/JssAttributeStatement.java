@@ -5,13 +5,13 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssIdiomStatement extends PsiElement {
+public interface JssAttributeStatement extends PsiElement {
 
   @NotNull
-  JssIdentifier getIdentifier();
+  JssKey getKey();
 
   @NotNull
-  JssIdiomMark getIdiomMark();
+  JssSet getSet();
 
   @NotNull
   JssValue getValue();

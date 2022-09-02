@@ -12,14 +12,14 @@ import jss.intellij.language.mixin.MixinProperty;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssPropertiesStatementNode extends MixinProperty implements JssPropertiesStatement {
+public class JssPropertyStatementNode extends MixinProperty implements JssPropertyStatement {
 
-  public JssPropertiesStatementNode(@NotNull ASTNode node) {
+  public JssPropertyStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesStatement(this);
+    visitor.visitPropertyStatement(this);
   }
 
   @Override
