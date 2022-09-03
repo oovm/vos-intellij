@@ -4,15 +4,15 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import jss.intellij.language.file.JssIcons
 import jss.intellij.language.ast.DeclareNode
-import jss.intellij.language.psi_node.JssIdiomStatementNode
+import jss.intellij.language.psi_node.JssAnnotationStatementNode
 import javax.swing.Icon
 
 /// 惯用法
 /// `${idiom.name}`
 open class MixinAnnotation(node: ASTNode) : DeclareNode(node) {
 
-    override fun getOriginalElement(): JssIdiomStatementNode {
-        return this as JssIdiomStatementNode
+    override fun getOriginalElement(): JssAnnotationStatementNode {
+        return this as JssAnnotationStatementNode
     }
     override fun getNameIdentifier(): PsiElement {
        return originalElement.identifier

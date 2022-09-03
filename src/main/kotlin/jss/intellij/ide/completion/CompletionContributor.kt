@@ -19,11 +19,11 @@ class CompletionContributor : CompletionContributor() {
             PlatformPatterns.psiElement(JssTypes.SYMBOL),
             SymbolProvider()
         )
-        extend(
-            CompletionType.BASIC,
-            PlatformPatterns.psiElement(JssTypes.IDIOM_MARK),
-            IdiomProvider()
-        )
+//        extend(
+//            CompletionType.BASIC,
+//            PlatformPatterns.psiElement(JssTypes.IDIOM_MARK),
+//            IdiomProvider()
+//        )
     }
 
     override fun beforeCompletion(context: CompletionInitializationContext) {

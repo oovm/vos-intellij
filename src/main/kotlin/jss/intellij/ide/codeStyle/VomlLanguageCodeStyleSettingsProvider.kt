@@ -1,9 +1,10 @@
 package jss.intellij.ide.codeStyle
 
-import jss.intellij.language.JssLanguage
 import com.intellij.application.options.CodeStyleAbstractConfigurable
+import com.intellij.application.options.CodeStyleAbstractPanel
 import com.intellij.application.options.SmartIndentOptionsEditor
 import com.intellij.psi.codeStyle.*
+import jss.intellij.language.JssLanguage
 
 class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider() {
     override fun getLanguage() = JssLanguage
@@ -19,8 +20,9 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
             modelSettings,
             configurableDisplayName
         ) {
-            override fun createPanel(settings: CodeStyleSettings?) =
-                settings?.let { CodeStyleMainPanel(currentSettings, it) }
+            override fun createPanel(settings: CodeStyleSettings): CodeStyleAbstractPanel {
+                return CodeStyleMainPanel(currentSettings, settings)
+            }
         }
     }
 
@@ -33,15 +35,18 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
                     CodeStyleSettingsCustomizable.CommenterOption.LINE_COMMENT_AT_FIRST_COLUMN.name
                 )
             }
+
             SettingsType.WRAPPING_AND_BRACES_SETTINGS -> {
                 consumer.showStandardOptions(
                     CodeStyleSettingsCustomizable.WrappingOrBraceOption.RIGHT_MARGIN.name,
                     CodeStyleSettingsCustomizable.WrappingOrBraceOption.KEEP_LINE_BREAKS.name
                 )
             }
+
             SettingsType.LANGUAGE_SPECIFIC -> {
                 consumer.showStandardOptions()
             }
+
             else -> {}
         }
     }

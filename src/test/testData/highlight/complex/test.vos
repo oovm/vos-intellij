@@ -1,0 +1,28 @@
+schema std {
+
+}
+
+namespace .;
+
+/// Tags for the product
+property tags: array {
+    minItems: 1,
+    uniqueItems: true
+    "items": {
+        "type": "string"
+    }
+}
+
+class Tags: [] {
+    .min_items: 1,
+    .unique_items: true,
+}
+
+class MINS: string {
+    .min_length: 2,
+    .max_length: 3,
+}
+
+class Tith: i32 {
+    .multiple_of: 10,
+}
