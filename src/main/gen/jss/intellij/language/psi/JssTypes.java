@@ -62,7 +62,6 @@ public interface JssTypes {
   IElementType SEMICOLON = new JssElementType(";");
   IElementType SIGN = new JssElementType("SIGN");
   IElementType STAR = new JssElementType("*");
-  IElementType STRING = new JssElementType("String");
   IElementType SYMBOL = new JssElementType("Symbol");
   IElementType URL = new JssElementType("Url");
 
@@ -125,9 +124,6 @@ public interface JssTypes {
       }
       else if (type == SET) {
         return new JssSetNode(node);
-      }
-      else if (type == STRING) {
-        return new JssStringNode(node);
       }
       else if (type == TYPE_HINT) {
         return new JssTypeHintNode(node);

@@ -51,7 +51,7 @@
     ]
 }
 
-JSS ::= statement*;
+VOS ::= statement*;
 
 private statement ::=
     schema_statement
@@ -73,6 +73,7 @@ schema ::= "schema"
 annotation_statement ::= annotation identifier [type_hint] annotation_block {
     mixin = "jss.intellij.language.mixin.MixinAnnotation"
 };
+private annotation_block ::= "annotation_block";
 annotation ::= ANNOTATION_SYMBOL
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }

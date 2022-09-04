@@ -1,1 +1,1 @@
-rootProject.name = "JSS Intellij"
+rootProject.name = "Vos Intellij"

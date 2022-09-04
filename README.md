@@ -1,10 +1,8 @@
-# voml-intellij
+# saha-intellij
 
 ![Build](https://github.com/voml/voml-intellij/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-
-<p align="center"><img src="https://raw.githubusercontent.com/oovm/LogoDesign/main/logos/jss/1x/title.png"/></p>
 
 ## Template ToDo list
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.
@@ -18,15 +16,28 @@
 
 <!-- Plugin description -->
 
-Intellij plugin for [JSS](https://github.com/voml/jss), support all IDEs.
+Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 
 ## Features
-- Syntax Highlight & Semantic Highlight
-- Braces Matcher & Smart Enter
-- Pretty format
-
-## License
-
-The while project license under MPL2.0
+- Syntax Highlight
+- Braces Matcher
 
 <!-- Plugin description end -->
+
+## Installation
+
+- Using IDE built-in plugin system:
+  
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "voml-intellij"</kbd> >
+  <kbd>Install Plugin</kbd>
+  
+- Manually:
+
+  Download the [latest release](https://github.com/voml/voml-intellij/releases/latest) and install it manually using
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+
+
+---
+Plugin based on the [IntelliJ Platform Plugin Template][template].
+
+[template]: https://github.com/JetBrains/intellij-platform-plugin-template
