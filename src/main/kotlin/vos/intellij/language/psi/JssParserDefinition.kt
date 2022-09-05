@@ -1,0 +1,47 @@
+package vos.intellij.language.psi
+
+import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.JssLanguage
+import vos.intellij.language.parser.JssParser
+import com.intellij.lang.ASTNode
+import com.intellij.lang.ParserDefinition
+import com.intellij.lang.PsiParser
+import com.intellij.lexer.Lexer
+import com.intellij.openapi.project.Project
+import com.intellij.psi.FileViewProvider
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
+import com.intellij.psi.tree.IFileElementType
+import com.intellij.psi.tree.TokenSet
+
+
+object JssParserDefinition : ParserDefinition {
+    override fun createLexer(project: Project): Lexer = JssLexerAdapter()
+
+    override fun createParser(project: Project): PsiParser = vos.intellij.language.parser.JssParser()
+
+    override fun getFileNodeType(): IFileElementType = IFileElementType(JssLanguage)
+
+    override fun getCommentTokens(): TokenSet = TokenSet.create(
+        vos.intellij.language.psi.JssTypes.COMMENT,
+        vos.intellij.language.psi.JssTypes.COMMENT_BLOCK,
+        vos.intellij.language.psi.JssTypes.COMMENT_DOCUMENT
+    )
+
+    override fun getStringLiteralElements(): TokenSet = TokenSet.create(
+        vos.intellij.language.psi.JssTypes.STRING,
+    )
+
+    override fun getWhitespaceTokens(): TokenSet {
+        return super.getWhitespaceTokens()
+    }
+
+    override fun createElement(node: ASTNode): PsiElement = vos.intellij.language.psi.JssTypes.Factory.createElement(node)
+
+    override fun createFile(viewProvider: FileViewProvider): PsiFile = JssFileNode(viewProvider)
+
+    override fun spaceExistenceTypeBetweenTokens(left: ASTNode, right: ASTNode): ParserDefinition.SpaceRequirements {
+        return ParserDefinition.SpaceRequirements.MAY
+    }
+
+}

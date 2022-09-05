@@ -12,70 +12,70 @@
 			name="JSS"
 			language="JSS"
 			extensions="jss"
-			implementationClass="jss.intellij.language.file.JssFileType"
+			implementationClass="vos.intellij.language.file.JssFileType"
 			fieldName="INSTANCE"/>
 		<lang.parserDefinition
 			language="JSS"
-			implementationClass="jss.intellij.language.psi.JssParserDefinition"/>
-		<projectViewNestingRulesProvider implementation="jss.intellij.language.file.JssFileGroup"/>
+			implementationClass="vos.intellij.language.psi.JssParserDefinition"/>
+		<projectViewNestingRulesProvider implementation="vos.intellij.language.file.JssFileGroup"/>
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
-		<annotator language="JSS" implementationClass="jss.intellij.ide.annotator.EscapeAnnotator"/>
-		<colorSettingsPage implementation="jss.intellij.ide.highlight.JssColorSettingsPage"/>
-		<highlightVisitor implementation="jss.intellij.ide.highlight.JssHighlightVisitor"/>
+		<annotator language="JSS" implementationClass="vos.intellij.ide.annotator.EscapeAnnotator"/>
+		<colorSettingsPage implementation="vos.intellij.ide.highlight.JssColorSettingsPage"/>
+		<highlightVisitor implementation="vos.intellij.ide.highlight.JssHighlightVisitor"/>
 		<lang.syntaxHighlighter
 			language="JSS"
-			implementationClass="jss.intellij.ide.highlight.JssSyntaxHighlighter"/>
+			implementationClass="vos.intellij.ide.highlight.JssSyntaxHighlighter"/>
 		<!-- View -->
 		<lang.psiStructureViewFactory
 			language="JSS"
-			implementationClass="jss.intellij.ide.view.ViewFactory"/>
+			implementationClass="vos.intellij.ide.view.ViewFactory"/>
 		<!-- Formatter -->
 		<lang.formatter
 			language="JSS"
-			implementationClass="jss.intellij.ide.formatter.FormatBuilder"/>
+			implementationClass="vos.intellij.ide.formatter.FormatBuilder"/>
 		<lang.commenter
 			language="JSS"
-			implementationClass="jss.intellij.ide.formatter.JssCommenter"/>
+			implementationClass="vos.intellij.ide.formatter.JssCommenter"/>
 		<lang.smartEnterProcessor
 			language="JSS"
-			implementationClass="jss.intellij.ide.formatter.JssSmartEnter"/>
+			implementationClass="vos.intellij.ide.formatter.JssSmartEnter"/>
 		<!-- Document -->
-		<!--documentationProvider implementation="jss.intellij.ide.doc.JssDocumentationExtender"-->
-		<!--		<psi.referenceContributor implementation="jss.intellij.ide.doc.JssUrlReferenceContributor"/>-->
+		<!--documentationProvider implementation="vos.intellij.ide.doc.JssDocumentationExtender"-->
+		<!--		<psi.referenceContributor implementation="vos.intellij.ide.doc.JssUrlReferenceContributor"/>-->
 		<lang.documentationProvider
 			language="JSS"
-			implementationClass="jss.intellij.ide.doc.DocumentationProvider"/>
+			implementationClass="vos.intellij.ide.doc.DocumentationProvider"/>
 		<lang.braceMatcher
 			language="JSS"
-			implementationClass="jss.intellij.ide.matcher.JssBraceMatcher"/>
+			implementationClass="vos.intellij.ide.matcher.JssBraceMatcher"/>
 		<lang.quoteHandler
 			language="JSS"
-			implementationClass="jss.intellij.ide.matcher.JssQuoteHandler"/>
+			implementationClass="vos.intellij.ide.matcher.JssQuoteHandler"/>
 		<lang.foldingBuilder
 			language="JSS"
-			implementationClass="jss.intellij.ide.matcher.JssFoldingBuilder"/>
+			implementationClass="vos.intellij.ide.matcher.JssFoldingBuilder"/>
 		<indexPatternBuilder
-			implementation="jss.intellij.ide.todo.VomlTodoIndexPatternBuilder"/>
+			implementation="vos.intellij.ide.todo.VomlTodoIndexPatternBuilder"/>
 		<todoIndexer
 			filetype="JSS"
-			implementationClass="jss.intellij.ide.todo.VomlTodoIndexer"/>
+			implementationClass="vos.intellij.ide.todo.VomlTodoIndexer"/>
 		<completion.contributor
 			language="JSS"
-			implementationClass="jss.intellij.ide.completion.CompletionContributor"/>
+			implementationClass="vos.intellij.ide.completion.CompletionContributor"/>
 
 
 		<langCodeStyleSettingsProvider
-			implementation="jss.intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"/>
+			implementation="vos.intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"/>
 
 	</extensions>
 	<actions>
-		<action id="NewJssFile" class="jss.intellij.ide.actions.JssCreateFile">
+		<action id="NewJssFile" class="vos.intellij.ide.actions.JssCreateFile">
 			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewHtmlFile"/>
 		</action>
 		<action id="jss.JssConvertJson"
-				class="jss.intellij.ide.actions.JssConvertJson"/>
+				class="vos.intellij.ide.actions.JssConvertJson"/>
 		<group id="jss.JssGenerator" popup="true" text="JssGenerator">
 			<reference ref="NewJssFile"/>
 			<reference ref="jss.JssConvertJson"/>

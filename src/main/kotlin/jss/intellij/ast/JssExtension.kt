@@ -1,3 +1,0 @@
-package jss.intellij.ast
-
-
