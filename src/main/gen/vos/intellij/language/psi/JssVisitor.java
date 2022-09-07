@@ -51,6 +51,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitLetStatement(@NotNull JssLetStatement o) {
+    visitPsiElement(o);
+  }
+
   public void visitNamespace(@NotNull JssNamespace o) {
     visitPsiElement(o);
   }

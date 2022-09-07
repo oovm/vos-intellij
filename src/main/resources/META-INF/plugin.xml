@@ -9,52 +9,52 @@
 	<resource-bundle>messages.VosBundle</resource-bundle>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileType
-			name="JSS"
-			language="Vos"
-			extensions="jss"
+			name="VOS"
+			language="VOS"
+			extensions="vos"
 			implementationClass="vos.intellij.language.file.VosFileType"
 			fieldName="INSTANCE"/>
 		<lang.parserDefinition
-			language="Vos"
+			language="VOS"
 			implementationClass="vos.intellij.language.psi.JssParserDefinition"/>
 		<projectViewNestingRulesProvider implementation="vos.intellij.language.file.JssFileGroup"/>
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
-		<annotator language="JSS" implementationClass="vos.intellij.ide.annotator.EscapeAnnotator"/>
+		<annotator language="VOS" implementationClass="vos.intellij.ide.annotator.EscapeAnnotator"/>
 		<colorSettingsPage implementation="vos.intellij.ide.highlight.JssColorSettingsPage"/>
 		<highlightVisitor implementation="vos.intellij.ide.highlight.JssHighlightVisitor"/>
 		<lang.syntaxHighlighter
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.highlight.JssSyntaxHighlighter"/>
 		<!-- View -->
 		<lang.psiStructureViewFactory
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.view.ViewFactory"/>
 		<!-- Formatter -->
 		<lang.formatter
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.formatter.FormatBuilder"/>
 		<lang.commenter
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.formatter.JssCommenter"/>
 		<lang.smartEnterProcessor
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.formatter.JssSmartEnter"/>
 		<!-- Document -->
 		<!--documentationProvider implementation="vos.intellij.ide.doc.JssDocumentationExtender"-->
 		<!--		<psi.referenceContributor implementation="vos.intellij.ide.doc.JssUrlReferenceContributor"/>-->
 		<lang.documentationProvider
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.doc.DocumentationProvider"/>
 		<lang.braceMatcher
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.matcher.JssBraceMatcher"/>
 		<lang.quoteHandler
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.matcher.JssQuoteHandler"/>
 		<lang.foldingBuilder
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.matcher.JssFoldingBuilder"/>
 		<indexPatternBuilder
 			implementation="vos.intellij.ide.todo.VomlTodoIndexPatternBuilder"/>
@@ -62,7 +62,7 @@
 			filetype="JSS"
 			implementationClass="vos.intellij.ide.todo.VomlTodoIndexer"/>
 		<completion.contributor
-			language="JSS"
+			language="VOS"
 			implementationClass="vos.intellij.ide.completion.CompletionContributor"/>
 
 

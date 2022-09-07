@@ -2,7 +2,7 @@ package vos.intellij.language
 
 import com.intellij.lang.Language
 
-object VosLanguage : Language("Vos") {
+object VosLanguage : Language("VOS") {
     override fun getDisplayName(): String {
         return super.getDisplayName()
     }

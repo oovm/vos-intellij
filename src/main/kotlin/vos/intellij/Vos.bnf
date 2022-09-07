@@ -31,6 +31,10 @@
         DECIMAL = 'Decimal'
         SIGN = 'regexp:[+-]'
 
+        KW_LET = 'let'
+        KW_SPARSE = 'class'
+        KW_COMPACT = 'struct'
+
         PARENTHESIS_L = '('
         PARENTHESIS_R = ')'
         BRACKET_L = '['
@@ -56,6 +60,7 @@ VOS ::= statement*;
 private statement ::=
     schema_statement
   | property_statement
+  | let_statement
   | def_statement
   | annotation
 //  | COMMENT_DOCUMENT
@@ -69,6 +74,11 @@ schema_statement ::= schema identifier [type_hint] schema_block {
 };
 private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
+// ---------------------------------------------------------------------------------------------------------------------
+let_statement ::= KW_LET identifier [type_hint] [eq] [value] {
+//    mixin = "vos.intellij.language.mixin.MixinLet"
+};
+
 // ---------------------------------------------------------------------------------------------------------------------
 annotation_statement ::= annotation identifier [type_hint] annotation_block {
     mixin = "vos.intellij.language.mixin.MixinAnnotation"

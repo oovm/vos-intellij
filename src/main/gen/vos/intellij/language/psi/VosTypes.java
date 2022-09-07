@@ -19,6 +19,7 @@ public interface VosTypes {
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType KEY = new JssElementType("KEY");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
+  IElementType LET_STATEMENT = new JssElementType("LET_STATEMENT");
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
   IElementType OBJECT = new JssElementType("OBJECT");
@@ -35,7 +36,6 @@ public interface VosTypes {
   IElementType ACCENT = new JssElementType("^");
   IElementType ANGLE_L = new JssElementType("<");
   IElementType ANGLE_R = new JssElementType(">");
-  IElementType ANNOTATION_BLOCK = new JssElementType("annotation_block");
   IElementType ANNOTATION_SYMBOL = new JssElementType("ANNOTATION_SYMBOL");
   IElementType AT = new JssElementType("@");
   IElementType BRACE_L = new JssElementType("{");
@@ -51,8 +51,11 @@ public interface VosTypes {
   IElementType DECIMAL = new JssElementType("Decimal");
   IElementType DOLLAR = new JssElementType("$");
   IElementType DOT = new JssElementType(".");
-  IElementType EQ = new JssElementType("=");
+  IElementType EQ = new JssElementType("eq");
   IElementType INTEGER = new JssElementType("Integer");
+  IElementType KW_COMPACT = new JssElementType("struct");
+  IElementType KW_LET = new JssElementType("let");
+  IElementType KW_SPARSE = new JssElementType("class");
   IElementType PARENTHESIS_L = new JssElementType("(");
   IElementType PARENTHESIS_R = new JssElementType(")");
   IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
@@ -62,6 +65,7 @@ public interface VosTypes {
   IElementType SEMICOLON = new JssElementType(";");
   IElementType SIGN = new JssElementType("SIGN");
   IElementType STAR = new JssElementType("*");
+  IElementType STRING = new JssElementType("String");
   IElementType SYMBOL = new JssElementType("Symbol");
   IElementType URL = new JssElementType("Url");
 
@@ -101,6 +105,9 @@ public interface VosTypes {
       else if (type == KV_PAIR) {
         return new JssKvPairNode(node);
       }
+      else if (type == LET_STATEMENT) {
+        return new JssLetStatementNode(node);
+      }
       else if (type == NAMESPACE) {
         return new JssNamespaceNode(node);
       }
@@ -124,6 +131,9 @@ public interface VosTypes {
       }
       else if (type == SET) {
         return new JssSetNode(node);
+      }
+      else if (type == STRING) {
+        return new JssStringNode(node);
       }
       else if (type == TYPE_HINT) {
         return new JssTypeHintNode(node);

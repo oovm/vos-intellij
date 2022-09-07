@@ -1,5 +1,6 @@
 package vos.intellij;
 
+import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
@@ -36,7 +37,20 @@ INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
 SIGN=[+-]
 
+KW_LET = let|object
+KW_SPARSE = class|table|sparse
+KW_COMPACT = struct|compact
+
 %%
+<YYINITIAL> {
+  {WHITE_SPACE}           { return WHITE_SPACE; }
+}
+
+<YYINITIAL> {
+    {KW_LET}              { return KW_LET; }
+}
+
+
 <YYINITIAL> {
   {WHITE_SPACE}           { return WHITE_SPACE; }
 
@@ -68,7 +82,6 @@ SIGN=[+-]
   {INTEGER}               { return INTEGER; }
   {DECIMAL}               { return DECIMAL; }
   {SIGN}                  { return SIGN; }
-
 }
 
 [^] { return BAD_CHARACTER; }
