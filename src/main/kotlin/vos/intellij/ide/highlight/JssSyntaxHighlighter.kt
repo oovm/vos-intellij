@@ -1,7 +1,7 @@
 package vos.intellij.ide.highlight
 
 import vos.intellij.language.psi.JssLexerAdapter
-import vos.intellij.language.psi.JssTypes.*
+import vos.intellij.language.psi.VosTypes.*
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase

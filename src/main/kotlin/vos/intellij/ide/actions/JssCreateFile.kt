@@ -1,6 +1,6 @@
 package vos.intellij.ide.actions
 
-import vos.intellij.language.file.JssBundle
+import vos.intellij.language.file.VosBundle
 import vos.intellij.language.file.JssIcons
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog.*
@@ -10,8 +10,8 @@ import com.intellij.psi.PsiDirectory
 class JssCreateFile :
     CreateFileFromTemplateAction(name, description, JssIcons.FILE) {
     companion object {
-        private val name = JssBundle.message("action.create_file")
-        private val description = JssBundle.message("action.create_file.description")
+        private val name = VosBundle.message("action.create_file")
+        private val description = VosBundle.message("action.create_file.description")
     }
 
 

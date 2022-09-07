@@ -7,7 +7,7 @@ import com.intellij.ide.util.treeView.smartTree.ActionPresentation
 import com.intellij.ide.util.treeView.smartTree.ActionPresentationData
 import com.intellij.ide.util.treeView.smartTree.Filter
 import com.intellij.ide.util.treeView.smartTree.TreeElement
-import vos.intellij.language.file.JssBundle
+import vos.intellij.language.file.VosBundle
 
 
 object PublicElementsFilter : Filter {
@@ -16,7 +16,7 @@ object PublicElementsFilter : Filter {
 
     override fun isReverted() = true
     override fun getPresentation(): ActionPresentation = ActionPresentationData(
-        JssBundle.message(name),
+        VosBundle.message(name),
         null,
         AllIcons.Nodes.Public
     )

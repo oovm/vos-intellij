@@ -1,11 +1,10 @@
 package vos.intellij;
 
-import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
 import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static vos.intellij.language.psi.JssTypes.*;
+import static vos.intellij.language.psi.VosTypes.*;
 
 %%
 

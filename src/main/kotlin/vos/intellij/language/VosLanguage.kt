@@ -2,11 +2,11 @@ package vos.intellij.language
 
 import com.intellij.lang.Language
 
-object JssLanguage : Language("JSS") {
+object VosLanguage : Language("Vos") {
     override fun getDisplayName(): String {
         return super.getDisplayName()
     }
-    override fun getMimeTypes(): Array<String> = arrayOf("text/x-jss")
+    override fun getMimeTypes(): Array<String> = arrayOf("text/x-vos")
 }
 
 

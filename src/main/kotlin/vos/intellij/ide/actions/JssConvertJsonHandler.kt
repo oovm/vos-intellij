@@ -1,6 +1,6 @@
 package vos.intellij.ide.actions
 
-import vos.intellij.language.file.JssFileType
+import vos.intellij.language.file.VosFileType
 import com.intellij.codeInsight.CodeInsightActionHandler
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
@@ -20,7 +20,7 @@ class JssConvertJsonHandler : CodeInsightActionHandler {
 """
         )
         try {
-            PsiFileFactory.getInstance(file.project).createFileFromText(file.name, JssFileType, buffer)
+            PsiFileFactory.getInstance(file.project).createFileFromText(file.name, VosFileType, buffer)
         } catch (e: IncorrectOperationException) {
             // do nothing
         }

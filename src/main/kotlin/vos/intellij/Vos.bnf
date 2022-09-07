@@ -9,7 +9,7 @@
     psiPackage = "vos.intellij.language.psi"
     psiImplPackage = "vos.intellij.language.psi_node"
 
-    elementTypeHolderClass = "vos.intellij.language.psi.JssTypes"
+    elementTypeHolderClass = "vos.intellij.language.psi.VosTypes"
     elementTypeClass = "vos.intellij.language.psi.JssElementType"
     tokenTypeClass = "vos.intellij.language.psi.JssElementType"
 

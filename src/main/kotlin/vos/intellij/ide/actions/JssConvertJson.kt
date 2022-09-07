@@ -1,7 +1,7 @@
 package vos.intellij.ide.actions
 
-import vos.intellij.language.file.JssBundle
-import vos.intellij.language.file.JssFileType
+import vos.intellij.language.file.VosBundle
+import vos.intellij.language.file.VosFileType
 import vos.intellij.language.file.JssIcons
 import com.intellij.ide.actions.CreateFileAction
 import com.intellij.json.psi.JsonFile
@@ -13,8 +13,8 @@ import com.intellij.psi.PsiFileFactory
 
 class JssConvertJson : CreateFileAction(name, description, JssIcons.FILE) {
     companion object {
-        private val name = JssBundle.message("action.convert_json")
-        private val description = JssBundle.message("action.convert_json.description")
+        private val name = VosBundle.message("action.convert_json")
+        private val description = VosBundle.message("action.convert_json.description")
 
     }
 
@@ -48,7 +48,7 @@ fun createFromJson(source: JsonFile, name: String): PsiFile? {
         """${document.propertyList}
 """
     )
-    return PsiFileFactory.getInstance(source.project).createFileFromText(name, JssFileType, buffer)
+    return PsiFileFactory.getInstance(source.project).createFileFromText(name, VosFileType, buffer)
 }
 
 fun tryGetJsonSchema(file: PsiFile): JsonObject? {

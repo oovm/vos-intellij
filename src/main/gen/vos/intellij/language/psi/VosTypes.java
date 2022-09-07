@@ -5,9 +5,8 @@ import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
 import vos.intellij.language.psi_node.*;
-import vos.intellij.language.psi_node.*;
 
-public interface JssTypes {
+public interface VosTypes {
 
   IElementType ANNOTATION = new JssElementType("ANNOTATION");
   IElementType ANNOTATION_STATEMENT = new JssElementType("ANNOTATION_STATEMENT");

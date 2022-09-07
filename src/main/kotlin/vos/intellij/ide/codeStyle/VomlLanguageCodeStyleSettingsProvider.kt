@@ -4,10 +4,10 @@ import com.intellij.application.options.CodeStyleAbstractConfigurable
 import com.intellij.application.options.CodeStyleAbstractPanel
 import com.intellij.application.options.SmartIndentOptionsEditor
 import com.intellij.psi.codeStyle.*
-import vos.intellij.language.JssLanguage
+import vos.intellij.language.VosLanguage
 
 class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider() {
-    override fun getLanguage() = JssLanguage
+    override fun getLanguage() = VosLanguage
 
     override fun getIndentOptionsEditor() = SmartIndentOptionsEditor()
 

@@ -10,7 +10,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
-import vos.intellij.language.psi_node.JssAttributeStatementNode
 
 
 class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVisitor {
@@ -21,7 +20,7 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
         val head = o.firstChild;
         highlight(head, JssColor.KEYWORD)
         //
-        val prop = head.nextLeaf { it.elementType == vos.intellij.language.psi.JssTypes.SYMBOL }!!
+        val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
         highlight(prop, JssColor.SYM_SCHEMA)
     }
 
@@ -32,10 +31,10 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
         //
         val head = o.firstChild;
         when (head.elementType) {
-            vos.intellij.language.psi.JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
+            VosTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
         }
         //
-        val prop = head.nextLeaf { it.elementType == vos.intellij.language.psi.JssTypes.SYMBOL }!!
+        val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
         highlight(prop, JssColor.SYM_PROP)
     }
 
@@ -61,8 +60,8 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
     override fun visitValue(o: vos.intellij.language.psi.JssValue) {
         val head = o.firstChild;
         when (head.elementType) {
-            vos.intellij.language.psi.JssTypes.NULL -> highlight(head, JssColor.NULL)
-            vos.intellij.language.psi.JssTypes.BOOLEAN -> highlight(head, JssColor.BOOLEAN)
+            VosTypes.NULL -> highlight(head, JssColor.NULL)
+            VosTypes.BOOLEAN -> highlight(head, JssColor.BOOLEAN)
             else -> super.visitValue(o)
         }
     }

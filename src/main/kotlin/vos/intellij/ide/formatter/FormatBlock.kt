@@ -1,11 +1,10 @@
 package vos.intellij.ide.formatter
 
-import vos.intellij.language.psi.JssTypes
+import vos.intellij.language.psi.VosTypes
 import com.intellij.formatting.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiErrorElement
-import com.intellij.psi.TokenType
 import com.intellij.psi.formatter.FormatterUtil
 import vos.intellij.language.psi.computeSpacing
 import vos.intellij.language.psi.isWhitespaceOrEmpty
@@ -35,7 +34,7 @@ class FormatBlock(
 
     override fun getChildAttributes(newChildIndex: Int): ChildAttributes {
         val indent = when (node.elementType) {
-            vos.intellij.language.psi.JssTypes.ARRAY -> Indent.getNormalIndent()
+            VosTypes.ARRAY -> Indent.getNormalIndent()
             else -> Indent.getNoneIndent()
         }
         return ChildAttributes(indent, null)
@@ -60,11 +59,11 @@ class FormatBlock(
     private fun computeIndent(child: ASTNode): Indent? {
         val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
         return when (node.elementType) {
-            vos.intellij.language.psi.JssTypes.BRACKET_BLOCK -> when {
+            VosTypes.BRACKET_BLOCK -> when {
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }
-            vos.intellij.language.psi.JssTypes.BRACE_BLOCK -> when {
+            VosTypes.BRACE_BLOCK -> when {
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }

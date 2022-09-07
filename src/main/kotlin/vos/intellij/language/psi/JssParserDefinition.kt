@@ -1,8 +1,7 @@
 package vos.intellij.language.psi
 
 import vos.intellij.language.file.JssFileNode
-import vos.intellij.language.JssLanguage
-import vos.intellij.language.parser.JssParser
+import vos.intellij.language.VosLanguage
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
@@ -20,23 +19,23 @@ object JssParserDefinition : ParserDefinition {
 
     override fun createParser(project: Project): PsiParser = vos.intellij.language.parser.JssParser()
 
-    override fun getFileNodeType(): IFileElementType = IFileElementType(JssLanguage)
+    override fun getFileNodeType(): IFileElementType = IFileElementType(VosLanguage)
 
     override fun getCommentTokens(): TokenSet = TokenSet.create(
-        vos.intellij.language.psi.JssTypes.COMMENT,
-        vos.intellij.language.psi.JssTypes.COMMENT_BLOCK,
-        vos.intellij.language.psi.JssTypes.COMMENT_DOCUMENT
+        VosTypes.COMMENT,
+        VosTypes.COMMENT_BLOCK,
+        VosTypes.COMMENT_DOCUMENT
     )
 
     override fun getStringLiteralElements(): TokenSet = TokenSet.create(
-        vos.intellij.language.psi.JssTypes.STRING,
+        VosTypes.STRING,
     )
 
     override fun getWhitespaceTokens(): TokenSet {
         return super.getWhitespaceTokens()
     }
 
-    override fun createElement(node: ASTNode): PsiElement = vos.intellij.language.psi.JssTypes.Factory.createElement(node)
+    override fun createElement(node: ASTNode): PsiElement = VosTypes.Factory.createElement(node)
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile = JssFileNode(viewProvider)
 

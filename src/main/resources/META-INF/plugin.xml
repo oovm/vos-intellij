@@ -6,16 +6,16 @@
 	<!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
 	<depends>com.intellij.modules.platform</depends>
 	<!--    <depends optional="true" config-file="plugin-with-rust.xml">org.rust.lang</depends>-->
-	<resource-bundle>messages.JssBundle</resource-bundle>
+	<resource-bundle>messages.VosBundle</resource-bundle>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileType
 			name="JSS"
-			language="JSS"
+			language="Vos"
 			extensions="jss"
-			implementationClass="vos.intellij.language.file.JssFileType"
+			implementationClass="vos.intellij.language.file.VosFileType"
 			fieldName="INSTANCE"/>
 		<lang.parserDefinition
-			language="JSS"
+			language="Vos"
 			implementationClass="vos.intellij.language.psi.JssParserDefinition"/>
 		<projectViewNestingRulesProvider implementation="vos.intellij.language.file.JssFileGroup"/>
 		<!-- Highlight -->

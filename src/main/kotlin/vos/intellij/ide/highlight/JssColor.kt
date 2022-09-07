@@ -1,6 +1,6 @@
 package vos.intellij.ide.highlight
 
-import vos.intellij.language.file.JssBundle
+import vos.intellij.language.file.VosBundle
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.HighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
@@ -15,26 +15,26 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
 enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
     KEYWORD(OptionsBundle.messagePointer("options.language.defaults.keyword"), Default.KEYWORD),
-    IDIOM_SYMBOL(JssBundle.messagePointer("color.token.symbol.idiom"), Default.METADATA),
-    IDIOM_MARK(JssBundle.messagePointer("color.token.idiom_mark"), IDIOM_SYMBOL.textAttributesKey),
-    PROP_MARK(JssBundle.messagePointer("color.token.properties_mark"), KEYWORD.textAttributesKey),
+    IDIOM_SYMBOL(VosBundle.messagePointer("color.token.symbol.idiom"), Default.METADATA),
+    IDIOM_MARK(VosBundle.messagePointer("color.token.idiom_mark"), IDIOM_SYMBOL.textAttributesKey),
+    PROP_MARK(VosBundle.messagePointer("color.token.properties_mark"), KEYWORD.textAttributesKey),
 
     // 字面量
-    NULL(JssBundle.messagePointer("color.token.null"), Default.KEYWORD),
-    BOOLEAN(JssBundle.messagePointer("color.token.boolean"), Default.KEYWORD),
-    DECIMAL(JssBundle.messagePointer("color.token.decimal"), Default.NUMBER),
-    INTEGER(JssBundle.messagePointer("color.token.integer"), Default.NUMBER),
-    STRING(JssBundle.messagePointer("color.token.string"), Default.STRING),
-    URL(JssBundle.messagePointer("color.token.url"), STRING.textAttributesKey),
+    NULL(VosBundle.messagePointer("color.token.null"), Default.KEYWORD),
+    BOOLEAN(VosBundle.messagePointer("color.token.boolean"), Default.KEYWORD),
+    DECIMAL(VosBundle.messagePointer("color.token.decimal"), Default.NUMBER),
+    INTEGER(VosBundle.messagePointer("color.token.integer"), Default.NUMBER),
+    STRING(VosBundle.messagePointer("color.token.string"), Default.STRING),
+    URL(VosBundle.messagePointer("color.token.url"), STRING.textAttributesKey),
 
     // 标识符
     IDENTIFIER(OptionsBundle.messagePointer("options.language.defaults.identifier"), Default.IDENTIFIER),
-    SYM_ANNO(JssBundle.messagePointer("color.token.symbol.annotation"), Default.STATIC_METHOD),
-    SYM_PROP(JssBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
-    SYM_SCHEMA(JssBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),
+    SYM_ANNO(VosBundle.messagePointer("color.token.symbol.annotation"), Default.STATIC_METHOD),
+    SYM_PROP(VosBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
+    SYM_SCHEMA(VosBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),
 
     //
-    TYPE_HINT(JssBundle.messagePointer("color.token.symbol.type"), Default.CLASS_NAME),
+    TYPE_HINT(VosBundle.messagePointer("color.token.symbol.type"), Default.CLASS_NAME),
 
     // 标点符号
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
@@ -42,7 +42,7 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     BRACES(OptionsBundle.messagePointer("options.language.defaults.braces"), Default.BRACES),
     DOT(OptionsBundle.messagePointer("options.language.defaults.dot"), Default.DOT),
     COMMA(OptionsBundle.messagePointer("options.language.defaults.comma"), Default.COMMA),
-    SET(JssBundle.messagePointer("color.token.set"), Default.OPERATION_SIGN),
+    SET(VosBundle.messagePointer("color.token.set"), Default.OPERATION_SIGN),
     SEMICOLON(OptionsBundle.messagePointer("options.language.defaults.semicolon"), Default.SEMICOLON),
 
     // 注释

@@ -1,6 +1,6 @@
 package vos.intellij.ide.matcher
 
-import vos.intellij.language.psi.JssTypes
+import vos.intellij.language.psi.VosTypes
 import vos.intellij.language.psi.JssParserDefinition
 import com.intellij.lang.BracePair
 import com.intellij.lang.PairedBraceMatcher
@@ -20,9 +20,9 @@ class BaseBraceMatcher : PairedBraceMatcher {
 
     companion object {
         private val PAIRS = arrayOf(
-            BracePair(vos.intellij.language.psi.JssTypes.BRACE_L, vos.intellij.language.psi.JssTypes.BRACE_R, true),
-            BracePair(vos.intellij.language.psi.JssTypes.BRACKET_L, vos.intellij.language.psi.JssTypes.BRACKET_R, true),
-            BracePair(vos.intellij.language.psi.JssTypes.PARENTHESIS_L, vos.intellij.language.psi.JssTypes.PARENTHESIS_R, true),
+            BracePair(VosTypes.BRACE_L, VosTypes.BRACE_R, true),
+            BracePair(VosTypes.BRACKET_L, VosTypes.BRACKET_R, true),
+            BracePair(VosTypes.PARENTHESIS_L, VosTypes.PARENTHESIS_R, true),
             // BracePair(VomlTypes.EXT_PREFIX, VomlTypes.BRACKETR, false)
         )
 
@@ -30,10 +30,10 @@ class BaseBraceMatcher : PairedBraceMatcher {
             JssParserDefinition.commentTokens,
             TokenSet.create(
                 TokenType.WHITE_SPACE,
-                vos.intellij.language.psi.JssTypes.COMMA,
-                vos.intellij.language.psi.JssTypes.PARENTHESIS_R,
-                vos.intellij.language.psi.JssTypes.BRACKET_R,
-                vos.intellij.language.psi.JssTypes.BRACE_R,
+                VosTypes.COMMA,
+                VosTypes.PARENTHESIS_R,
+                VosTypes.BRACKET_R,
+                VosTypes.BRACE_R,
             )
         )
     }

@@ -1,7 +1,7 @@
 package vos.intellij.ide.matcher
 
 import vos.intellij.language.file.JssFileNode
-import vos.intellij.language.psi.JssTypes
+import vos.intellij.language.psi.VosTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.folding.CustomFoldingBuilder
 import com.intellij.lang.folding.FoldingDescriptor
@@ -28,8 +28,8 @@ class JssFoldingBuilder : CustomFoldingBuilder(), DumbAware {
 
     override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) =
         when (node.elementType) {
-            vos.intellij.language.psi.JssTypes.BRACKET_BLOCK -> "[...]"
-            vos.intellij.language.psi.JssTypes.BRACE_BLOCK -> "{...}"
+            VosTypes.BRACKET_BLOCK -> "[...]"
+            VosTypes.BRACE_BLOCK -> "{...}"
             else -> "..."
         }
 
