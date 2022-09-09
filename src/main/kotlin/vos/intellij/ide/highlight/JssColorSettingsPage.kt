@@ -1,7 +1,7 @@
 package vos.intellij.ide.highlight
 
 import vos.intellij.language.file.VosBundle
-import vos.intellij.language.file.JssIcons
+import vos.intellij.language.file.VosIcons
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 
@@ -19,7 +19,7 @@ class JssColorSettingsPage : ColorSettingsPage {
 
     override fun getDisplayName() = VosBundle.message("filetype.name")
 
-    override fun getIcon() = JssIcons.FILE
+    override fun getIcon() = VosIcons.FILE
 
     override fun getHighlighter() = JssSyntaxHighlighter()
 

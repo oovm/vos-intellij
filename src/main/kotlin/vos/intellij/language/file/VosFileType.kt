@@ -11,5 +11,5 @@ object VosFileType : LanguageFileType(VosLanguage) {
 
     override fun getDefaultExtension(): String = "vos"
 
-    override fun getIcon(): Icon = JssIcons.FILE
+    override fun getIcon(): Icon = VosIcons.FILE
 }

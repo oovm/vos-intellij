@@ -2,7 +2,7 @@ package vos.intellij.ide.actions
 
 import vos.intellij.language.file.VosBundle
 import vos.intellij.language.file.VosFileType
-import vos.intellij.language.file.JssIcons
+import vos.intellij.language.file.VosIcons
 import com.intellij.ide.actions.CreateFileAction
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
@@ -11,7 +11,7 @@ import com.intellij.openapi.actionSystem.LangDataKeys
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiFileFactory
 
-class JssConvertJson : CreateFileAction(name, description, JssIcons.FILE) {
+class JssConvertJson : CreateFileAction(name, description, VosIcons.FILE) {
     companion object {
         private val name = VosBundle.message("action.convert_json")
         private val description = VosBundle.message("action.convert_json.description")

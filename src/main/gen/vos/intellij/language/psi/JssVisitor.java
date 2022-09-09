@@ -35,6 +35,26 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitClassBlock(@NotNull JssClassBlock o) {
+    visitPsiElement(o);
+  }
+
+  public void visitClassBound(@NotNull JssClassBound o) {
+    visitPsiElement(o);
+  }
+
+  public void visitClassField(@NotNull JssClassField o) {
+    visitPsiElement(o);
+  }
+
+  public void visitClassInner(@NotNull JssClassInner o) {
+    visitPsiElement(o);
+  }
+
+  public void visitClassStatement(@NotNull JssClassStatement o) {
+    visitPsiElement(o);
+  }
+
   public void visitDefStatement(@NotNull JssDefStatement o) {
     visitPsiElement(o);
   }
@@ -84,10 +104,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitSet(@NotNull JssSet o) {
-    visitPsiElement(o);
-  }
-
-  public void visitString(@NotNull JssString o) {
     visitPsiElement(o);
   }
 

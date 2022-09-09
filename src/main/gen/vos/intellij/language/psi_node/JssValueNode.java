@@ -54,12 +54,6 @@ public class JssValueNode extends MixinValue implements JssValue {
 
   @Override
   @Nullable
-  public JssString getString() {
-    return findChildByClass(JssString.class);
-  }
-
-  @Override
-  @Nullable
   public JssUrlMaybeValid getUrlMaybeValid() {
     return findChildByClass(JssUrlMaybeValid.class);
   }

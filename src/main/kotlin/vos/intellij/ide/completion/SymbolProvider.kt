@@ -7,7 +7,7 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.util.ProcessingContext
 import vos.intellij.ide.completion.lookup.PropertyData
-import vos.intellij.language.file.JssIcons
+import vos.intellij.language.file.VosIcons
 
 class SymbolProvider : CompletionProvider<CompletionParameters>() {
     override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
@@ -73,7 +73,7 @@ private fun CompletionResultSet.addProperty(field: String, typing: String) {
         }
     }
     val e2 = e.withPresentableText(field)
-        .withIcon(JssIcons.PROPERTY)
+        .withIcon(VosIcons.PROPERTY)
         .withTypeText(typing)
     this.addElement(e2)
 }
@@ -81,7 +81,7 @@ private fun CompletionResultSet.addProperty(field: String, typing: String) {
 private fun CompletionResultSet.addKeyword(keyword: String, typing: String) {
     val e = LookupElementBuilder.create("$keyword {}")
         .withPresentableText(keyword)
-        .withIcon(JssIcons.SCHEMA)
+        .withIcon(VosIcons.SCHEMA)
         .withTypeText(typing)
         .withBoldness(true)
     this.addElement(e)

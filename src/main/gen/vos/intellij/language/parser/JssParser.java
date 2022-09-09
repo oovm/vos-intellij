@@ -223,6 +223,172 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // <<brace_block class_inner ignore>>
+  public static boolean class_block(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_block")) return false;
+    if (!nextTokenIs(b, BRACE_L)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = brace_block(b, l + 1, JssParser::class_inner, JssParser::ignore);
+    exit_section_(b, m, CLASS_BLOCK, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // ACCENT (identifier | type_hint) {
+  // // ---------------------------------------------------------------------------------------------------------------------
+  public static boolean class_bound(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_bound")) return false;
+    if (!nextTokenIs(b, ACCENT)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, ACCENT);
+    r = r && class_bound_1(b, l + 1);
+    r = r && class_bound_2(b, l + 1);
+    exit_section_(b, m, CLASS_BOUND, r);
+    return r;
+  }
+
+  // identifier | type_hint
+  private static boolean class_bound_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_bound_1")) return false;
+    boolean r;
+    r = identifier(b, l + 1);
+    if (!r) r = type_hint(b, l + 1);
+    return r;
+  }
+
+  // {
+  // // ---------------------------------------------------------------------------------------------------------------------
+  private static boolean class_bound_2(PsiBuilder b, int l) {
+    return true;
+  }
+
+  /* ********************************************************** */
+  // identifier [COLON type_symbol] [EQ value] {
+  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
+  // }
+  public static boolean class_field(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_field")) return false;
+    if (!nextTokenIs(b, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = identifier(b, l + 1);
+    r = r && class_field_1(b, l + 1);
+    r = r && class_field_2(b, l + 1);
+    r = r && class_field_3(b, l + 1);
+    exit_section_(b, m, CLASS_FIELD, r);
+    return r;
+  }
+
+  // [COLON type_symbol]
+  private static boolean class_field_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_field_1")) return false;
+    class_field_1_0(b, l + 1);
+    return true;
+  }
+
+  // COLON type_symbol
+  private static boolean class_field_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_field_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COLON);
+    r = r && type_symbol(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // [EQ value]
+  private static boolean class_field_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_field_2")) return false;
+    class_field_2_0(b, l + 1);
+    return true;
+  }
+
+  // EQ value
+  private static boolean class_field_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_field_2_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, EQ);
+    r = r && value(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // {
+  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
+  // }
+  private static boolean class_field_3(PsiBuilder b, int l) {
+    return true;
+  }
+
+  /* ********************************************************** */
+  // (class_field|class_bound)*
+  public static boolean class_inner(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_inner")) return false;
+    Marker m = enter_section_(b, l, _NONE_, CLASS_INNER, "<class inner>");
+    while (true) {
+      int c = current_position_(b);
+      if (!class_inner_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "class_inner", c)) break;
+    }
+    exit_section_(b, l, m, true, false, null);
+    return true;
+  }
+
+  // class_field|class_bound
+  private static boolean class_inner_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_inner_0")) return false;
+    boolean r;
+    r = class_field(b, l + 1);
+    if (!r) r = class_bound(b, l + 1);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // (KW_SPARSE|KW_COMPACT) identifier [type_hint] class_block {
+  // //    mixin = "vos.intellij.language.mixin.MixinClass"
+  // }
+  public static boolean class_statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_statement")) return false;
+    if (!nextTokenIs(b, "<class statement>", KW_COMPACT, KW_SPARSE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, CLASS_STATEMENT, "<class statement>");
+    r = class_statement_0(b, l + 1);
+    r = r && identifier(b, l + 1);
+    r = r && class_statement_2(b, l + 1);
+    r = r && class_block(b, l + 1);
+    r = r && class_statement_4(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // KW_SPARSE|KW_COMPACT
+  private static boolean class_statement_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_statement_0")) return false;
+    boolean r;
+    r = consumeToken(b, KW_SPARSE);
+    if (!r) r = consumeToken(b, KW_COMPACT);
+    return r;
+  }
+
+  // [type_hint]
+  private static boolean class_statement_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_statement_2")) return false;
+    type_hint(b, l + 1);
+    return true;
+  }
+
+  // {
+  // //    mixin = "vos.intellij.language.mixin.MixinClass"
+  // }
+  private static boolean class_statement_4(PsiBuilder b, int l) {
+    return true;
+  }
+
+  /* ********************************************************** */
   // ("def"|"define"|"definition") key [type_hint] [properties_block]
   public static boolean def_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "def_statement")) return false;
@@ -310,7 +476,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KW_LET identifier [type_hint] [eq] [value] {
+  // KW_LET identifier [type_hint] [EQ] [value] {
   // //    mixin = "vos.intellij.language.mixin.MixinLet"
   // }
   public static boolean let_statement(PsiBuilder b, int l) {
@@ -335,7 +501,7 @@ public class JssParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // [eq]
+  // [EQ]
   private static boolean let_statement_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "let_statement_3")) return false;
     consumeToken(b, EQ);
@@ -598,36 +764,19 @@ public class JssParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // schema_statement
-  //   | property_statement
+  //   | class_statement
   //   | let_statement
-  //   | def_statement
   //   | annotation
   // //  | COMMENT_DOCUMENT
-  //   | object
   //   | ignore
   static boolean statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "statement")) return false;
     boolean r;
     r = schema_statement(b, l + 1);
-    if (!r) r = property_statement(b, l + 1);
+    if (!r) r = class_statement(b, l + 1);
     if (!r) r = let_statement(b, l + 1);
-    if (!r) r = def_statement(b, l + 1);
     if (!r) r = annotation(b, l + 1);
-    if (!r) r = object(b, l + 1);
     if (!r) r = ignore(b, l + 1);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // RAW_STRING_1|RAW_STRING_2|RAW_STRING_3
-  public static boolean string(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "string")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, STRING, "<string>");
-    r = consumeToken(b, RAW_STRING_1);
-    if (!r) r = consumeToken(b, RAW_STRING_2);
-    if (!r) r = consumeToken(b, RAW_STRING_3);
-    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -668,7 +817,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // null | boolean | num | string | array | object | url_maybe_valid
+  // null | boolean | num | array | object | url_maybe_valid
   public static boolean value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value")) return false;
     boolean r;
@@ -676,7 +825,6 @@ public class JssParser implements PsiParser, LightPsiParser {
     r = null_$(b, l + 1);
     if (!r) r = boolean_$(b, l + 1);
     if (!r) r = num(b, l + 1);
-    if (!r) r = string(b, l + 1);
     if (!r) r = array(b, l + 1);
     if (!r) r = object(b, l + 1);
     if (!r) r = url_maybe_valid(b, l + 1);

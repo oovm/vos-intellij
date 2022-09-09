@@ -4,7 +4,7 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.editor.EditorModificationUtil
-import vos.intellij.language.file.JssIcons
+import vos.intellij.language.file.VosIcons
 
 
 object PropertyData {
@@ -64,7 +64,7 @@ private class PropertyDataBase {
             }
         }
         val e2 = e.withPresentableText(field)
-            .withIcon(JssIcons.PROPERTY)
+            .withIcon(VosIcons.PROPERTY)
             .withTypeText(typing)
         set[field] = e2
     }

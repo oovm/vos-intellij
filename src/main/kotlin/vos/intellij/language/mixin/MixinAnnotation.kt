@@ -2,9 +2,8 @@ package vos.intellij.language.mixin
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import vos.intellij.language.file.JssIcons
+import vos.intellij.language.file.VosIcons
 import vos.intellij.language.ast.DeclareNode
-import vos.intellij.language.psi_node.JssAnnotationStatementNode
 import javax.swing.Icon
 
 /// 惯用法
@@ -17,7 +16,7 @@ open class MixinAnnotation(node: ASTNode) : DeclareNode(node) {
     override fun getNameIdentifier(): PsiElement {
        return originalElement.identifier
     }
-    override fun getIcon(flags: Int): Icon = JssIcons.IDIOM
+    override fun getIcon(flags: Int): Icon = VosIcons.IDIOM
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }

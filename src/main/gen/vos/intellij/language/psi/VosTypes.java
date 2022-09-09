@@ -15,6 +15,11 @@ public interface VosTypes {
   IElementType BOOLEAN = new JssElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
   IElementType BRACKET_BLOCK = new JssElementType("BRACKET_BLOCK");
+  IElementType CLASS_BLOCK = new JssElementType("CLASS_BLOCK");
+  IElementType CLASS_BOUND = new JssElementType("CLASS_BOUND");
+  IElementType CLASS_FIELD = new JssElementType("CLASS_FIELD");
+  IElementType CLASS_INNER = new JssElementType("CLASS_INNER");
+  IElementType CLASS_STATEMENT = new JssElementType("CLASS_STATEMENT");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType KEY = new JssElementType("KEY");
@@ -28,7 +33,6 @@ public interface VosTypes {
   IElementType SCHEMA = new JssElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType SET = new JssElementType("SET");
-  IElementType STRING = new JssElementType("STRING");
   IElementType TYPE_HINT = new JssElementType("TYPE_HINT");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
@@ -51,7 +55,7 @@ public interface VosTypes {
   IElementType DECIMAL = new JssElementType("Decimal");
   IElementType DOLLAR = new JssElementType("$");
   IElementType DOT = new JssElementType(".");
-  IElementType EQ = new JssElementType("eq");
+  IElementType EQ = new JssElementType("=");
   IElementType INTEGER = new JssElementType("Integer");
   IElementType KW_COMPACT = new JssElementType("struct");
   IElementType KW_LET = new JssElementType("let");
@@ -60,7 +64,6 @@ public interface VosTypes {
   IElementType PARENTHESIS_R = new JssElementType(")");
   IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
   IElementType RAW_STRING_2 = new JssElementType("RAW_STRING_2");
-  IElementType RAW_STRING_3 = new JssElementType("RAW_STRING_3");
   IElementType REFERENCE = new JssElementType("Reference");
   IElementType SEMICOLON = new JssElementType(";");
   IElementType SIGN = new JssElementType("SIGN");
@@ -92,6 +95,21 @@ public interface VosTypes {
       }
       else if (type == BRACKET_BLOCK) {
         return new JssBracketBlockNode(node);
+      }
+      else if (type == CLASS_BLOCK) {
+        return new JssClassBlockNode(node);
+      }
+      else if (type == CLASS_BOUND) {
+        return new JssClassBoundNode(node);
+      }
+      else if (type == CLASS_FIELD) {
+        return new JssClassFieldNode(node);
+      }
+      else if (type == CLASS_INNER) {
+        return new JssClassInnerNode(node);
+      }
+      else if (type == CLASS_STATEMENT) {
+        return new JssClassStatementNode(node);
       }
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementNode(node);
@@ -131,9 +149,6 @@ public interface VosTypes {
       }
       else if (type == SET) {
         return new JssSetNode(node);
-      }
-      else if (type == STRING) {
-        return new JssStringNode(node);
       }
       else if (type == TYPE_HINT) {
         return new JssTypeHintNode(node);

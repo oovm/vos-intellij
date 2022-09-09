@@ -59,12 +59,10 @@ VOS ::= statement*;
 
 private statement ::=
     schema_statement
-  | property_statement
+  | class_statement
   | let_statement
-  | def_statement
   | annotation
 //  | COMMENT_DOCUMENT
-  | object
   | ignore;
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
@@ -75,10 +73,19 @@ schema_statement ::= schema identifier [type_hint] schema_block {
 private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
-let_statement ::= KW_LET identifier [type_hint] [eq] [value] {
+let_statement ::= KW_LET identifier [type_hint] [EQ] [value] {
 //    mixin = "vos.intellij.language.mixin.MixinLet"
 };
-
+// ---------------------------------------------------------------------------------------------------------------------
+class_statement ::= (KW_SPARSE|KW_COMPACT) identifier [type_hint] class_block {
+//    mixin = "vos.intellij.language.mixin.MixinClass"
+};
+class_block ::= <<brace_block class_inner ignore>>
+class_inner ::= (class_field|class_bound)*;
+class_field ::= identifier [COLON type_symbol] [EQ value] {
+//    mixin = "vos.intellij.language.mixin.MixinClassField"
+};
+class_bound ::= ACCENT (identifier | type_hint) {
 // ---------------------------------------------------------------------------------------------------------------------
 annotation_statement ::= annotation identifier [type_hint] annotation_block {
     mixin = "vos.intellij.language.mixin.MixinAnnotation"
@@ -109,7 +116,7 @@ key ::= RAW_STRING_1|RAW_STRING_2 | SYMBOL {
     mixin = "vos.intellij.language.mixin.MixinKey"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-value ::= null | boolean | num | string | array | object | url_maybe_valid {
+value ::= null | boolean | num | array | object | url_maybe_valid {
     mixin = "vos.intellij.language.mixin.MixinValue"
 };
 null ::= "null";
@@ -124,9 +131,9 @@ set ::= EQ | COLON;
 // ---------------------------------------------------------------------------------------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
 // ---------------------------------------------------------------------------------------------------------------------
-string ::= (RAW_STRING_1|RAW_STRING_2|RAW_STRING_3) {
-    mixin = "vos.intellij.language.mixin.MixinString"
-}
+//string ::= (RAW_STRING_1|RAW_STRING_2|RAW_STRING_3) {
+//    mixin = "vos.intellij.language.mixin.MixinString"
+//}
 // ---------------------------------------------------------------------------------------------------------------------
 array ::= <<bracket_block value ignore>> {
     mixin = "vos.intellij.language.mixin.MixinArray"
@@ -141,5 +148,5 @@ private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
 // bracket [ ]
 meta bracket_block ::= BRACKET_L [<<item>> (<<sp>> <<item>>)* [<<sp>>]] BRACKET_R;
 // brace { }
-meta brace_block ::=BRACE_L (<<item>>|<<sp>>)* BRACE_R;
+meta brace_block ::= BRACE_L (<<item>>|<<sp>>)* BRACE_R;
 

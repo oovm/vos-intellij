@@ -20,9 +20,6 @@ public interface JssValue extends PsiElement {
   JssObject getObject();
 
   @Nullable
-  JssString getString();
-
-  @Nullable
   JssUrlMaybeValid getUrlMaybeValid();
 
 }
