@@ -66,7 +66,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // annotation identifier [type_hint] annotation_block
+  // annotation identifier [type_expression] annotation_block
   public static boolean annotation_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "annotation_statement")) return false;
     if (!nextTokenIs(b, ANNOTATION_SYMBOL)) return false;
@@ -80,10 +80,10 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [type_expression]
   private static boolean annotation_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "annotation_statement_2")) return false;
-    type_hint(b, l + 1);
+    type_expression(b, l + 1);
     return true;
   }
 
@@ -235,7 +235,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ACCENT (identifier | type_hint) {
+  // ACCENT (identifier | type_expression) {
   // // ---------------------------------------------------------------------------------------------------------------------
   public static boolean class_bound(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_bound")) return false;
@@ -249,12 +249,12 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // identifier | type_hint
+  // identifier | type_expression
   private static boolean class_bound_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_bound_1")) return false;
     boolean r;
     r = identifier(b, l + 1);
-    if (!r) r = type_hint(b, l + 1);
+    if (!r) r = type_expression(b, l + 1);
     return r;
   }
 
@@ -265,7 +265,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // identifier [COLON type_symbol] [EQ value] {
+  // identifier [COLON type_expression] [EQ value] {
   // //    mixin = "vos.intellij.language.mixin.MixinClassField"
   // }
   public static boolean class_field(PsiBuilder b, int l) {
@@ -281,20 +281,20 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [COLON type_symbol]
+  // [COLON type_expression]
   private static boolean class_field_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_field_1")) return false;
     class_field_1_0(b, l + 1);
     return true;
   }
 
-  // COLON type_symbol
+  // COLON type_expression
   private static boolean class_field_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_field_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, COLON);
-    r = r && type_symbol(b, l + 1);
+    r = r && type_expression(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -348,21 +348,19 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (KW_SPARSE|KW_COMPACT) identifier [type_hint] class_block {
-  // //    mixin = "vos.intellij.language.mixin.MixinClass"
-  // }
+  // (KW_SPARSE|KW_COMPACT) identifier [COLON type_expression] class_block
   public static boolean class_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement")) return false;
     if (!nextTokenIs(b, "<class statement>", KW_COMPACT, KW_SPARSE)) return false;
-    boolean r;
+    boolean r, p;
     Marker m = enter_section_(b, l, _NONE_, CLASS_STATEMENT, "<class statement>");
     r = class_statement_0(b, l + 1);
     r = r && identifier(b, l + 1);
-    r = r && class_statement_2(b, l + 1);
-    r = r && class_block(b, l + 1);
-    r = r && class_statement_4(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
+    p = r; // pin = identifier
+    r = r && report_error_(b, class_statement_2(b, l + 1));
+    r = p && class_block(b, l + 1) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   // KW_SPARSE|KW_COMPACT
@@ -374,22 +372,26 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [COLON type_expression]
   private static boolean class_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement_2")) return false;
-    type_hint(b, l + 1);
+    class_statement_2_0(b, l + 1);
     return true;
   }
 
-  // {
-  // //    mixin = "vos.intellij.language.mixin.MixinClass"
-  // }
-  private static boolean class_statement_4(PsiBuilder b, int l) {
-    return true;
+  // COLON type_expression
+  private static boolean class_statement_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_statement_2_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COLON);
+    r = r && type_expression(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   /* ********************************************************** */
-  // ("def"|"define"|"definition") key [type_hint] [properties_block]
+  // ("def"|"define"|"definition") key [type_expression] [properties_block]
   public static boolean def_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "def_statement")) return false;
     boolean r;
@@ -412,10 +414,10 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [type_expression]
   private static boolean def_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "def_statement_2")) return false;
-    type_hint(b, l + 1);
+    type_expression(b, l + 1);
     return true;
   }
 
@@ -476,7 +478,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KW_LET identifier [type_hint] [EQ] [value] {
+  // KW_LET identifier [type_expression] [EQ] [value] {
   // //    mixin = "vos.intellij.language.mixin.MixinLet"
   // }
   public static boolean let_statement(PsiBuilder b, int l) {
@@ -494,10 +496,10 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [type_expression]
   private static boolean let_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "let_statement_2")) return false;
-    type_hint(b, l + 1);
+    type_expression(b, l + 1);
     return true;
   }
 
@@ -684,7 +686,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // property key [type_hint] [properties_block]
+  // property key [type_expression] [properties_block]
   public static boolean property_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property_statement")) return false;
     boolean r;
@@ -697,10 +699,10 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [type_expression]
   private static boolean property_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property_statement_2")) return false;
-    type_hint(b, l + 1);
+    type_expression(b, l + 1);
     return true;
   }
 
@@ -729,7 +731,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // schema identifier [type_hint] schema_block
+  // schema identifier [type_expression] schema_block
   public static boolean schema_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "schema_statement")) return false;
     boolean r;
@@ -742,10 +744,10 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [type_hint]
+  // [type_expression]
   private static boolean schema_statement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "schema_statement_2")) return false;
-    type_hint(b, l + 1);
+    type_expression(b, l + 1);
     return true;
   }
 
@@ -781,15 +783,100 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // COLON type_symbol
-  public static boolean type_hint(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_hint")) return false;
-    if (!nextTokenIs(b, COLON)) return false;
+  // type_symbol [BRACKET_L type_range BRACKET_R]
+  public static boolean type_expression(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_expression")) return false;
+    if (!nextTokenIs(b, "<type expression>", STRING, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TYPE_EXPRESSION, "<type expression>");
+    r = type_symbol(b, l + 1);
+    r = r && type_expression_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // [BRACKET_L type_range BRACKET_R]
+  private static boolean type_expression_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_expression_1")) return false;
+    type_expression_1_0(b, l + 1);
+    return true;
+  }
+
+  // BRACKET_L type_range BRACKET_R
+  private static boolean type_expression_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_expression_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, COLON);
-    r = r && type_symbol(b, l + 1);
-    exit_section_(b, m, TYPE_HINT, r);
+    r = consumeToken(b, BRACKET_L);
+    r = r && type_range(b, l + 1);
+    r = r && consumeToken(b, BRACKET_R);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // (ANGLE_L|ANGLE_R|LEQ|GEQ) type_range
+  public static boolean type_generic_bound(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_bound")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC_BOUND, "<type generic bound>");
+    r = type_generic_bound_0(b, l + 1);
+    r = r && type_range(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // ANGLE_L|ANGLE_R|LEQ|GEQ
+  private static boolean type_generic_bound_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_bound_0")) return false;
+    boolean r;
+    r = consumeToken(b, ANGLE_L);
+    if (!r) r = consumeToken(b, ANGLE_R);
+    if (!r) r = consumeToken(b, LEQ);
+    if (!r) r = consumeToken(b, GEQ);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // type_generic_bound | num (ANGLE_L|ANGLE_R) num (ANGLE_L|ANGLE_R)
+  public static boolean type_range(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_range")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TYPE_RANGE, "<type range>");
+    r = type_generic_bound(b, l + 1);
+    if (!r) r = type_range_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // num (ANGLE_L|ANGLE_R) num (ANGLE_L|ANGLE_R)
+  private static boolean type_range_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_range_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = num(b, l + 1);
+    r = r && type_range_1_1(b, l + 1);
+    r = r && num(b, l + 1);
+    r = r && type_range_1_3(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // ANGLE_L|ANGLE_R
+  private static boolean type_range_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_range_1_1")) return false;
+    boolean r;
+    r = consumeToken(b, ANGLE_L);
+    if (!r) r = consumeToken(b, ANGLE_R);
+    return r;
+  }
+
+  // ANGLE_L|ANGLE_R
+  private static boolean type_range_1_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_range_1_3")) return false;
+    boolean r;
+    r = consumeToken(b, ANGLE_L);
+    if (!r) r = consumeToken(b, ANGLE_R);
     return r;
   }
 

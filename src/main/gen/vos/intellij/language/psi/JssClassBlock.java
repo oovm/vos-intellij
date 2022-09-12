@@ -5,15 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssAnnotationStatement extends PsiElement {
+public interface JssClassBlock extends PsiElement {
 
   @NotNull
-  JssAnnotation getAnnotation();
-
-  @NotNull
-  JssIdentifier getIdentifier();
-
-  @Nullable
-  JssTypeExpression getTypeExpression();
+  JssBraceBlock getBraceBlock();
 
 }

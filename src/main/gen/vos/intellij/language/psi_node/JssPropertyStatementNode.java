@@ -48,8 +48,8 @@ public class JssPropertyStatementNode extends MixinProperty implements JssProper
 
   @Override
   @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
+  public JssTypeExpression getTypeExpression() {
+    return findChildByClass(JssTypeExpression.class);
   }
 
 }

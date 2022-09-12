@@ -11,7 +11,7 @@ public interface JssLetStatement extends PsiElement {
   JssIdentifier getIdentifier();
 
   @Nullable
-  JssTypeHint getTypeHint();
+  JssTypeExpression getTypeExpression();
 
   @Nullable
   JssValue getValue();

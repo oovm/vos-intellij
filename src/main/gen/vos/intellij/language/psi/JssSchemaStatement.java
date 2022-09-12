@@ -17,6 +17,6 @@ public interface JssSchemaStatement extends PsiElement {
   JssSchema getSchema();
 
   @Nullable
-  JssTypeHint getTypeHint();
+  JssTypeExpression getTypeExpression();
 
 }

@@ -33,7 +33,9 @@ public interface VosTypes {
   IElementType SCHEMA = new JssElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType SET = new JssElementType("SET");
-  IElementType TYPE_HINT = new JssElementType("TYPE_HINT");
+  IElementType TYPE_EXPRESSION = new JssElementType("TYPE_EXPRESSION");
+  IElementType TYPE_GENERIC_BOUND = new JssElementType("TYPE_GENERIC_BOUND");
+  IElementType TYPE_RANGE = new JssElementType("TYPE_RANGE");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
@@ -56,12 +58,20 @@ public interface VosTypes {
   IElementType DOLLAR = new JssElementType("$");
   IElementType DOT = new JssElementType(".");
   IElementType EQ = new JssElementType("=");
+  IElementType GEQ = new JssElementType(">=");
   IElementType INTEGER = new JssElementType("Integer");
-  IElementType KW_COMPACT = new JssElementType("struct");
+  IElementType KW_COMPACT = new JssElementType("KW_COMPACT");
+  IElementType KW_DEFINE = new JssElementType("function");
+  IElementType KW_DENSE = new JssElementType("dense");
+  IElementType KW_FLAG = new JssElementType("flag");
   IElementType KW_LET = new JssElementType("let");
-  IElementType KW_SPARSE = new JssElementType("class");
+  IElementType KW_SPARSE = new JssElementType("sparse");
+  IElementType KW_UNION = new JssElementType("union");
+  IElementType LEQ = new JssElementType("<=");
   IElementType PARENTHESIS_L = new JssElementType("(");
   IElementType PARENTHESIS_R = new JssElementType(")");
+  IElementType RANGE_EQ = new JssElementType("..=");
+  IElementType RANGE_LE = new JssElementType("..<");
   IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
   IElementType RAW_STRING_2 = new JssElementType("RAW_STRING_2");
   IElementType REFERENCE = new JssElementType("Reference");
@@ -150,8 +160,14 @@ public interface VosTypes {
       else if (type == SET) {
         return new JssSetNode(node);
       }
-      else if (type == TYPE_HINT) {
-        return new JssTypeHintNode(node);
+      else if (type == TYPE_EXPRESSION) {
+        return new JssTypeExpressionNode(node);
+      }
+      else if (type == TYPE_GENERIC_BOUND) {
+        return new JssTypeGenericBoundNode(node);
+      }
+      else if (type == TYPE_RANGE) {
+        return new JssTypeRangeNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
         return new JssUrlMaybeValidNode(node);

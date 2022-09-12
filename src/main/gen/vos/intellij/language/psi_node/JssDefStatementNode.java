@@ -42,8 +42,8 @@ public class JssDefStatementNode extends ASTWrapperPsiElement implements JssDefS
 
   @Override
   @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
+  public JssTypeExpression getTypeExpression() {
+    return findChildByClass(JssTypeExpression.class);
   }
 
 }

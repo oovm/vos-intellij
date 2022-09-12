@@ -38,10 +38,10 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
         highlight(prop, JssColor.SYM_PROP)
     }
 
-    override fun visitTypeHint(o: vos.intellij.language.psi.JssTypeHint) {
-        val ty = o.lastChild;
-        highlight(ty, JssColor.TYPE_HINT)
-    }
+//    override fun visitTypeHint(o: vos.intellij.language.psi.JssTypeHint) {
+//        val ty = o.lastChild;
+//        highlight(ty, JssColor.TYPE_HINT)
+//    }
 
     override fun visitPropertyStatement(o: vos.intellij.language.psi.JssPropertyStatement) {
         highlight(o.property, JssColor.KEYWORD)

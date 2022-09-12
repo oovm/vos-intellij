@@ -14,6 +14,6 @@ public interface JssDefStatement extends PsiElement {
   JssKey getKey();
 
   @Nullable
-  JssTypeHint getTypeHint();
+  JssTypeExpression getTypeExpression();
 
 }

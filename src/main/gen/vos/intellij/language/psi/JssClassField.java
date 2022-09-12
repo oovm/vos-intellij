@@ -5,15 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssAnnotationStatement extends PsiElement {
-
-  @NotNull
-  JssAnnotation getAnnotation();
+public interface JssClassField extends PsiElement {
 
   @NotNull
   JssIdentifier getIdentifier();
 
   @Nullable
   JssTypeExpression getTypeExpression();
+
+  @Nullable
+  JssValue getValue();
 
 }

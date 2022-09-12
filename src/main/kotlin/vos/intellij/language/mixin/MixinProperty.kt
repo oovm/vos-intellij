@@ -30,9 +30,9 @@ open class MixinProperty(node: ASTNode) : DeclareNode(node) {
             .toTypedArray()
     }
 
-    fun getType(): String? {
-        return originalElement.typeHint?.lastChild?.text
-    }
+//    fun getType(): String? {
+//        return originalElement.typeHint?.lastChild?.text
+//    }
 }
 
 

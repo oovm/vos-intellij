@@ -8,18 +8,18 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static vos.intellij.language.psi.VosTypes.*;
-import vos.intellij.language.mixin.MixinSchema;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class JssSchemaStatementNode extends MixinSchema implements JssSchemaStatement {
+public class JssTypeGenericBoundNode extends ASTWrapperPsiElement implements JssTypeGenericBound {
 
-  public JssSchemaStatementNode(@NotNull ASTNode node) {
+  public JssTypeGenericBoundNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitSchemaStatement(this);
+    visitor.visitTypeGenericBound(this);
   }
 
   @Override
@@ -30,26 +30,8 @@ public class JssSchemaStatementNode extends MixinSchema implements JssSchemaStat
 
   @Override
   @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
-  }
-
-  @Override
-  @NotNull
-  public JssIdentifier getIdentifier() {
-    return findNotNullChildByClass(JssIdentifier.class);
-  }
-
-  @Override
-  @NotNull
-  public JssSchema getSchema() {
-    return findNotNullChildByClass(JssSchema.class);
-  }
-
-  @Override
-  @Nullable
-  public JssTypeExpression getTypeExpression() {
-    return findChildByClass(JssTypeExpression.class);
+  public JssTypeRange getTypeRange() {
+    return findNotNullChildByClass(JssTypeRange.class);
   }
 
 }

@@ -107,7 +107,15 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTypeHint(@NotNull JssTypeHint o) {
+  public void visitTypeExpression(@NotNull JssTypeExpression o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypeGenericBound(@NotNull JssTypeGenericBound o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypeRange(@NotNull JssTypeRange o) {
     visitPsiElement(o);
   }
 
