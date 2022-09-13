@@ -12,7 +12,7 @@ import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
 
 
-class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVisitor {
+class HighlightAST : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
     override fun visitSchemaStatement(o: vos.intellij.language.psi.JssSchemaStatement) {
@@ -66,6 +66,10 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
         }
     }
 
+    override fun visitCompare(o: JssCompare) {
+        highlight(o.firstChild, JssColor.KEYWORD)
+    }
+
     private fun highlight(element: PsiElement, color: JssColor) {
         val builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION)
         builder.textAttributes(color.textAttributesKey)
@@ -86,7 +90,7 @@ class JssHighlightVisitor : vos.intellij.language.psi.JssVisitor(), HighlightVis
         return true
     }
 
-    override fun clone(): HighlightVisitor = JssHighlightVisitor()
+    override fun clone(): HighlightVisitor = HighlightAST()
 
     override fun suitableForFile(file: PsiFile): Boolean = file is JssFileNode
 

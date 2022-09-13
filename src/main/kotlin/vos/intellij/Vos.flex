@@ -34,7 +34,7 @@ REFERENCE=#[\p{XID_Continue}_$/]*
 STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
-DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
+DECIMAL=([0-9]+\.[0-9]*(([*]{2}|[eE])[+-]?[0-9]+)?)
 SIGN=[+-]
 
 KW_LET = let|var|const|object

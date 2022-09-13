@@ -1,14 +1,14 @@
 package vos.intellij.ide.highlight
 
-import vos.intellij.language.psi.JssLexerAdapter
-import vos.intellij.language.psi.VosTypes.*
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
+import vos.intellij.language.psi.JssLexerAdapter
+import vos.intellij.language.psi.VosTypes.*
 
-class JssSyntaxHighlighter : SyntaxHighlighterBase() {
+class HighlightToken : SyntaxHighlighterBase() {
     override fun getHighlightingLexer(): Lexer {
         return JssLexerAdapter()
     }
@@ -22,6 +22,7 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             //
             // AS, SCHEMA, PROP -> JssColor.KEYWORD
             // ANNOTATION -> JssColor.ANNOTATION
+            KW_LET, KW_DEFINE, KW_DENSE, KW_SPARSE, KW_UNION, KW_FLAG -> JssColor.KEYWORD
             //
             PARENTHESIS_L, PARENTHESIS_R -> JssColor.PARENTHESES
             BRACKET_L, BRACKET_R -> JssColor.BRACKETS

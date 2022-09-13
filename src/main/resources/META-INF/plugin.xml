@@ -23,10 +23,10 @@
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
 		<annotator language="VOS" implementationClass="vos.intellij.ide.annotator.EscapeAnnotator"/>
 		<colorSettingsPage implementation="vos.intellij.ide.highlight.JssColorSettingsPage"/>
-		<highlightVisitor implementation="vos.intellij.ide.highlight.JssHighlightVisitor"/>
+		<highlightVisitor implementation="vos.intellij.ide.highlight.HighlightAST"/>
 		<lang.syntaxHighlighter
 			language="VOS"
-			implementationClass="vos.intellij.ide.highlight.JssSyntaxHighlighter"/>
+			implementationClass="vos.intellij.ide.highlight.HighlightToken"/>
 		<!-- View -->
 		<lang.psiStructureViewFactory
 			language="VOS"

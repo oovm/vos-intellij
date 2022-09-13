@@ -21,7 +21,7 @@ class JssColorSettingsPage : ColorSettingsPage {
 
     override fun getIcon() = VosIcons.FILE
 
-    override fun getHighlighter() = JssSyntaxHighlighter()
+    override fun getHighlighter() = HighlightToken()
 
     override fun getAdditionalHighlightingTagToDescriptorMap() = annotatorTags
 
