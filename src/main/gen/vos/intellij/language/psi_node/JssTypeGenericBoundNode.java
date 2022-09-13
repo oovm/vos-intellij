@@ -29,9 +29,9 @@ public class JssTypeGenericBoundNode extends ASTWrapperPsiElement implements Jss
   }
 
   @Override
-  @NotNull
-  public JssTypeRange getTypeRange() {
-    return findNotNullChildByClass(JssTypeRange.class);
+  @Nullable
+  public JssCompare getCompare() {
+    return findChildByClass(JssCompare.class);
   }
 
 }

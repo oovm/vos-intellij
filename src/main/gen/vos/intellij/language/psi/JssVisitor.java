@@ -55,6 +55,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitCompare(@NotNull JssCompare o) {
+    visitPsiElement(o);
+  }
+
   public void visitDefStatement(@NotNull JssDefStatement o) {
     visitPsiElement(o);
   }
@@ -115,7 +119,15 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTypeRange(@NotNull JssTypeRange o) {
+  public void visitTypeGenericCompare(@NotNull JssTypeGenericCompare o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypeGenericRange(@NotNull JssTypeGenericRange o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypeNumber(@NotNull JssTypeNumber o) {
     visitPsiElement(o);
   }
 

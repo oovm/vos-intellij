@@ -391,6 +391,21 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // ANGLE_L|ANGLE_R|LEQ|GEQ|EQ
+  public static boolean compare(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "compare")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, COMPARE, "<compare>");
+    r = consumeToken(b, ANGLE_L);
+    if (!r) r = consumeToken(b, ANGLE_R);
+    if (!r) r = consumeToken(b, LEQ);
+    if (!r) r = consumeToken(b, GEQ);
+    if (!r) r = consumeToken(b, EQ);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // ("def"|"define"|"definition") key [type_expression] [properties_block]
   public static boolean def_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "def_statement")) return false;
@@ -783,7 +798,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // type_symbol [BRACKET_L type_range BRACKET_R]
+  // type_symbol [BRACKET_L type_number BRACKET_R]
   public static boolean type_expression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_expression")) return false;
     if (!nextTokenIs(b, "<type expression>", STRING, SYMBOL)) return false;
@@ -795,88 +810,91 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [BRACKET_L type_range BRACKET_R]
+  // [BRACKET_L type_number BRACKET_R]
   private static boolean type_expression_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_expression_1")) return false;
     type_expression_1_0(b, l + 1);
     return true;
   }
 
-  // BRACKET_L type_range BRACKET_R
+  // BRACKET_L type_number BRACKET_R
   private static boolean type_expression_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_expression_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, BRACKET_L);
-    r = r && type_range(b, l + 1);
+    r = r && type_number(b, l + 1);
     r = r && consumeToken(b, BRACKET_R);
     exit_section_(b, m, null, r);
     return r;
   }
 
   /* ********************************************************** */
-  // (ANGLE_L|ANGLE_R|LEQ|GEQ) type_range
+  // compare? num
   public static boolean type_generic_bound(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_generic_bound")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC_BOUND, "<type generic bound>");
     r = type_generic_bound_0(b, l + 1);
-    r = r && type_range(b, l + 1);
+    r = r && num(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // ANGLE_L|ANGLE_R|LEQ|GEQ
+  // compare?
   private static boolean type_generic_bound_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_generic_bound_0")) return false;
+    compare(b, l + 1);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // num compare num compare num
+  public static boolean type_generic_compare(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_compare")) return false;
     boolean r;
-    r = consumeToken(b, ANGLE_L);
-    if (!r) r = consumeToken(b, ANGLE_R);
-    if (!r) r = consumeToken(b, LEQ);
-    if (!r) r = consumeToken(b, GEQ);
+    Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC_COMPARE, "<type generic compare>");
+    r = num(b, l + 1);
+    r = r && compare(b, l + 1);
+    r = r && num(b, l + 1);
+    r = r && compare(b, l + 1);
+    r = r && num(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   /* ********************************************************** */
-  // type_generic_bound | num (ANGLE_L|ANGLE_R) num (ANGLE_L|ANGLE_R)
-  public static boolean type_range(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_range")) return false;
+  // num (RANGE_LE|RANGE_EQ) num
+  public static boolean type_generic_range(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_range")) return false;
     boolean r;
-    Marker m = enter_section_(b, l, _NONE_, TYPE_RANGE, "<type range>");
-    r = type_generic_bound(b, l + 1);
-    if (!r) r = type_range_1(b, l + 1);
+    Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC_RANGE, "<type generic range>");
+    r = num(b, l + 1);
+    r = r && type_generic_range_1(b, l + 1);
+    r = r && num(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // num (ANGLE_L|ANGLE_R) num (ANGLE_L|ANGLE_R)
-  private static boolean type_range_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_range_1")) return false;
+  // RANGE_LE|RANGE_EQ
+  private static boolean type_generic_range_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_range_1")) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = num(b, l + 1);
-    r = r && type_range_1_1(b, l + 1);
-    r = r && num(b, l + 1);
-    r = r && type_range_1_3(b, l + 1);
-    exit_section_(b, m, null, r);
+    r = consumeToken(b, RANGE_LE);
+    if (!r) r = consumeToken(b, RANGE_EQ);
     return r;
   }
 
-  // ANGLE_L|ANGLE_R
-  private static boolean type_range_1_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_range_1_1")) return false;
+  /* ********************************************************** */
+  // type_generic_bound | type_generic_range | type_generic_compare
+  public static boolean type_number(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_number")) return false;
     boolean r;
-    r = consumeToken(b, ANGLE_L);
-    if (!r) r = consumeToken(b, ANGLE_R);
-    return r;
-  }
-
-  // ANGLE_L|ANGLE_R
-  private static boolean type_range_1_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_range_1_3")) return false;
-    boolean r;
-    r = consumeToken(b, ANGLE_L);
-    if (!r) r = consumeToken(b, ANGLE_R);
+    Marker m = enter_section_(b, l, _NONE_, TYPE_NUMBER, "<type number>");
+    r = type_generic_bound(b, l + 1);
+    if (!r) r = type_generic_range(b, l + 1);
+    if (!r) r = type_generic_compare(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

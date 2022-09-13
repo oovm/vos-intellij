@@ -20,6 +20,7 @@ public interface VosTypes {
   IElementType CLASS_FIELD = new JssElementType("CLASS_FIELD");
   IElementType CLASS_INNER = new JssElementType("CLASS_INNER");
   IElementType CLASS_STATEMENT = new JssElementType("CLASS_STATEMENT");
+  IElementType COMPARE = new JssElementType("COMPARE");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType KEY = new JssElementType("KEY");
@@ -35,7 +36,9 @@ public interface VosTypes {
   IElementType SET = new JssElementType("SET");
   IElementType TYPE_EXPRESSION = new JssElementType("TYPE_EXPRESSION");
   IElementType TYPE_GENERIC_BOUND = new JssElementType("TYPE_GENERIC_BOUND");
-  IElementType TYPE_RANGE = new JssElementType("TYPE_RANGE");
+  IElementType TYPE_GENERIC_COMPARE = new JssElementType("TYPE_GENERIC_COMPARE");
+  IElementType TYPE_GENERIC_RANGE = new JssElementType("TYPE_GENERIC_RANGE");
+  IElementType TYPE_NUMBER = new JssElementType("TYPE_NUMBER");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
@@ -121,6 +124,9 @@ public interface VosTypes {
       else if (type == CLASS_STATEMENT) {
         return new JssClassStatementNode(node);
       }
+      else if (type == COMPARE) {
+        return new JssCompareNode(node);
+      }
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementNode(node);
       }
@@ -166,8 +172,14 @@ public interface VosTypes {
       else if (type == TYPE_GENERIC_BOUND) {
         return new JssTypeGenericBoundNode(node);
       }
-      else if (type == TYPE_RANGE) {
-        return new JssTypeRangeNode(node);
+      else if (type == TYPE_GENERIC_COMPARE) {
+        return new JssTypeGenericCompareNode(node);
+      }
+      else if (type == TYPE_GENERIC_RANGE) {
+        return new JssTypeGenericRangeNode(node);
+      }
+      else if (type == TYPE_NUMBER) {
+        return new JssTypeNumberNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
         return new JssUrlMaybeValidNode(node);

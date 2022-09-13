@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface JssTypeGenericBound extends PsiElement {
 
-  @NotNull
-  JssTypeRange getTypeRange();
+  @Nullable
+  JssCompare getCompare();
 
 }

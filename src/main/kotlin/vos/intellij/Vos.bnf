@@ -132,9 +132,13 @@ boolean ::= "true" | "false";
 // used in annotation
 url_maybe_valid ::= URL;
 // ---------------------------------------------------------------------------------------------------------------------
-type_expression ::= type_symbol [BRACKET_L type_range BRACKET_R];
-type_range ::= type_generic_bound | num (ANGLE_L|ANGLE_R) num (ANGLE_L|ANGLE_R);
-type_generic_bound ::= (ANGLE_L|ANGLE_R|LEQ|GEQ) type_range;
+type_expression ::= type_symbol [BRACKET_L type_number BRACKET_R];
+type_number ::= type_generic_bound | type_generic_range | type_generic_compare;
+type_generic_bound ::= compare? num;
+type_generic_range ::= num (RANGE_LE|RANGE_EQ) num;
+type_generic_compare ::= num compare num compare num;
+compare ::= (ANGLE_L|ANGLE_R|LEQ|GEQ|EQ);
+
 private type_symbol ::= SYMBOL | STRING;
 // ---------------------------------------------------------------------------------------------------------------------
 set ::= EQ | COLON;

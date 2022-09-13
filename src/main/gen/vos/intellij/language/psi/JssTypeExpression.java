@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssTypeExpression extends PsiElement {
 
   @Nullable
-  JssTypeRange getTypeRange();
+  JssTypeNumber getTypeNumber();
 
 }

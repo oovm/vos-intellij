@@ -30,8 +30,8 @@ public class JssTypeExpressionNode extends ASTWrapperPsiElement implements JssTy
 
   @Override
   @Nullable
-  public JssTypeRange getTypeRange() {
-    return findChildByClass(JssTypeRange.class);
+  public JssTypeNumber getTypeNumber() {
+    return findChildByClass(JssTypeNumber.class);
   }
 
 }
