@@ -13,6 +13,9 @@ public interface JssClassStatement extends PsiElement {
   @NotNull
   JssIdentifier getIdentifier();
 
+  @NotNull
+  JssModifiers getModifiers();
+
   @Nullable
   JssTypeExpression getTypeExpression();
 

@@ -30,8 +30,8 @@ public class JssClassBlockNode extends ASTWrapperPsiElement implements JssClassB
 
   @Override
   @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
+  public List<JssClassInner> getClassInnerList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssClassInner.class);
   }
 
 }

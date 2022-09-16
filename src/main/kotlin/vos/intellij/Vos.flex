@@ -84,7 +84,6 @@ RANGE_EQ = [.]{2}=
     {RANGE_LE}              { return RANGE_LE; }
     {RANGE_EQ}              { return RANGE_EQ; }
     ":"                     { return COLON; }
-
     "."                     { return DOT; }
     "*"                     { return STAR; }
     "@"                     { return AT; }

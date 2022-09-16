@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssClassBlock extends PsiElement {
 
   @NotNull
-  JssBraceBlock getBraceBlock();
+  List<JssClassInner> getClassInnerList();
 
 }

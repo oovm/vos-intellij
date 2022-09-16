@@ -12,14 +12,14 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class JssClassInnerNode extends ASTWrapperPsiElement implements JssClassInner {
+public class JssModifiersNode extends ASTWrapperPsiElement implements JssModifiers {
 
-  public JssClassInnerNode(@NotNull ASTNode node) {
+  public JssModifiersNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitClassInner(this);
+    visitor.visitModifiers(this);
   }
 
   @Override
@@ -29,15 +29,9 @@ public class JssClassInnerNode extends ASTWrapperPsiElement implements JssClassI
   }
 
   @Override
-  @Nullable
-  public JssClassBound getClassBound() {
-    return findChildByClass(JssClassBound.class);
-  }
-
-  @Override
-  @Nullable
-  public JssClassField getClassField() {
-    return findChildByClass(JssClassField.class);
+  @NotNull
+  public List<JssIdentifier> getIdentifierList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssIdentifier.class);
   }
 
 }

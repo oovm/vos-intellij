@@ -84,12 +84,12 @@ let_statement ::= KW_LET identifier [type_expression] [EQ] [value] {
 //    mixin = "vos.intellij.language.mixin.MixinLet"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-class_statement ::= (KW_SPARSE|KW_DENSE) identifier [COLON type_expression] class_block {
+class_statement ::= (KW_SPARSE|KW_DENSE) modifiers identifier [COLON type_expression] class_block {
     pin = identifier
 //    mixin = "vos.intellij.language.mixin.MixinClass"
 };
-class_block ::= <<brace_block class_inner ignore>>
-class_inner ::= (class_field|class_bound)*;
+class_block ::= BRACE_L (class_inner|ignore)* BRACE_R;
+class_inner ::= class_field|class_bound;
 class_field ::= identifier [COLON type_expression] [EQ value] {
 //    mixin = "vos.intellij.language.mixin.MixinClassField"
 };
@@ -156,6 +156,7 @@ object ::= <<brace_block kv_pair ignore>>;
 // ---------------------------------------------------------------------------------------------------------------------
 namespace ::= identifier (DOT identifier)*;
 identifier ::= SYMBOL;
+modifiers ::= (identifier !(':'|'{'))*;
 // ---------------------------------------------------------------------------------------------------------------------
 // parenthesis ( )
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;

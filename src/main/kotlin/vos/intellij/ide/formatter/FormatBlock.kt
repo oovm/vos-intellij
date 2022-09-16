@@ -67,6 +67,10 @@ class FormatBlock(
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }
+            VosTypes.CLASS_BLOCK -> when {
+                isCornerChild -> Indent.getNoneIndent()
+                else -> Indent.getNormalIndent()
+            }
             else -> Indent.getNoneIndent()
         }
     }

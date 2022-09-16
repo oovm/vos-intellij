@@ -26,6 +26,7 @@ public interface VosTypes {
   IElementType KEY = new JssElementType("KEY");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType LET_STATEMENT = new JssElementType("LET_STATEMENT");
+  IElementType MODIFIERS = new JssElementType("MODIFIERS");
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
   IElementType OBJECT = new JssElementType("OBJECT");
@@ -140,6 +141,9 @@ public interface VosTypes {
       }
       else if (type == LET_STATEMENT) {
         return new JssLetStatementNode(node);
+      }
+      else if (type == MODIFIERS) {
+        return new JssModifiersNode(node);
       }
       else if (type == NAMESPACE) {
         return new JssNamespaceNode(node);

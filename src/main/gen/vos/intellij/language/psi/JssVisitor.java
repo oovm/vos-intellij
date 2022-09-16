@@ -79,6 +79,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitModifiers(@NotNull JssModifiers o) {
+    visitPsiElement(o);
+  }
+
   public void visitNamespace(@NotNull JssNamespace o) {
     visitPsiElement(o);
   }

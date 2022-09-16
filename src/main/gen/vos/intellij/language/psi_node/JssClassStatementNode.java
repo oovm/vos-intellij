@@ -41,6 +41,12 @@ public class JssClassStatementNode extends ASTWrapperPsiElement implements JssCl
   }
 
   @Override
+  @NotNull
+  public JssModifiers getModifiers() {
+    return findNotNullChildByClass(JssModifiers.class);
+  }
+
+  @Override
   @Nullable
   public JssTypeExpression getTypeExpression() {
     return findChildByClass(JssTypeExpression.class);

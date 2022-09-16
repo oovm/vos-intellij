@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssClassInner extends PsiElement {
+public interface JssModifiers extends PsiElement {
 
-  @Nullable
-  JssClassBound getClassBound();
-
-  @Nullable
-  JssClassField getClassField();
+  @NotNull
+  List<JssIdentifier> getIdentifierList();
 
 }
