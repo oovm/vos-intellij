@@ -63,7 +63,6 @@ public interface VosTypes {
   IElementType EQ = new JssElementType("=");
   IElementType GEQ = new JssElementType(">=");
   IElementType INTEGER = new JssElementType("Integer");
-  IElementType KW_COMPACT = new JssElementType("KW_COMPACT");
   IElementType KW_DEFINE = new JssElementType("function");
   IElementType KW_DENSE = new JssElementType("dense");
   IElementType KW_FLAG = new JssElementType("flag");

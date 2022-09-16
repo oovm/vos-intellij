@@ -15,7 +15,7 @@ import com.intellij.psi.util.nextLeaf
 class HighlightAST : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
-    override fun visitSchemaStatement(o: vos.intellij.language.psi.JssSchemaStatement) {
+    override fun visitSchemaStatement(o: JssSchemaStatement) {
         //
         val head = o.firstChild;
         highlight(head, JssColor.KEYWORD)
@@ -27,7 +27,7 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
 
 
 
-    override fun visitDefStatement(o: vos.intellij.language.psi.JssDefStatement) {
+    override fun visitDefStatement(o: JssDefStatement) {
         //
         val head = o.firstChild;
         when (head.elementType) {
@@ -43,21 +43,21 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
 //        highlight(ty, JssColor.TYPE_HINT)
 //    }
 
-    override fun visitPropertyStatement(o: vos.intellij.language.psi.JssPropertyStatement) {
+    override fun visitPropertyStatement(o: JssPropertyStatement) {
         highlight(o.property, JssColor.KEYWORD)
         highlight(o.key, JssColor.SYM_PROP)
     }
 
-    override fun visitAttributeStatement(o: vos.intellij.language.psi.JssAttributeStatement) {
+    override fun visitAttributeStatement(o: JssAttributeStatement) {
         val o = o as vos.intellij.language.psi_node.JssAttributeStatementNode;
         highlight(o.firstChild, JssColor.SYM_ANNO)
     }
 
-    override fun visitKvPair(o: vos.intellij.language.psi.JssKvPair) {
+    override fun visitKvPair(o: JssKvPair) {
         highlight(o.firstChild, JssColor.SYM_PROP)
     }
 
-    override fun visitValue(o: vos.intellij.language.psi.JssValue) {
+    override fun visitValue(o: JssValue) {
         val head = o.firstChild;
         when (head.elementType) {
             VosTypes.NULL -> highlight(head, JssColor.NULL)

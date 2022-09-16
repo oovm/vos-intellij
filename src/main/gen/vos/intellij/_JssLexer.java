@@ -147,11 +147,11 @@ public class _JssLexer implements FlexLexer {
 
   /* The ZZ_CMAP_A table has 1848 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\3\1\2\2\1\1\2\2\0\1\3\1\0\1\16\1\15\1\11\1\0\1\10\1\0\1\61\1\62\1"+
-    "\5\1\27\1\71\1\30\1\25\1\4\1\20\11\6\1\7\1\70\1\55\1\54\1\57\1\10\1\72\1\22"+
-    "\1\23\2\22\1\26\1\23\10\12\1\21\10\12\1\21\2\12\1\63\1\17\1\64\1\67\1\24\1"+
+    "\11\0\1\3\1\2\2\1\1\2\2\0\1\3\1\0\1\16\1\15\1\11\1\0\1\10\1\0\1\63\1\64\1"+
+    "\5\1\27\1\62\1\30\1\25\1\4\1\20\11\6\1\7\1\61\1\55\1\54\1\57\1\10\1\72\1\22"+
+    "\1\23\2\22\1\26\1\23\10\12\1\21\10\12\1\21\2\12\1\65\1\17\1\66\1\71\1\24\1"+
     "\0\1\35\1\43\1\37\1\51\1\32\1\53\1\50\1\12\1\46\1\44\1\12\1\31\1\47\1\41\1"+
-    "\40\1\52\1\12\1\36\1\42\1\33\1\45\1\34\1\12\1\21\2\12\1\65\1\0\1\66\7\0\1"+
+    "\40\1\52\1\12\1\36\1\42\1\33\1\45\1\34\1\12\1\21\2\12\1\67\1\0\1\70\7\0\1"+
     "\1\2\0\1\3\11\0\1\13\12\0\1\13\1\0\1\14\17\13\1\0\2\13\4\0\4\13\6\0\5\13\7"+
     "\0\1\13\1\0\1\13\1\0\10\14\5\13\1\0\2\13\3\0\3\13\1\0\1\13\6\0\1\13\1\14\3"+
     "\13\1\0\1\13\1\0\4\13\1\0\13\13\1\0\3\13\1\0\5\14\2\0\6\13\1\0\7\13\1\0\1"+
@@ -874,47 +874,47 @@ public class _JssLexer implements FlexLexer {
             // fall through
           case 53: break;
           case 15: 
-            { return PARENTHESIS_L;
+            { return SEMICOLON;
             } 
             // fall through
           case 54: break;
           case 16: 
-            { return PARENTHESIS_R;
+            { return COMMA;
             } 
             // fall through
           case 55: break;
           case 17: 
-            { return BRACKET_L;
+            { return PARENTHESIS_L;
             } 
             // fall through
           case 56: break;
           case 18: 
-            { return BRACKET_R;
+            { return PARENTHESIS_R;
             } 
             // fall through
           case 57: break;
           case 19: 
-            { return BRACE_L;
+            { return BRACKET_L;
             } 
             // fall through
           case 58: break;
           case 20: 
-            { return BRACE_R;
+            { return BRACKET_R;
             } 
             // fall through
           case 59: break;
           case 21: 
-            { return ACCENT;
+            { return BRACE_L;
             } 
             // fall through
           case 60: break;
           case 22: 
-            { return SEMICOLON;
+            { return BRACE_R;
             } 
             // fall through
           case 61: break;
           case 23: 
-            { return COMMA;
+            { return ACCENT;
             } 
             // fall through
           case 62: break;

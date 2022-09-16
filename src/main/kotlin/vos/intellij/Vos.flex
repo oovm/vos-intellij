@@ -53,7 +53,9 @@ RANGE_EQ = [.]{2}=
 
 %%
 <YYINITIAL> {
-  {WHITE_SPACE}           { return WHITE_SPACE; }
+    {WHITE_SPACE}           { return WHITE_SPACE; }
+    ";"                     { return SEMICOLON; }
+    ","                     { return COMMA; }
 }
 
 <YYINITIAL> {
@@ -82,8 +84,7 @@ RANGE_EQ = [.]{2}=
     {RANGE_LE}              { return RANGE_LE; }
     {RANGE_EQ}              { return RANGE_EQ; }
     ":"                     { return COLON; }
-    ";"                     { return SEMICOLON; }
-    ","                     { return COMMA; }
+
     "."                     { return DOT; }
     "*"                     { return STAR; }
     "@"                     { return AT; }

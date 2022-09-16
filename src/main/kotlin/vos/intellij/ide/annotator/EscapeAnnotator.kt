@@ -65,7 +65,7 @@ class EscapeAnnotator : Annotator {
     }
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
 }
 

@@ -348,10 +348,10 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (KW_SPARSE|KW_COMPACT) identifier [COLON type_expression] class_block
+  // (KW_SPARSE|KW_DENSE) identifier [COLON type_expression] class_block
   public static boolean class_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement")) return false;
-    if (!nextTokenIs(b, "<class statement>", KW_COMPACT, KW_SPARSE)) return false;
+    if (!nextTokenIs(b, "<class statement>", KW_DENSE, KW_SPARSE)) return false;
     boolean r, p;
     Marker m = enter_section_(b, l, _NONE_, CLASS_STATEMENT, "<class statement>");
     r = class_statement_0(b, l + 1);
@@ -363,12 +363,12 @@ public class JssParser implements PsiParser, LightPsiParser {
     return r || p;
   }
 
-  // KW_SPARSE|KW_COMPACT
+  // KW_SPARSE|KW_DENSE
   private static boolean class_statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement_0")) return false;
     boolean r;
     r = consumeToken(b, KW_SPARSE);
-    if (!r) r = consumeToken(b, KW_COMPACT);
+    if (!r) r = consumeToken(b, KW_DENSE);
     return r;
   }
 

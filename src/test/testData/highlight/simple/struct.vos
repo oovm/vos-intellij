@@ -1,11 +1,7 @@
 struct Point {
-    x
-    y: u64
-    z: u64 = 0
+x
+y: u64
+z: u64 = 0
 }
 
 
-class Color1 {
-    r: u8[3] = 8
-    a: f32 = 1.0
-}
