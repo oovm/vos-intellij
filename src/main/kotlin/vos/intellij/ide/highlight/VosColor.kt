@@ -12,7 +12,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as Default
 
 
 // TODO: 分类
-enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
+enum class VosColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
     KEYWORD(OptionsBundle.messagePointer("options.language.defaults.keyword"), Default.KEYWORD),
     IDIOM_SYMBOL(VosBundle.messagePointer("color.token.symbol.idiom"), Default.METADATA),
@@ -30,9 +30,9 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     // 标识符
     IDENTIFIER(OptionsBundle.messagePointer("options.language.defaults.identifier"), Default.IDENTIFIER),
     SYM_ANNO(VosBundle.messagePointer("color.token.symbol.annotation"), Default.STATIC_METHOD),
-    SYM_PROP(VosBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
+    SYM_FIELD(VosBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
     SYM_SCHEMA(VosBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),
-
+    SYM_CLASS(VosBundle.messagePointer("color.token.class"), Default.CLASS_NAME),
     //
     TYPE_HINT(VosBundle.messagePointer("color.token.symbol.type"), Default.CLASS_NAME),
 

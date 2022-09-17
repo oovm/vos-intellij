@@ -18,10 +18,10 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
     override fun visitSchemaStatement(o: JssSchemaStatement) {
         //
         val head = o.firstChild;
-        highlight(head, JssColor.KEYWORD)
+        highlight(head, VosColor.KEYWORD)
         //
         val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
-        highlight(prop, JssColor.SYM_SCHEMA)
+        highlight(prop, VosColor.SYM_SCHEMA)
     }
 
 
@@ -31,11 +31,19 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
         //
         val head = o.firstChild;
         when (head.elementType) {
-            VosTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
+            VosTypes.SYMBOL -> highlight(head, VosColor.KEYWORD)
         }
         //
         val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
-        highlight(prop, JssColor.SYM_PROP)
+        highlight(prop, VosColor.SYM_FIELD)
+    }
+
+    override fun visitClassStatement(o: JssClassStatement) {
+        highlight(o.identifier, VosColor.SYM_CLASS)
+    }
+
+    override fun visitClassField(o: JssClassField) {
+        highlight(o.identifier, VosColor.SYM_FIELD)
     }
 
 //    override fun visitTypeHint(o: vos.intellij.language.psi.JssTypeHint) {
@@ -44,33 +52,33 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
 //    }
 
     override fun visitPropertyStatement(o: JssPropertyStatement) {
-        highlight(o.property, JssColor.KEYWORD)
-        highlight(o.key, JssColor.SYM_PROP)
+        highlight(o.property, VosColor.KEYWORD)
+        highlight(o.key, VosColor.SYM_FIELD)
     }
 
     override fun visitAttributeStatement(o: JssAttributeStatement) {
         val o = o as vos.intellij.language.psi_node.JssAttributeStatementNode;
-        highlight(o.firstChild, JssColor.SYM_ANNO)
+        highlight(o.firstChild, VosColor.SYM_ANNO)
     }
 
     override fun visitKvPair(o: JssKvPair) {
-        highlight(o.firstChild, JssColor.SYM_PROP)
+        highlight(o.firstChild, VosColor.SYM_FIELD)
     }
 
     override fun visitValue(o: JssValue) {
         val head = o.firstChild;
         when (head.elementType) {
-            VosTypes.NULL -> highlight(head, JssColor.NULL)
-            VosTypes.BOOLEAN -> highlight(head, JssColor.BOOLEAN)
+            VosTypes.NULL -> highlight(head, VosColor.NULL)
+            VosTypes.BOOLEAN -> highlight(head, VosColor.BOOLEAN)
             else -> super.visitValue(o)
         }
     }
 
     override fun visitCompare(o: JssCompare) {
-        highlight(o.firstChild, JssColor.KEYWORD)
+        highlight(o.firstChild, VosColor.KEYWORD)
     }
 
-    private fun highlight(element: PsiElement, color: JssColor) {
+    private fun highlight(element: PsiElement, color: VosColor) {
         val builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION)
         builder.textAttributes(color.textAttributesKey)
         builder.range(element)

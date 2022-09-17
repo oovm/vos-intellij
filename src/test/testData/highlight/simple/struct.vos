@@ -1,5 +1,5 @@
 struct Point {
-x
-y: u64,
-z = 1
+    x
+    y: u64,
+    z = 1
 }
