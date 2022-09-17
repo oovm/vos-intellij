@@ -37,6 +37,7 @@ enum class VosColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     TYPE_HINT(VosBundle.messagePointer("color.token.symbol.type"), Default.CLASS_NAME),
 
     // 标点符号
+    OPERATOR(VosBundle.messagePointer("color.token.operation"), Default.OPERATION_SIGN),
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
     BRACKETS(OptionsBundle.messagePointer("options.language.defaults.brackets"), Default.BRACKETS),
     BRACES(OptionsBundle.messagePointer("options.language.defaults.braces"), Default.BRACES),

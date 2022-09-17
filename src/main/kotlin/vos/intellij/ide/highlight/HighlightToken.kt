@@ -8,6 +8,7 @@ import com.intellij.psi.tree.IElementType
 import vos.intellij.language.psi.JssLexerAdapter
 import vos.intellij.language.psi.VosTypes.*
 
+
 class HighlightToken : SyntaxHighlighterBase() {
     override fun getHighlightingLexer(): Lexer {
         return JssLexerAdapter()
@@ -24,10 +25,11 @@ class HighlightToken : SyntaxHighlighterBase() {
             // ANNOTATION -> JssColor.ANNOTATION
             KW_LET, KW_DEFINE, KW_DENSE, KW_SPARSE, KW_UNION, KW_FLAG -> VosColor.KEYWORD
             //
+            ANGLE_L, ANGLE_R , LEQ , GEQ , EQ -> VosColor.OPERATOR
             PARENTHESIS_L, PARENTHESIS_R -> VosColor.PARENTHESES
             BRACKET_L, BRACKET_R -> VosColor.BRACKETS
             BRACE_L, BRACE_R -> VosColor.BRACES
-            COLON, EQ -> VosColor.SET
+            COLON -> VosColor.SET
             COMMA -> VosColor.COMMA
             // atom
             INTEGER -> VosColor.INTEGER

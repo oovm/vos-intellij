@@ -12,32 +12,20 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class JssClassBoundNode extends ASTWrapperPsiElement implements JssClassBound {
+public class JssTypeSymbolNode extends ASTWrapperPsiElement implements JssTypeSymbol {
 
-  public JssClassBoundNode(@NotNull ASTNode node) {
+  public JssTypeSymbolNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitClassBound(this);
+    visitor.visitTypeSymbol(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssIdentifier getIdentifier() {
-    return findNotNullChildByClass(JssIdentifier.class);
-  }
-
-  @Override
-  @Nullable
-  public JssValue getValue() {
-    return findChildByClass(JssValue.class);
   }
 
 }

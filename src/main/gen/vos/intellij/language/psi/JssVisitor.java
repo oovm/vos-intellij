@@ -119,6 +119,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitTypeGeneric(@NotNull JssTypeGeneric o) {
+    visitPsiElement(o);
+  }
+
   public void visitTypeGenericBound(@NotNull JssTypeGenericBound o) {
     visitPsiElement(o);
   }
@@ -132,6 +136,10 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitTypeNumber(@NotNull JssTypeNumber o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypeSymbol(@NotNull JssTypeSymbol o) {
     visitPsiElement(o);
   }
 

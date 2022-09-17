@@ -257,33 +257,45 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ACCENT (identifier | type_expression) {
-  // // ---------------------------------------------------------------------------------------------------------------------
+  // ACCENT identifier [(COLON|EQ) value]
   public static boolean class_bound(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_bound")) return false;
     if (!nextTokenIs(b, ACCENT)) return false;
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, CLASS_BOUND, null);
+    r = consumeToken(b, ACCENT);
+    r = r && identifier(b, l + 1);
+    p = r; // pin = identifier
+    r = r && class_bound_2(b, l + 1);
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
+  }
+
+  // [(COLON|EQ) value]
+  private static boolean class_bound_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_bound_2")) return false;
+    class_bound_2_0(b, l + 1);
+    return true;
+  }
+
+  // (COLON|EQ) value
+  private static boolean class_bound_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_bound_2_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, ACCENT);
-    r = r && class_bound_1(b, l + 1);
-    r = r && class_bound_2(b, l + 1);
-    exit_section_(b, m, CLASS_BOUND, r);
+    r = class_bound_2_0_0(b, l + 1);
+    r = r && value(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
   }
 
-  // identifier | type_expression
-  private static boolean class_bound_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "class_bound_1")) return false;
+  // COLON|EQ
+  private static boolean class_bound_2_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "class_bound_2_0_0")) return false;
     boolean r;
-    r = identifier(b, l + 1);
-    if (!r) r = type_expression(b, l + 1);
+    r = consumeToken(b, COLON);
+    if (!r) r = consumeToken(b, EQ);
     return r;
-  }
-
-  // {
-  // // ---------------------------------------------------------------------------------------------------------------------
-  private static boolean class_bound_2(PsiBuilder b, int l) {
-    return true;
   }
 
   /* ********************************************************** */
@@ -887,6 +899,37 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // type_symbol [COMMA type_symbol]
+  public static boolean type_generic(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic")) return false;
+    if (!nextTokenIs(b, "<type generic>", STRING, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC, "<type generic>");
+    r = type_symbol(b, l + 1);
+    r = r && type_generic_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // [COMMA type_symbol]
+  private static boolean type_generic_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_1")) return false;
+    type_generic_1_0(b, l + 1);
+    return true;
+  }
+
+  // COMMA type_symbol
+  private static boolean type_generic_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "type_generic_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COMMA);
+    r = r && type_symbol(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // compare? num
   public static boolean type_generic_bound(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_generic_bound")) return false;
@@ -906,14 +949,14 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // num compare num compare num
+  // num compare SYMBOL compare num
   public static boolean type_generic_compare(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_generic_compare")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE_GENERIC_COMPARE, "<type generic compare>");
     r = num(b, l + 1);
     r = r && compare(b, l + 1);
-    r = r && num(b, l + 1);
+    r = r && consumeToken(b, SYMBOL);
     r = r && compare(b, l + 1);
     r = r && num(b, l + 1);
     exit_section_(b, l, m, r, false, null);
@@ -943,26 +986,29 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // type_generic_bound | type_generic_range | type_generic_compare
+  // type_generic_bound | type_generic_compare | type_generic_range | type_generic
   public static boolean type_number(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_number")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE_NUMBER, "<type number>");
     r = type_generic_bound(b, l + 1);
-    if (!r) r = type_generic_range(b, l + 1);
     if (!r) r = type_generic_compare(b, l + 1);
+    if (!r) r = type_generic_range(b, l + 1);
+    if (!r) r = type_generic(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   /* ********************************************************** */
   // SYMBOL | STRING
-  static boolean type_symbol(PsiBuilder b, int l) {
+  public static boolean type_symbol(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_symbol")) return false;
-    if (!nextTokenIs(b, "", STRING, SYMBOL)) return false;
+    if (!nextTokenIs(b, "<type symbol>", STRING, SYMBOL)) return false;
     boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TYPE_SYMBOL, "<type symbol>");
     r = consumeToken(b, SYMBOL);
     if (!r) r = consumeToken(b, STRING);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

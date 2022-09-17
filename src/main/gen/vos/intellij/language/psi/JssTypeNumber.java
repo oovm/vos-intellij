@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface JssTypeNumber extends PsiElement {
 
   @Nullable
+  JssTypeGeneric getTypeGeneric();
+
+  @Nullable
   JssTypeGenericBound getTypeGenericBound();
 
   @Nullable

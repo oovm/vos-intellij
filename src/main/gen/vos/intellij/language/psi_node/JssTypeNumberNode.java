@@ -30,6 +30,12 @@ public class JssTypeNumberNode extends ASTWrapperPsiElement implements JssTypeNu
 
   @Override
   @Nullable
+  public JssTypeGeneric getTypeGeneric() {
+    return findChildByClass(JssTypeGeneric.class);
+  }
+
+  @Override
+  @Nullable
   public JssTypeGenericBound getTypeGenericBound() {
     return findChildByClass(JssTypeGenericBound.class);
   }

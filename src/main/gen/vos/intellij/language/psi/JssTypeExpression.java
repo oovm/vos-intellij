@@ -10,4 +10,7 @@ public interface JssTypeExpression extends PsiElement {
   @Nullable
   JssTypeNumber getTypeNumber();
 
+  @NotNull
+  JssTypeSymbol getTypeSymbol();
+
 }

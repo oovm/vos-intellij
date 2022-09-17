@@ -34,4 +34,10 @@ public class JssTypeExpressionNode extends ASTWrapperPsiElement implements JssTy
     return findChildByClass(JssTypeNumber.class);
   }
 
+  @Override
+  @NotNull
+  public JssTypeSymbol getTypeSymbol() {
+    return findNotNullChildByClass(JssTypeSymbol.class);
+  }
+
 }

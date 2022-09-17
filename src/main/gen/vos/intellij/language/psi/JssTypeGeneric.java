@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssClassBound extends PsiElement {
+public interface JssTypeGeneric extends PsiElement {
 
   @NotNull
-  JssIdentifier getIdentifier();
-
-  @Nullable
-  JssValue getValue();
+  List<JssTypeSymbol> getTypeSymbolList();
 
 }

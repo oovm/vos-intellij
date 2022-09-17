@@ -36,10 +36,12 @@ public interface VosTypes {
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType SET = new JssElementType("SET");
   IElementType TYPE_EXPRESSION = new JssElementType("TYPE_EXPRESSION");
+  IElementType TYPE_GENERIC = new JssElementType("TYPE_GENERIC");
   IElementType TYPE_GENERIC_BOUND = new JssElementType("TYPE_GENERIC_BOUND");
   IElementType TYPE_GENERIC_COMPARE = new JssElementType("TYPE_GENERIC_COMPARE");
   IElementType TYPE_GENERIC_RANGE = new JssElementType("TYPE_GENERIC_RANGE");
   IElementType TYPE_NUMBER = new JssElementType("TYPE_NUMBER");
+  IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
@@ -172,6 +174,9 @@ public interface VosTypes {
       else if (type == TYPE_EXPRESSION) {
         return new JssTypeExpressionNode(node);
       }
+      else if (type == TYPE_GENERIC) {
+        return new JssTypeGenericNode(node);
+      }
       else if (type == TYPE_GENERIC_BOUND) {
         return new JssTypeGenericBoundNode(node);
       }
@@ -183,6 +188,9 @@ public interface VosTypes {
       }
       else if (type == TYPE_NUMBER) {
         return new JssTypeNumberNode(node);
+      }
+      else if (type == TYPE_SYMBOL) {
+        return new JssTypeSymbolNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
         return new JssUrlMaybeValidNode(node);

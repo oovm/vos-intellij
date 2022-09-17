@@ -12,14 +12,14 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class JssClassBoundNode extends ASTWrapperPsiElement implements JssClassBound {
+public class JssTypeGenericNode extends ASTWrapperPsiElement implements JssTypeGeneric {
 
-  public JssClassBoundNode(@NotNull ASTNode node) {
+  public JssTypeGenericNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitClassBound(this);
+    visitor.visitTypeGeneric(this);
   }
 
   @Override
@@ -30,14 +30,8 @@ public class JssClassBoundNode extends ASTWrapperPsiElement implements JssClassB
 
   @Override
   @NotNull
-  public JssIdentifier getIdentifier() {
-    return findNotNullChildByClass(JssIdentifier.class);
-  }
-
-  @Override
-  @Nullable
-  public JssValue getValue() {
-    return findChildByClass(JssValue.class);
+  public List<JssTypeSymbol> getTypeSymbolList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssTypeSymbol.class);
   }
 
 }

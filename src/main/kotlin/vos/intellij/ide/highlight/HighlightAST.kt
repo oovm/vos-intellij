@@ -1,7 +1,5 @@
 package vos.intellij.ide.highlight
 
-import vos.intellij.language.file.JssFileNode
-import vos.intellij.language.psi.*
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
@@ -10,6 +8,8 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
+import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.psi.*
 
 
 class HighlightAST : JssVisitor(), HighlightVisitor {
@@ -24,8 +24,15 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
         highlight(prop, VosColor.SYM_SCHEMA)
     }
 
-
-
+    override fun visitTypeSymbol(o: JssTypeSymbol) {
+        val head = o.text.first();
+        if (head.isLowerCase()) {
+            highlight(o, VosColor.KEYWORD)
+        }
+        else {
+            highlight(o, VosColor.SYM_CLASS)
+        }
+    }
 
     override fun visitDefStatement(o: JssDefStatement) {
         //
@@ -74,9 +81,6 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
         }
     }
 
-    override fun visitCompare(o: JssCompare) {
-        highlight(o.firstChild, VosColor.KEYWORD)
-    }
 
     private fun highlight(element: PsiElement, color: VosColor) {
         val builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION)
@@ -87,10 +91,7 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
     }
 
     override fun analyze(
-        file: PsiFile,
-        updateWholeFile: Boolean,
-        holder: HighlightInfoHolder,
-        action: Runnable
+        file: PsiFile, updateWholeFile: Boolean, holder: HighlightInfoHolder, action: Runnable
     ): Boolean {
         infoHolder = holder
         action.run()
