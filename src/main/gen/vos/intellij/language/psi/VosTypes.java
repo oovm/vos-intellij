@@ -66,10 +66,9 @@ public interface VosTypes {
   IElementType EQ = new JssElementType("=");
   IElementType GEQ = new JssElementType(">=");
   IElementType INTEGER = new JssElementType("Integer");
+  IElementType KW_CLASS = new JssElementType("class");
   IElementType KW_DEFINE = new JssElementType("function");
-  IElementType KW_DENSE = new JssElementType("dense");
   IElementType KW_LET = new JssElementType("let");
-  IElementType KW_SPARSE = new JssElementType("sparse");
   IElementType KW_UNION = new JssElementType("union");
   IElementType LEQ = new JssElementType("<=");
   IElementType PARENTHESIS_L = new JssElementType("(");

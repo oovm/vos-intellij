@@ -32,8 +32,7 @@
         SIGN = 'regexp:[+-]'
 
         KW_LET = 'let'
-        KW_SPARSE = 'sparse'
-        KW_DENSE = 'dense'
+        KW_CLASS = 'class'
         KW_DEFINE = "function"
         KW_UNION = 'union'
 
@@ -83,7 +82,7 @@ let_statement ::= KW_LET identifier [type_expression] [EQ] [value] {
 //    mixin = "vos.intellij.language.mixin.MixinLet"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-class_statement ::= (KW_SPARSE|KW_DENSE) modifiers identifier [COLON type_expression] class_block {
+class_statement ::= KW_CLASS modifiers identifier [COLON type_expression] class_block {
     pin = identifier
 //    mixin = "vos.intellij.language.mixin.MixinClass"
 };

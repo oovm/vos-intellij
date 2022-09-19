@@ -39,8 +39,8 @@ SIGN=[+-]
 
 KW_LET = let|var|const|object
 KW_UNION = union|enum|enumerate|tagged
-KW_DENSE = struct|structure|compact|dense
-KW_SPARSE = class|table|sparse
+//KW_DENSE = struct|structure|compact|dense
+KW_CLASS = class|table
 KW_DEFINE = define|def|function|fun|fn
 
 
@@ -60,10 +60,8 @@ RANGE_EQ = [.]{2}=
 <YYINITIAL> {
     {KW_LET}              { return KW_LET; }
     {KW_DEFINE}           { return KW_DEFINE; }
-    {KW_DENSE}            { return KW_DENSE; }
-    {KW_SPARSE}           { return KW_SPARSE; }
+    {KW_CLASS}            { return KW_CLASS; }
     {KW_UNION}            { return KW_UNION; }
-    {KW_FLAG}             { return KW_FLAG; }
 }
 
 

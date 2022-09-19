@@ -23,7 +23,7 @@ class HighlightToken : SyntaxHighlighterBase() {
             //
             // AS, SCHEMA, PROP -> JssColor.KEYWORD
             // ANNOTATION -> JssColor.ANNOTATION
-            KW_LET, KW_DEFINE, KW_DENSE, KW_SPARSE, KW_UNION, KW_FLAG -> VosColor.KEYWORD
+            KW_LET, KW_DEFINE, KW_CLASS, KW_UNION -> VosColor.KEYWORD
             //
             ANGLE_L, ANGLE_R , LEQ , GEQ , EQ -> VosColor.OPERATOR
             PARENTHESIS_L, PARENTHESIS_R -> VosColor.PARENTHESES

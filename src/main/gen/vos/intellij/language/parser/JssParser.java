@@ -372,13 +372,13 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (KW_SPARSE|KW_DENSE) modifiers identifier [COLON type_expression] class_block
+  // KW_CLASS modifiers identifier [COLON type_expression] class_block
   public static boolean class_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_statement")) return false;
-    if (!nextTokenIs(b, "<class statement>", KW_DENSE, KW_SPARSE)) return false;
+    if (!nextTokenIs(b, KW_CLASS)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, CLASS_STATEMENT, "<class statement>");
-    r = class_statement_0(b, l + 1);
+    Marker m = enter_section_(b, l, _NONE_, CLASS_STATEMENT, null);
+    r = consumeToken(b, KW_CLASS);
     r = r && modifiers(b, l + 1);
     r = r && identifier(b, l + 1);
     p = r; // pin = identifier
@@ -386,15 +386,6 @@ public class JssParser implements PsiParser, LightPsiParser {
     r = p && class_block(b, l + 1) && r;
     exit_section_(b, l, m, r, p, null);
     return r || p;
-  }
-
-  // KW_SPARSE|KW_DENSE
-  private static boolean class_statement_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "class_statement_0")) return false;
-    boolean r;
-    r = consumeToken(b, KW_SPARSE);
-    if (!r) r = consumeToken(b, KW_DENSE);
-    return r;
   }
 
   // [COLON type_expression]
