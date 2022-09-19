@@ -36,7 +36,6 @@
         KW_DENSE = 'dense'
         KW_DEFINE = "function"
         KW_UNION = 'union'
-        KW_FLAG = 'flag'
 
         PARENTHESIS_L = '('
         PARENTHESIS_R = ')'

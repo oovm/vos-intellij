@@ -42,7 +42,6 @@ KW_UNION = union|enum|enumerate|tagged
 KW_DENSE = struct|structure|compact|dense
 KW_SPARSE = class|table|sparse
 KW_DEFINE = define|def|function|fun|fn
-KW_FLAG = flag|bitset
 
 
 EQ  = =
