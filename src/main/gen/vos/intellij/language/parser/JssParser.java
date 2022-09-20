@@ -483,6 +483,26 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // [SIGN] INTEGER
+  public static boolean integer_signed(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "integer_signed")) return false;
+    if (!nextTokenIs(b, "<integer signed>", INTEGER, SIGN)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, INTEGER_SIGNED, "<integer signed>");
+    r = integer_signed_0(b, l + 1);
+    r = r && consumeToken(b, INTEGER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // [SIGN]
+  private static boolean integer_signed_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "integer_signed_0")) return false;
+    consumeToken(b, SIGN);
+    return true;
+  }
+
+  /* ********************************************************** */
   // RAW_STRING_1|RAW_STRING_2 | SYMBOL
   public static boolean key(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "key")) return false;
@@ -842,6 +862,7 @@ public class JssParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // schema_statement
   //   | class_statement
+  //   | union_statement
   //   | let_statement
   //   | annotation
   // //  | COMMENT_DOCUMENT
@@ -851,6 +872,7 @@ public class JssParser implements PsiParser, LightPsiParser {
     boolean r;
     r = schema_statement(b, l + 1);
     if (!r) r = class_statement(b, l + 1);
+    if (!r) r = union_statement(b, l + 1);
     if (!r) r = let_statement(b, l + 1);
     if (!r) r = annotation(b, l + 1);
     if (!r) r = ignore(b, l + 1);
@@ -1000,6 +1022,129 @@ public class JssParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, SYMBOL);
     if (!r) r = consumeToken(b, STRING);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // BRACE_L (union_inner|ignore)* BRACE_R
+  public static boolean union_block(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_block")) return false;
+    if (!nextTokenIs(b, BRACE_L)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, BRACE_L);
+    r = r && union_block_1(b, l + 1);
+    r = r && consumeToken(b, BRACE_R);
+    exit_section_(b, m, UNION_BLOCK, r);
+    return r;
+  }
+
+  // (union_inner|ignore)*
+  private static boolean union_block_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_block_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!union_block_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "union_block_1", c)) break;
+    }
+    return true;
+  }
+
+  // union_inner|ignore
+  private static boolean union_block_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_block_1_0")) return false;
+    boolean r;
+    r = union_inner(b, l + 1);
+    if (!r) r = ignore(b, l + 1);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // identifier [EQ integer_signed] {
+  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
+  // }
+  public static boolean union_field(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_field")) return false;
+    if (!nextTokenIs(b, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = identifier(b, l + 1);
+    r = r && union_field_1(b, l + 1);
+    r = r && union_field_2(b, l + 1);
+    exit_section_(b, m, UNION_FIELD, r);
+    return r;
+  }
+
+  // [EQ integer_signed]
+  private static boolean union_field_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_field_1")) return false;
+    union_field_1_0(b, l + 1);
+    return true;
+  }
+
+  // EQ integer_signed
+  private static boolean union_field_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_field_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, EQ);
+    r = r && integer_signed(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // {
+  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
+  // }
+  private static boolean union_field_2(PsiBuilder b, int l) {
+    return true;
+  }
+
+  /* ********************************************************** */
+  // union_field|class_bound
+  public static boolean union_inner(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_inner")) return false;
+    if (!nextTokenIs(b, "<union inner>", ACCENT, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, UNION_INNER, "<union inner>");
+    r = union_field(b, l + 1);
+    if (!r) r = class_bound(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // KW_UNION modifiers identifier [COLON type_expression] union_block
+  public static boolean union_statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_statement")) return false;
+    if (!nextTokenIs(b, KW_UNION)) return false;
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, UNION_STATEMENT, null);
+    r = consumeToken(b, KW_UNION);
+    r = r && modifiers(b, l + 1);
+    r = r && identifier(b, l + 1);
+    p = r; // pin = identifier
+    r = r && report_error_(b, union_statement_3(b, l + 1));
+    r = p && union_block(b, l + 1) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
+  }
+
+  // [COLON type_expression]
+  private static boolean union_statement_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_statement_3")) return false;
+    union_statement_3_0(b, l + 1);
+    return true;
+  }
+
+  // COLON type_expression
+  private static boolean union_statement_3_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_statement_3_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COLON);
+    r = r && type_expression(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
   }
 

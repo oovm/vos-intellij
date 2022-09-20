@@ -1,4 +1,4 @@
-union A {
-
-
+union Boolean {
+False = 0,
+True = 1,
 }

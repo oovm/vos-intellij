@@ -23,6 +23,7 @@ public interface VosTypes {
   IElementType COMPARE = new JssElementType("COMPARE");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
+  IElementType INTEGER_SIGNED = new JssElementType("INTEGER_SIGNED");
   IElementType KEY = new JssElementType("KEY");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType LET_STATEMENT = new JssElementType("LET_STATEMENT");
@@ -42,6 +43,10 @@ public interface VosTypes {
   IElementType TYPE_GENERIC_RANGE = new JssElementType("TYPE_GENERIC_RANGE");
   IElementType TYPE_NUMBER = new JssElementType("TYPE_NUMBER");
   IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
+  IElementType UNION_BLOCK = new JssElementType("UNION_BLOCK");
+  IElementType UNION_FIELD = new JssElementType("UNION_FIELD");
+  IElementType UNION_INNER = new JssElementType("UNION_INNER");
+  IElementType UNION_STATEMENT = new JssElementType("UNION_STATEMENT");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
@@ -133,6 +138,9 @@ public interface VosTypes {
       else if (type == IDENTIFIER) {
         return new JssIdentifierNode(node);
       }
+      else if (type == INTEGER_SIGNED) {
+        return new JssIntegerSignedNode(node);
+      }
       else if (type == KEY) {
         return new JssKeyNode(node);
       }
@@ -189,6 +197,18 @@ public interface VosTypes {
       }
       else if (type == TYPE_SYMBOL) {
         return new JssTypeSymbolNode(node);
+      }
+      else if (type == UNION_BLOCK) {
+        return new JssUnionBlockNode(node);
+      }
+      else if (type == UNION_FIELD) {
+        return new JssUnionFieldNode(node);
+      }
+      else if (type == UNION_INNER) {
+        return new JssUnionInnerNode(node);
+      }
+      else if (type == UNION_STATEMENT) {
+        return new JssUnionStatementNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
         return new JssUrlMaybeValidNode(node);

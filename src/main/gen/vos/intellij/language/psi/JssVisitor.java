@@ -67,6 +67,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitIntegerSigned(@NotNull JssIntegerSigned o) {
+    visitPsiElement(o);
+  }
+
   public void visitKey(@NotNull JssKey o) {
     visitPsiElement(o);
   }
@@ -140,6 +144,22 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitTypeSymbol(@NotNull JssTypeSymbol o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUnionBlock(@NotNull JssUnionBlock o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUnionField(@NotNull JssUnionField o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUnionInner(@NotNull JssUnionInner o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUnionStatement(@NotNull JssUnionStatement o) {
     visitPsiElement(o);
   }
 

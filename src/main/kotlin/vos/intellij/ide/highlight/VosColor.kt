@@ -29,6 +29,7 @@ enum class VosColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
 
     // 标识符
     IDENTIFIER(OptionsBundle.messagePointer("options.language.defaults.identifier"), Default.IDENTIFIER),
+    MODIFIER(VosBundle.messagePointer("color.token.symbol.annotation"), Default.METADATA),
     SYM_ANNO(VosBundle.messagePointer("color.token.symbol.annotation"), Default.STATIC_METHOD),
     SYM_FIELD(VosBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
     SYM_SCHEMA(VosBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),

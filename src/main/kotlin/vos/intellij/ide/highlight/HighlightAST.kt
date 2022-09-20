@@ -53,6 +53,15 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
         highlight(o.identifier, VosColor.SYM_FIELD)
     }
 
+    override fun visitUnionStatement(o: JssUnionStatement) {
+        highlight(o.identifier, VosColor.SYM_CLASS)
+    }
+
+    override fun visitUnionField(o: JssUnionField) {
+        highlight(o.identifier, VosColor.SYM_FIELD)
+    }
+
+
 //    override fun visitTypeHint(o: vos.intellij.language.psi.JssTypeHint) {
 //        val ty = o.lastChild;
 //        highlight(ty, JssColor.TYPE_HINT)
@@ -63,10 +72,10 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
         highlight(o.key, VosColor.SYM_FIELD)
     }
 
-    override fun visitAttributeStatement(o: JssAttributeStatement) {
-        val o = o as vos.intellij.language.psi_node.JssAttributeStatementNode;
-        highlight(o.firstChild, VosColor.SYM_ANNO)
-    }
+//    override fun visitAttributeStatement(o: JssAttributeStatement) {
+//        val o = o as vos.intellij.language.psi_node.JssAttributeStatementNode;
+//        highlight(o.firstChild, VosColor.SYM_ANNO)
+//    }
 
     override fun visitKvPair(o: JssKvPair) {
         highlight(o.firstChild, VosColor.SYM_FIELD)
@@ -78,6 +87,12 @@ class HighlightAST : JssVisitor(), HighlightVisitor {
             VosTypes.NULL -> highlight(head, VosColor.NULL)
             VosTypes.BOOLEAN -> highlight(head, VosColor.BOOLEAN)
             else -> super.visitValue(o)
+        }
+    }
+
+    override fun visitModifiers(o: JssModifiers) {
+        for (child in o.children) {
+            highlight(child, VosColor.MODIFIER)
         }
     }
 

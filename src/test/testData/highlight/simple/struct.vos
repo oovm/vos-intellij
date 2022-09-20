@@ -1,7 +1,7 @@
-struct Point {
-    x
+class tuple dense Point {
+    x: f32,
     y: f32,
-    z = 1.0
+    z: f32 = 1.0,
 }
 
 class Color {

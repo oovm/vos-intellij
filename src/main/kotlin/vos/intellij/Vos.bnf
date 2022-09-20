@@ -65,6 +65,7 @@ VOS ::= statement*;
 private statement ::=
     schema_statement
   | class_statement
+  | union_statement
   | let_statement
   | annotation
 //  | COMMENT_DOCUMENT
@@ -94,6 +95,16 @@ class_field ::= identifier [COLON type_expression] [EQ value] {
 class_bound ::= ACCENT identifier [(COLON|EQ) value] {
     pin = identifier
 //    mixin = "vos.intellij.language.mixin.MixinClassBound"
+};
+// ---------------------------------------------------------------------------------------------------------------------
+union_statement ::= KW_UNION modifiers identifier [COLON type_expression] union_block {
+    pin = identifier
+//    mixin = "vos.intellij.language.mixin.MixinClass"
+};
+union_block ::= BRACE_L (union_inner|ignore)* BRACE_R;
+union_inner ::= union_field|class_bound;
+union_field ::= identifier [EQ integer_signed] {
+//    mixin = "vos.intellij.language.mixin.MixinClassField"
 };
 // ---------------------------------------------------------------------------------------------------------------------
 annotation_statement ::= annotation identifier [type_expression] annotation_block {
@@ -146,6 +157,7 @@ type_symbol ::= SYMBOL | STRING;
 set ::= EQ | COLON;
 // ---------------------------------------------------------------------------------------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
+integer_signed ::= [SIGN] INTEGER;
 // ---------------------------------------------------------------------------------------------------------------------
 //string ::= (RAW_STRING_1|RAW_STRING_2|RAW_STRING_3) {
 //    mixin = "vos.intellij.language.mixin.MixinString"
