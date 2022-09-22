@@ -12,12 +12,13 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
+import vos.intellij.language.parser.VosParser
 
 
 object JssParserDefinition : ParserDefinition {
     override fun createLexer(project: Project): Lexer = JssLexerAdapter()
 
-    override fun createParser(project: Project): PsiParser = vos.intellij.language.parser.JssParser()
+    override fun createParser(project: Project): PsiParser = VosParser()
 
     override fun getFileNodeType(): IFileElementType = IFileElementType(VosLanguage)
 

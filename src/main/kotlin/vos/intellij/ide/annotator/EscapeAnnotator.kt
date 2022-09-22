@@ -1,6 +1,6 @@
 package vos.intellij.ide.annotator
 
-import vos.intellij.language.psi.JssUrlMaybeValid
+
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
@@ -8,6 +8,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors.INVALID_STRI
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors.VALID_STRING_ESCAPE
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
+import vos.intellij.language.psi.VosUrlMaybeValid
 
 class EscapeAnnotator : Annotator {
 //    override fun annotate(element: PsiElement, holder: AnnotationHolder) {
@@ -37,7 +38,7 @@ class EscapeAnnotator : Annotator {
 //        }
 //    }
 
-    private fun annotate(element: vos.intellij.language.psi.JssUrlMaybeValid, holder: AnnotationHolder) {
+    private fun annotate(element: VosUrlMaybeValid, holder: AnnotationHolder) {
 
     }
 

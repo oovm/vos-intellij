@@ -8,213 +8,213 @@ import vos.intellij.language.psi_node.*;
 
 public interface VosTypes {
 
-  IElementType ANNOTATION = new JssElementType("ANNOTATION");
-  IElementType ANNOTATION_STATEMENT = new JssElementType("ANNOTATION_STATEMENT");
-  IElementType ARRAY = new JssElementType("ARRAY");
-  IElementType ATTRIBUTE_STATEMENT = new JssElementType("ATTRIBUTE_STATEMENT");
-  IElementType BOOLEAN = new JssElementType("BOOLEAN");
-  IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
-  IElementType BRACKET_BLOCK = new JssElementType("BRACKET_BLOCK");
-  IElementType CLASS_BLOCK = new JssElementType("CLASS_BLOCK");
-  IElementType CLASS_BOUND = new JssElementType("CLASS_BOUND");
-  IElementType CLASS_FIELD = new JssElementType("CLASS_FIELD");
-  IElementType CLASS_INNER = new JssElementType("CLASS_INNER");
-  IElementType CLASS_STATEMENT = new JssElementType("CLASS_STATEMENT");
-  IElementType COMPARE = new JssElementType("COMPARE");
-  IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
-  IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
-  IElementType INTEGER_SIGNED = new JssElementType("INTEGER_SIGNED");
-  IElementType KEY = new JssElementType("KEY");
-  IElementType KV_PAIR = new JssElementType("KV_PAIR");
-  IElementType LET_STATEMENT = new JssElementType("LET_STATEMENT");
-  IElementType MODIFIERS = new JssElementType("MODIFIERS");
-  IElementType NAMESPACE = new JssElementType("NAMESPACE");
-  IElementType NULL = new JssElementType("NULL");
-  IElementType OBJECT = new JssElementType("OBJECT");
-  IElementType PROPERTY = new JssElementType("PROPERTY");
-  IElementType PROPERTY_STATEMENT = new JssElementType("PROPERTY_STATEMENT");
-  IElementType SCHEMA = new JssElementType("SCHEMA");
-  IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
-  IElementType SET = new JssElementType("SET");
-  IElementType TYPE_EXPRESSION = new JssElementType("TYPE_EXPRESSION");
-  IElementType TYPE_GENERIC = new JssElementType("TYPE_GENERIC");
-  IElementType TYPE_GENERIC_BOUND = new JssElementType("TYPE_GENERIC_BOUND");
-  IElementType TYPE_GENERIC_COMPARE = new JssElementType("TYPE_GENERIC_COMPARE");
-  IElementType TYPE_GENERIC_RANGE = new JssElementType("TYPE_GENERIC_RANGE");
-  IElementType TYPE_NUMBER = new JssElementType("TYPE_NUMBER");
-  IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
-  IElementType UNION_BLOCK = new JssElementType("UNION_BLOCK");
-  IElementType UNION_FIELD = new JssElementType("UNION_FIELD");
-  IElementType UNION_INNER = new JssElementType("UNION_INNER");
-  IElementType UNION_STATEMENT = new JssElementType("UNION_STATEMENT");
-  IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
-  IElementType VALUE = new JssElementType("VALUE");
+  IElementType ANNOTATION = new VosElementType("ANNOTATION");
+  IElementType ANNOTATION_STATEMENT = new VosElementType("ANNOTATION_STATEMENT");
+  IElementType ARRAY = new VosElementType("ARRAY");
+  IElementType ATTRIBUTE_STATEMENT = new VosElementType("ATTRIBUTE_STATEMENT");
+  IElementType BOOLEAN = new VosElementType("BOOLEAN");
+  IElementType BRACE_BLOCK = new VosElementType("BRACE_BLOCK");
+  IElementType BRACKET_BLOCK = new VosElementType("BRACKET_BLOCK");
+  IElementType CLASS_BLOCK = new VosElementType("CLASS_BLOCK");
+  IElementType CLASS_BOUND = new VosElementType("CLASS_BOUND");
+  IElementType CLASS_FIELD = new VosElementType("CLASS_FIELD");
+  IElementType CLASS_INNER = new VosElementType("CLASS_INNER");
+  IElementType CLASS_STATEMENT = new VosElementType("CLASS_STATEMENT");
+  IElementType COMPARE = new VosElementType("COMPARE");
+  IElementType DEF_STATEMENT = new VosElementType("DEF_STATEMENT");
+  IElementType IDENTIFIER = new VosElementType("IDENTIFIER");
+  IElementType INTEGER_SIGNED = new VosElementType("INTEGER_SIGNED");
+  IElementType KEY = new VosElementType("KEY");
+  IElementType KV_PAIR = new VosElementType("KV_PAIR");
+  IElementType LET_STATEMENT = new VosElementType("LET_STATEMENT");
+  IElementType MODIFIERS = new VosElementType("MODIFIERS");
+  IElementType NAMESPACE = new VosElementType("NAMESPACE");
+  IElementType NULL = new VosElementType("NULL");
+  IElementType OBJECT = new VosElementType("OBJECT");
+  IElementType PROPERTY = new VosElementType("PROPERTY");
+  IElementType PROPERTY_STATEMENT = new VosElementType("PROPERTY_STATEMENT");
+  IElementType SCHEMA = new VosElementType("SCHEMA");
+  IElementType SCHEMA_STATEMENT = new VosElementType("SCHEMA_STATEMENT");
+  IElementType SET = new VosElementType("SET");
+  IElementType TYPE_EXPRESSION = new VosElementType("TYPE_EXPRESSION");
+  IElementType TYPE_GENERIC = new VosElementType("TYPE_GENERIC");
+  IElementType TYPE_GENERIC_BOUND = new VosElementType("TYPE_GENERIC_BOUND");
+  IElementType TYPE_GENERIC_COMPARE = new VosElementType("TYPE_GENERIC_COMPARE");
+  IElementType TYPE_GENERIC_RANGE = new VosElementType("TYPE_GENERIC_RANGE");
+  IElementType TYPE_NUMBER = new VosElementType("TYPE_NUMBER");
+  IElementType TYPE_SYMBOL = new VosElementType("TYPE_SYMBOL");
+  IElementType UNION_BLOCK = new VosElementType("UNION_BLOCK");
+  IElementType UNION_FIELD = new VosElementType("UNION_FIELD");
+  IElementType UNION_INNER = new VosElementType("UNION_INNER");
+  IElementType UNION_STATEMENT = new VosElementType("UNION_STATEMENT");
+  IElementType URL_MAYBE_VALID = new VosElementType("URL_MAYBE_VALID");
+  IElementType VALUE = new VosElementType("VALUE");
 
-  IElementType ACCENT = new JssElementType("^");
-  IElementType ANGLE_L = new JssElementType("<");
-  IElementType ANGLE_R = new JssElementType(">");
-  IElementType ANNOTATION_SYMBOL = new JssElementType("ANNOTATION_SYMBOL");
-  IElementType AT = new JssElementType("@");
-  IElementType BRACE_L = new JssElementType("{");
-  IElementType BRACE_R = new JssElementType("}");
-  IElementType BRACKET_L = new JssElementType("[");
-  IElementType BRACKET_R = new JssElementType("]");
-  IElementType BYTE = new JssElementType("Byte");
-  IElementType COLON = new JssElementType(":");
-  IElementType COMMA = new JssElementType(",");
-  IElementType COMMENT = new JssElementType("DocumentInline");
-  IElementType COMMENT_BLOCK = new JssElementType("DocumentBlock");
-  IElementType COMMENT_DOCUMENT = new JssElementType("DocumentComment");
-  IElementType DECIMAL = new JssElementType("Decimal");
-  IElementType DOLLAR = new JssElementType("$");
-  IElementType DOT = new JssElementType(".");
-  IElementType EQ = new JssElementType("=");
-  IElementType GEQ = new JssElementType(">=");
-  IElementType INTEGER = new JssElementType("Integer");
-  IElementType KW_CLASS = new JssElementType("class");
-  IElementType KW_DEFINE = new JssElementType("function");
-  IElementType KW_LET = new JssElementType("let");
-  IElementType KW_UNION = new JssElementType("union");
-  IElementType LEQ = new JssElementType("<=");
-  IElementType PARENTHESIS_L = new JssElementType("(");
-  IElementType PARENTHESIS_R = new JssElementType(")");
-  IElementType RANGE_EQ = new JssElementType("..=");
-  IElementType RANGE_LE = new JssElementType("..<");
-  IElementType RAW_STRING_1 = new JssElementType("RAW_STRING_1");
-  IElementType RAW_STRING_2 = new JssElementType("RAW_STRING_2");
-  IElementType REFERENCE = new JssElementType("Reference");
-  IElementType SEMICOLON = new JssElementType(";");
-  IElementType SIGN = new JssElementType("SIGN");
-  IElementType STAR = new JssElementType("*");
-  IElementType STRING = new JssElementType("String");
-  IElementType SYMBOL = new JssElementType("Symbol");
-  IElementType URL = new JssElementType("Url");
+  IElementType ACCENT = new VosElementType("^");
+  IElementType ANGLE_L = new VosElementType("<");
+  IElementType ANGLE_R = new VosElementType(">");
+  IElementType ANNOTATION_SYMBOL = new VosElementType("ANNOTATION_SYMBOL");
+  IElementType AT = new VosElementType("@");
+  IElementType BRACE_L = new VosElementType("{");
+  IElementType BRACE_R = new VosElementType("}");
+  IElementType BRACKET_L = new VosElementType("[");
+  IElementType BRACKET_R = new VosElementType("]");
+  IElementType BYTE = new VosElementType("Byte");
+  IElementType COLON = new VosElementType(":");
+  IElementType COMMA = new VosElementType(",");
+  IElementType COMMENT = new VosElementType("DocumentInline");
+  IElementType COMMENT_BLOCK = new VosElementType("DocumentBlock");
+  IElementType COMMENT_DOCUMENT = new VosElementType("DocumentComment");
+  IElementType DECIMAL = new VosElementType("Decimal");
+  IElementType DOLLAR = new VosElementType("$");
+  IElementType DOT = new VosElementType(".");
+  IElementType EQ = new VosElementType("=");
+  IElementType GEQ = new VosElementType(">=");
+  IElementType INTEGER = new VosElementType("Integer");
+  IElementType KW_CLASS = new VosElementType("class");
+  IElementType KW_DEFINE = new VosElementType("function");
+  IElementType KW_LET = new VosElementType("let");
+  IElementType KW_UNION = new VosElementType("union");
+  IElementType LEQ = new VosElementType("<=");
+  IElementType PARENTHESIS_L = new VosElementType("(");
+  IElementType PARENTHESIS_R = new VosElementType(")");
+  IElementType RANGE_EQ = new VosElementType("..=");
+  IElementType RANGE_LE = new VosElementType("..<");
+  IElementType RAW_STRING_1 = new VosElementType("RAW_STRING_1");
+  IElementType RAW_STRING_2 = new VosElementType("RAW_STRING_2");
+  IElementType REFERENCE = new VosElementType("Reference");
+  IElementType SEMICOLON = new VosElementType(";");
+  IElementType SIGN = new VosElementType("SIGN");
+  IElementType STAR = new VosElementType("*");
+  IElementType STRING = new VosElementType("String");
+  IElementType SYMBOL = new VosElementType("Symbol");
+  IElementType URL = new VosElementType("Url");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
       if (type == ANNOTATION) {
-        return new JssAnnotationNode(node);
+        return new VosAnnotationNode(node);
       }
       else if (type == ANNOTATION_STATEMENT) {
-        return new JssAnnotationStatementNode(node);
+        return new VosAnnotationStatementNode(node);
       }
       else if (type == ARRAY) {
-        return new JssArrayNode(node);
+        return new VosArrayNode(node);
       }
       else if (type == ATTRIBUTE_STATEMENT) {
-        return new JssAttributeStatementNode(node);
+        return new VosAttributeStatementNode(node);
       }
       else if (type == BOOLEAN) {
-        return new JssBooleanNode(node);
+        return new VosBooleanNode(node);
       }
       else if (type == BRACE_BLOCK) {
-        return new JssBraceBlockNode(node);
+        return new VosBraceBlockNode(node);
       }
       else if (type == BRACKET_BLOCK) {
-        return new JssBracketBlockNode(node);
+        return new VosBracketBlockNode(node);
       }
       else if (type == CLASS_BLOCK) {
-        return new JssClassBlockNode(node);
+        return new VosClassBlockNode(node);
       }
       else if (type == CLASS_BOUND) {
-        return new JssClassBoundNode(node);
+        return new VosClassBoundNode(node);
       }
       else if (type == CLASS_FIELD) {
-        return new JssClassFieldNode(node);
+        return new VosClassFieldNode(node);
       }
       else if (type == CLASS_INNER) {
-        return new JssClassInnerNode(node);
+        return new VosClassInnerNode(node);
       }
       else if (type == CLASS_STATEMENT) {
-        return new JssClassStatementNode(node);
+        return new VosClassStatementNode(node);
       }
       else if (type == COMPARE) {
-        return new JssCompareNode(node);
+        return new VosCompareNode(node);
       }
       else if (type == DEF_STATEMENT) {
-        return new JssDefStatementNode(node);
+        return new VosDefStatementNode(node);
       }
       else if (type == IDENTIFIER) {
-        return new JssIdentifierNode(node);
+        return new VosIdentifierNode(node);
       }
       else if (type == INTEGER_SIGNED) {
-        return new JssIntegerSignedNode(node);
+        return new VosIntegerSignedNode(node);
       }
       else if (type == KEY) {
-        return new JssKeyNode(node);
+        return new VosKeyNode(node);
       }
       else if (type == KV_PAIR) {
-        return new JssKvPairNode(node);
+        return new VosKvPairNode(node);
       }
       else if (type == LET_STATEMENT) {
-        return new JssLetStatementNode(node);
+        return new VosLetStatementNode(node);
       }
       else if (type == MODIFIERS) {
-        return new JssModifiersNode(node);
+        return new VosModifiersNode(node);
       }
       else if (type == NAMESPACE) {
-        return new JssNamespaceNode(node);
+        return new VosNamespaceNode(node);
       }
       else if (type == NULL) {
-        return new JssNullNode(node);
+        return new VosNullNode(node);
       }
       else if (type == OBJECT) {
-        return new JssObjectNode(node);
+        return new VosObjectNode(node);
       }
       else if (type == PROPERTY) {
-        return new JssPropertyNode(node);
+        return new VosPropertyNode(node);
       }
       else if (type == PROPERTY_STATEMENT) {
-        return new JssPropertyStatementNode(node);
+        return new VosPropertyStatementNode(node);
       }
       else if (type == SCHEMA) {
-        return new JssSchemaNode(node);
+        return new VosSchemaNode(node);
       }
       else if (type == SCHEMA_STATEMENT) {
-        return new JssSchemaStatementNode(node);
+        return new VosSchemaStatementNode(node);
       }
       else if (type == SET) {
-        return new JssSetNode(node);
+        return new VosSetNode(node);
       }
       else if (type == TYPE_EXPRESSION) {
-        return new JssTypeExpressionNode(node);
+        return new VosTypeExpressionNode(node);
       }
       else if (type == TYPE_GENERIC) {
-        return new JssTypeGenericNode(node);
+        return new VosTypeGenericNode(node);
       }
       else if (type == TYPE_GENERIC_BOUND) {
-        return new JssTypeGenericBoundNode(node);
+        return new VosTypeGenericBoundNode(node);
       }
       else if (type == TYPE_GENERIC_COMPARE) {
-        return new JssTypeGenericCompareNode(node);
+        return new VosTypeGenericCompareNode(node);
       }
       else if (type == TYPE_GENERIC_RANGE) {
-        return new JssTypeGenericRangeNode(node);
+        return new VosTypeGenericRangeNode(node);
       }
       else if (type == TYPE_NUMBER) {
-        return new JssTypeNumberNode(node);
+        return new VosTypeNumberNode(node);
       }
       else if (type == TYPE_SYMBOL) {
-        return new JssTypeSymbolNode(node);
+        return new VosTypeSymbolNode(node);
       }
       else if (type == UNION_BLOCK) {
-        return new JssUnionBlockNode(node);
+        return new VosUnionBlockNode(node);
       }
       else if (type == UNION_FIELD) {
-        return new JssUnionFieldNode(node);
+        return new VosUnionFieldNode(node);
       }
       else if (type == UNION_INNER) {
-        return new JssUnionInnerNode(node);
+        return new VosUnionInnerNode(node);
       }
       else if (type == UNION_STATEMENT) {
-        return new JssUnionStatementNode(node);
+        return new VosUnionStatementNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
-        return new JssUrlMaybeValidNode(node);
+        return new VosUrlMaybeValidNode(node);
       }
       else if (type == VALUE) {
-        return new JssValueNode(node);
+        return new VosValueNode(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

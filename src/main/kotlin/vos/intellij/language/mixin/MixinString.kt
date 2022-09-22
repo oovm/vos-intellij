@@ -6,12 +6,12 @@ import com.intellij.psi.NavigatablePsiElement
 import vos.intellij.ide.view.JssViewElement
 import vos.intellij.language.file.VosIcons
 import vos.intellij.language.psi.searchChildrenOfType
-import vos.intellij.language.psi_node.JssBooleanNode
+import vos.intellij.language.psi_node.VosBooleanNode
 import javax.swing.Icon
 
 open class MixinString(node: ASTNode) : ASTWrapperPsiElement(node) {
-    override fun getOriginalElement(): JssBooleanNode {
-        return this as JssBooleanNode
+    override fun getOriginalElement(): VosBooleanNode {
+        return this as VosBooleanNode
     }
     override fun getIcon(flags: Int): Icon = VosIcons.ANNOTATION
 
