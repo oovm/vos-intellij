@@ -1,7 +1,6 @@
 package vos.intellij.ide.matcher
 
-import vos.intellij.language.psi.JssBraceBlock
-import vos.intellij.language.psi.JssBracketBlock
+
 import vos.intellij.language.psi.JssRecursiveVisitor
 import com.intellij.lang.folding.FoldingDescriptor
 import com.intellij.psi.PsiElement
@@ -14,12 +13,12 @@ class JssFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>)
 //        super.visitSchemaStatement(o)
 //    }
 
-    override fun visitBraceBlock(o: vos.intellij.language.psi.JssBraceBlock) {
+    override fun visitBraceBlock(o: vos.intellij.language.psi.VosBraceBlock) {
         fold(o)
         super.visitBraceBlock(o)
     }
 
-    override fun visitBracketBlock(o: vos.intellij.language.psi.JssBracketBlock) {
+    override fun visitBracketBlock(o: vos.intellij.language.psi.VosBraceBlock) {
         fold(o)
         super.visitBracketBlock(o)
     }

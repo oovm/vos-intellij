@@ -1,6 +1,6 @@
 package vos.intellij.ide.doc
 
-import vos.intellij.language.psi.JssUrlMaybeValid
+
 import com.intellij.openapi.paths.WebReference
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference

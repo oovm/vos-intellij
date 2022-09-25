@@ -8,8 +8,8 @@ import vos.intellij.language.psi.VosTypes
 import javax.swing.Icon
 
 open class MixinKey(node: ASTNode) : ASTWrapperPsiElement(node) {
-    override fun getOriginalElement(): vos.intellij.language.psi_node.JssKeyNode {
-        return this as vos.intellij.language.psi_node.JssKeyNode
+    override fun getOriginalElement(): vos.intellij.language.psi_node.VosKeyNode {
+        return this as vos.intellij.language.psi_node.VosKeyNode
     }
 
     override fun getIcon(flags: Int): Icon = VosIcons.ANNOTATION

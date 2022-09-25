@@ -8,26 +8,22 @@ import vos.intellij.language.ast.DeclareNode
 import javax.swing.Icon
 
 open class MixinAttribute(node: ASTNode) : DeclareNode(node) {
-    override fun getOriginalElement(): vos.intellij.language.psi_node.JssAttributeStatementNode {
-        return this as vos.intellij.language.psi_node.JssAttributeStatementNode
+    override fun getOriginalElement(): PsiElement {
+        TODO("Not yet implemented")
     }
-    override fun getNameIdentifier(): vos.intellij.language.psi_node.JssKeyNode {
-        return originalElement.key as vos.intellij.language.psi_node.JssKeyNode
-    }
-    override fun getIcon(flags: Int): Icon = VosIcons.ANNOTATION
 
-    override fun getName(): String = nameIdentifier.name
+    override fun getNameIdentifier(): PsiElement {
+        TODO("Not yet implemented")
+    }
+
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
 
-    override fun getChildrenView(): Array<JssViewElement> {
-//        return originalElement.blo
-//            .searchChildrenOfType(NavigatablePsiElement::class.java)
-//            .map { JssViewElement(it) }
-//            .toTypedArray()
-        return emptyArray()
+    override fun getIcon(flags: Int): Icon {
+        TODO("Not yet implemented")
     }
+
 }
 
 

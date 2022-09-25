@@ -107,30 +107,6 @@ union_field ::= identifier [EQ integer_signed] {
 //    mixin = "vos.intellij.language.mixin.MixinClassField"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-annotation_statement ::= annotation identifier [type_expression] annotation_block {
-    mixin = "vos.intellij.language.mixin.MixinAnnotation"
-};
-private annotation_block ::= "annotation_block";
-annotation ::= ANNOTATION_SYMBOL
-// ---------------------------------------------------------------------------------------------------------------------
-// properties <ID>: <TYPE> { }
-property_statement ::= property key [type_expression] [properties_block] {
-    mixin = "vos.intellij.language.mixin.MixinProperty"
-};
-property ::= "properties" | "property" | "prop" | "field" | DOT;
-private properties_block ::= <<brace_block properties_inner ignore>>;
-private properties_inner ::=
-    property_statement
-  | attribute_statement
-  ;
-// ---------------------------------------------------------------------------------------------------------------------
-def_statement ::= ("def"|"define"|"definition") key [type_expression] [properties_block];
-// ---------------------------------------------------------------------------------------------------------------------
-// <KEY>: <VALUE>
-attribute_statement ::= key set value {
-    mixin = "vos.intellij.language.mixin.MixinAttribute"
-};
-// ---------------------------------------------------------------------------------------------------------------------
 kv_pair ::= key set value;
 key ::= RAW_STRING_1|RAW_STRING_2 | SYMBOL {
     mixin = "vos.intellij.language.mixin.MixinKey"

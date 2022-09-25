@@ -1,6 +1,6 @@
 package vos.intellij.language.psi
 
-import vos.intellij.language.psi.JssVisitor
+
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiRecursiveVisitor

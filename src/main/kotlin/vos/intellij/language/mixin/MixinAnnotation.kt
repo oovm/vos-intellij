@@ -9,17 +9,23 @@ import javax.swing.Icon
 /// 惯用法
 /// `${idiom.name}`
 open class MixinAnnotation(node: ASTNode) : DeclareNode(node) {
+    override fun getOriginalElement(): PsiElement {
+        TODO("Not yet implemented")
+    }
 
-    override fun getOriginalElement(): vos.intellij.language.psi_node.JssAnnotationStatementNode {
-        return this as vos.intellij.language.psi_node.JssAnnotationStatementNode
-    }
     override fun getNameIdentifier(): PsiElement {
-       return originalElement.identifier
+        TODO("Not yet implemented")
     }
-    override fun getIcon(flags: Int): Icon = VosIcons.IDIOM
+
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
+
+    override fun getIcon(flags: Int): Icon {
+        TODO("Not yet implemented")
+    }
+
+
 }
 
 

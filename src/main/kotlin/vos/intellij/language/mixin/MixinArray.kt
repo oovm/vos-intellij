@@ -9,8 +9,8 @@ import vos.intellij.language.psi.searchChildrenOfType
 import javax.swing.Icon
 
 open class MixinArray(node: ASTNode) : ASTWrapperPsiElement(node) {
-    override fun getOriginalElement(): vos.intellij.language.psi_node.JssBooleanNode {
-        return this as vos.intellij.language.psi_node.JssBooleanNode
+    override fun getOriginalElement(): vos.intellij.language.psi_node.VosArrayNode {
+        return this as vos.intellij.language.psi_node.VosArrayNode
     }
     override fun getIcon(flags: Int): Icon = VosIcons.ANNOTATION
 

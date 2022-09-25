@@ -12,7 +12,7 @@ import vos.intellij.language.file.JssFileNode
 import vos.intellij.language.psi.*
 
 
-class HighlightAST : JssVisitor(), HighlightVisitor {
+class HighlightAST : VosVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
     override fun visitSchemaStatement(o: JssSchemaStatement) {

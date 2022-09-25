@@ -10,29 +10,22 @@ import vos.intellij.language.psi.searchChildrenOfType
 import javax.swing.Icon
 
 open class MixinProperty(node: ASTNode) : DeclareNode(node) {
-    override fun getOriginalElement(): vos.intellij.language.psi_node.JssPropertyStatementNode {
-        return this as vos.intellij.language.psi_node.JssPropertyStatementNode
+    override fun getOriginalElement(): PsiElement {
+        TODO("Not yet implemented")
     }
 
-    override fun getNameIdentifier(): vos.intellij.language.psi_node.JssKeyNode {
-        return originalElement.key as vos.intellij.language.psi_node.JssKeyNode
+    override fun getNameIdentifier(): PsiElement {
+        TODO("Not yet implemented")
     }
 
-    override fun getIcon(flags: Int): Icon = VosIcons.PROPERTY
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
 
-    override fun getChildrenView(): Array<JssViewElement> {
-        return originalElement.braceBlock
-            .searchChildrenOfType(NavigatablePsiElement::class.java)
-            .map { JssViewElement(it) }
-            .toTypedArray()
+    override fun getIcon(flags: Int): Icon {
+        TODO("Not yet implemented")
     }
 
-//    fun getType(): String? {
-//        return originalElement.typeHint?.lastChild?.text
-//    }
 }
 
 

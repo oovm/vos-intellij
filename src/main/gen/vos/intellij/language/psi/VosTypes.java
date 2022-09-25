@@ -8,10 +8,7 @@ import vos.intellij.language.psi_node.*;
 
 public interface VosTypes {
 
-  IElementType ANNOTATION = new VosElementType("ANNOTATION");
-  IElementType ANNOTATION_STATEMENT = new VosElementType("ANNOTATION_STATEMENT");
   IElementType ARRAY = new VosElementType("ARRAY");
-  IElementType ATTRIBUTE_STATEMENT = new VosElementType("ATTRIBUTE_STATEMENT");
   IElementType BOOLEAN = new VosElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new VosElementType("BRACE_BLOCK");
   IElementType BRACKET_BLOCK = new VosElementType("BRACKET_BLOCK");
@@ -21,7 +18,6 @@ public interface VosTypes {
   IElementType CLASS_INNER = new VosElementType("CLASS_INNER");
   IElementType CLASS_STATEMENT = new VosElementType("CLASS_STATEMENT");
   IElementType COMPARE = new VosElementType("COMPARE");
-  IElementType DEF_STATEMENT = new VosElementType("DEF_STATEMENT");
   IElementType IDENTIFIER = new VosElementType("IDENTIFIER");
   IElementType INTEGER_SIGNED = new VosElementType("INTEGER_SIGNED");
   IElementType KEY = new VosElementType("KEY");
@@ -31,8 +27,6 @@ public interface VosTypes {
   IElementType NAMESPACE = new VosElementType("NAMESPACE");
   IElementType NULL = new VosElementType("NULL");
   IElementType OBJECT = new VosElementType("OBJECT");
-  IElementType PROPERTY = new VosElementType("PROPERTY");
-  IElementType PROPERTY_STATEMENT = new VosElementType("PROPERTY_STATEMENT");
   IElementType SCHEMA = new VosElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new VosElementType("SCHEMA_STATEMENT");
   IElementType SET = new VosElementType("SET");
@@ -53,7 +47,7 @@ public interface VosTypes {
   IElementType ACCENT = new VosElementType("^");
   IElementType ANGLE_L = new VosElementType("<");
   IElementType ANGLE_R = new VosElementType(">");
-  IElementType ANNOTATION_SYMBOL = new VosElementType("ANNOTATION_SYMBOL");
+  IElementType ANNOTATION = new VosElementType("annotation");
   IElementType AT = new VosElementType("@");
   IElementType BRACE_L = new VosElementType("{");
   IElementType BRACE_R = new VosElementType("}");
@@ -78,6 +72,7 @@ public interface VosTypes {
   IElementType LEQ = new VosElementType("<=");
   IElementType PARENTHESIS_L = new VosElementType("(");
   IElementType PARENTHESIS_R = new VosElementType(")");
+  IElementType PROPERTIES_INNER = new VosElementType("properties_inner");
   IElementType RANGE_EQ = new VosElementType("..=");
   IElementType RANGE_LE = new VosElementType("..<");
   IElementType RAW_STRING_1 = new VosElementType("RAW_STRING_1");
@@ -93,17 +88,8 @@ public interface VosTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ANNOTATION) {
-        return new VosAnnotationNode(node);
-      }
-      else if (type == ANNOTATION_STATEMENT) {
-        return new VosAnnotationStatementNode(node);
-      }
-      else if (type == ARRAY) {
+      if (type == ARRAY) {
         return new VosArrayNode(node);
-      }
-      else if (type == ATTRIBUTE_STATEMENT) {
-        return new VosAttributeStatementNode(node);
       }
       else if (type == BOOLEAN) {
         return new VosBooleanNode(node);
@@ -132,9 +118,6 @@ public interface VosTypes {
       else if (type == COMPARE) {
         return new VosCompareNode(node);
       }
-      else if (type == DEF_STATEMENT) {
-        return new VosDefStatementNode(node);
-      }
       else if (type == IDENTIFIER) {
         return new VosIdentifierNode(node);
       }
@@ -161,12 +144,6 @@ public interface VosTypes {
       }
       else if (type == OBJECT) {
         return new VosObjectNode(node);
-      }
-      else if (type == PROPERTY) {
-        return new VosPropertyNode(node);
-      }
-      else if (type == PROPERTY_STATEMENT) {
-        return new VosPropertyStatementNode(node);
       }
       else if (type == SCHEMA) {
         return new VosSchemaNode(node);
