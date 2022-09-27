@@ -9,7 +9,7 @@ import com.intellij.psi.PsiFile
 class JssSmartEnter : SmartEnterProcessorWithFixers() {
     init {
         addFixers(
-            JssCommaFixer()
+            CommaFixer()
         )
         addEnterProcessors(
             PlainEnterProcessor()

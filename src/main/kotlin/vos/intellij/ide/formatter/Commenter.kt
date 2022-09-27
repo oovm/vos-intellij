@@ -2,7 +2,7 @@ package vos.intellij.ide.formatter
 
 import com.intellij.lang.Commenter
 
-class JssCommenter : Commenter {
+class Commenter : Commenter {
     override fun getLineCommentPrefix(): String = "//"
 
     override fun getBlockCommentPrefix(): String = "/*"

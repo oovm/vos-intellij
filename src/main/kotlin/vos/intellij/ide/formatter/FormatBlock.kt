@@ -5,6 +5,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.formatter.FormatterUtil
+import vos.intellij.language.psi.VosClassField
 import vos.intellij.language.psi.VosTypes
 import vos.intellij.language.psi.computeSpacing
 import vos.intellij.language.psi.isWhitespaceOrEmpty
@@ -33,11 +34,11 @@ class FormatBlock(
     override fun getSubBlocks(): List<Block> = mySubBlocks
 
     override fun getChildAttributes(newChildIndex: Int): ChildAttributes {
-        val indent = when (node.elementType) {
-            VosTypes.ARRAY -> Indent.getNormalIndent()
-            else -> Indent.getNoneIndent()
-        }
-        return ChildAttributes(indent, null)
+//        val indent = when (node.elementType) {
+//            VosTypes.ARRAY -> Indent.getNormalIndent()
+//            else -> Indent.getNoneIndent()
+//        }
+        return ChildAttributes(Indent.getNormalIndent(), Alignment.createAlignment())
     }
 
     override fun isIncomplete(): Boolean = myIsIncomplete
@@ -52,8 +53,17 @@ class FormatBlock(
         return node.getChildren(null)
             .filter { !it.isWhitespaceOrEmpty() }
             .map {
-                FormatBlock(node = it, alignment = null, indent = computeIndent(it), wrap = null, ctx)
+                FormatBlock(node = it, alignment = computeAlign(it), indent = computeIndent(it), wrap = null, ctx)
             }
+    }
+
+    private fun computeAlign(child: ASTNode): Alignment? {
+        return when (child.elementType) {
+            VosTypes.EQ -> {
+                Alignment.createAlignment(true)
+            }
+            else -> null
+        }
     }
 
     private fun computeIndent(child: ASTNode): Indent? {

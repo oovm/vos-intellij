@@ -37,7 +37,7 @@
 			implementationClass="vos.intellij.ide.formatter.FormatBuilder"/>
 		<lang.commenter
 			language="VOS"
-			implementationClass="vos.intellij.ide.formatter.JssCommenter"/>
+			implementationClass="vos.intellij.ide.formatter.Commenter"/>
 		<lang.smartEnterProcessor
 			language="VOS"
 			implementationClass="vos.intellij.ide.formatter.JssSmartEnter"/>
@@ -71,7 +71,7 @@
 
 	</extensions>
 	<actions>
-		<action id="NewJssFile" class="vos.intellij.ide.actions.JssCreateFile">
+		<action id="NewJssFile" class="vos.intellij.ide.actions.CreateFile">
 			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewHtmlFile"/>
 		</action>
 		<action id="jss.JssConvertJson"
