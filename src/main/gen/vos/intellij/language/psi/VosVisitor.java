@@ -15,6 +15,10 @@ public class VosVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitAnnotationOne(@NotNull VosAnnotationOne o) {
+    visitPsiElement(o);
+  }
+
   public void visitArray(@NotNull VosArray o) {
     visitPsiElement(o);
   }

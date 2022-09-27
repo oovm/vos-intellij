@@ -14,6 +14,9 @@ public interface VosValue extends PsiElement {
   VosBoolean getBoolean();
 
   @Nullable
+  VosNamespace getNamespace();
+
+  @Nullable
   VosNull getNull();
 
   @Nullable

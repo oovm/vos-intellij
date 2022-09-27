@@ -48,7 +48,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ANNOTATION_MARK identifier [annotation_block] {
+  // ANNOTATION_MARK (annotation_one | <<bracket_block annotation_one COMMA>>) {
   // }
   public static boolean annotation(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "annotation")) return false;
@@ -56,23 +56,26 @@ public class VosParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, ANNOTATION_MARK);
-    r = r && identifier(b, l + 1);
+    r = r && annotation_1(b, l + 1);
     r = r && annotation_2(b, l + 1);
-    r = r && annotation_3(b, l + 1);
     exit_section_(b, m, ANNOTATION, r);
     return r;
   }
 
-  // [annotation_block]
-  private static boolean annotation_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "annotation_2")) return false;
-    annotation_block(b, l + 1);
-    return true;
+  // annotation_one | <<bracket_block annotation_one COMMA>>
+  private static boolean annotation_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = annotation_one(b, l + 1);
+    if (!r) r = bracket_block(b, l + 1, VosParser::annotation_one, COMMA_parser_);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // {
   // }
-  private static boolean annotation_3(PsiBuilder b, int l) {
+  private static boolean annotation_2(PsiBuilder b, int l) {
     return true;
   }
 
@@ -86,6 +89,26 @@ public class VosParser implements PsiParser, LightPsiParser {
     r = consumeTokens(b, 0, PARENTHESIS_L, PARENTHESIS_R);
     exit_section_(b, m, ANNOTATION_BLOCK, r);
     return r;
+  }
+
+  /* ********************************************************** */
+  // identifier [annotation_block]
+  public static boolean annotation_one(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_one")) return false;
+    if (!nextTokenIs(b, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = identifier(b, l + 1);
+    r = r && annotation_one_1(b, l + 1);
+    exit_section_(b, m, ANNOTATION_ONE, r);
+    return r;
+  }
+
+  // [annotation_block]
+  private static boolean annotation_one_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_one_1")) return false;
+    annotation_block(b, l + 1);
+    return true;
   }
 
   /* ********************************************************** */
@@ -1059,7 +1082,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // null | boolean | num | array | object | url_maybe_valid
+  // null | boolean | num | array | object | namespace | url_maybe_valid
   public static boolean value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value")) return false;
     boolean r;
@@ -1069,10 +1092,12 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!r) r = num(b, l + 1);
     if (!r) r = array(b, l + 1);
     if (!r) r = object(b, l + 1);
+    if (!r) r = namespace(b, l + 1);
     if (!r) r = url_maybe_valid(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
+  static final Parser COMMA_parser_ = (b, l) -> consumeToken(b, COMMA);
   static final Parser PROPERTIES_INNER_parser_ = (b, l) -> consumeToken(b, PROPERTIES_INNER);
 }

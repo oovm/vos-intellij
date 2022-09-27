@@ -26,7 +26,7 @@ class HighlightToken : SyntaxHighlighterBase() {
             KW_LET, KW_DEFINE, KW_CLASS, KW_UNION -> VosColor.KEYWORD
             //
             ANGLE_L, ANGLE_R , LEQ , GEQ , EQ -> VosColor.OPERATOR
-            ANNOTATION_MARK -> VosColor.OPERATOR
+            ANNOTATION_MARK -> VosColor.SYM_ANNO
             PARENTHESIS_L, PARENTHESIS_R -> VosColor.PARENTHESES
             BRACKET_L, BRACKET_R -> VosColor.BRACKETS
             BRACE_L, BRACE_R -> VosColor.BRACES

@@ -12,14 +12,14 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class VosAnnotationNode extends ASTWrapperPsiElement implements VosAnnotation {
+public class VosAnnotationOneNode extends ASTWrapperPsiElement implements VosAnnotationOne {
 
-  public VosAnnotationNode(@NotNull ASTNode node) {
+  public VosAnnotationOneNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull VosVisitor visitor) {
-    visitor.visitAnnotation(this);
+    visitor.visitAnnotationOne(this);
   }
 
   @Override
@@ -30,14 +30,14 @@ public class VosAnnotationNode extends ASTWrapperPsiElement implements VosAnnota
 
   @Override
   @Nullable
-  public VosAnnotationOne getAnnotationOne() {
-    return findChildByClass(VosAnnotationOne.class);
+  public VosAnnotationBlock getAnnotationBlock() {
+    return findChildByClass(VosAnnotationBlock.class);
   }
 
   @Override
-  @Nullable
-  public VosBracketBlock getBracketBlock() {
-    return findChildByClass(VosBracketBlock.class);
+  @NotNull
+  public VosIdentifier getIdentifier() {
+    return findNotNullChildByClass(VosIdentifier.class);
   }
 
 }

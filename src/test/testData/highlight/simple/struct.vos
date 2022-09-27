@@ -11,9 +11,9 @@ class Color {
     a: u8 = 1.0;
 }
 
-
+#dense
 class Colors {
-    #a
     colors: List[u8, u8] = [1, 2, 3]
     ^a = 8
 }
+

@@ -78,10 +78,10 @@ schema_statement ::= schema identifier [type_expression] schema_block {
 private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
-annotation ::= ANNOTATION_MARK identifier [annotation_block] {
+annotation ::= ANNOTATION_MARK (annotation_one | <<bracket_block annotation_one COMMA>>) {
 
 };
-
+annotation_one ::= identifier [annotation_block];
 annotation_block ::= PARENTHESIS_L PARENTHESIS_R;
 // ---------------------------------------------------------------------------------------------------------------------
 let_statement ::= KW_LET identifier [type_expression] [EQ] [value] {
@@ -117,7 +117,7 @@ key ::= RAW_STRING_1|RAW_STRING_2 | SYMBOL {
     mixin = "vos.intellij.language.mixin.MixinKey"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-value ::= null | boolean | num | array | object | url_maybe_valid {
+value ::= null | boolean | num | array | object | namespace | url_maybe_valid {
     mixin = "vos.intellij.language.mixin.MixinValue"
 };
 null ::= "null";

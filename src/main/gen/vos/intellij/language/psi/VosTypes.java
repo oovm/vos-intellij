@@ -10,6 +10,7 @@ public interface VosTypes {
 
   IElementType ANNOTATION = new VosElementType("ANNOTATION");
   IElementType ANNOTATION_BLOCK = new VosElementType("ANNOTATION_BLOCK");
+  IElementType ANNOTATION_ONE = new VosElementType("ANNOTATION_ONE");
   IElementType ARRAY = new VosElementType("ARRAY");
   IElementType BOOLEAN = new VosElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new VosElementType("BRACE_BLOCK");
@@ -93,6 +94,9 @@ public interface VosTypes {
       }
       else if (type == ANNOTATION_BLOCK) {
         return new VosAnnotationBlockNode(node);
+      }
+      else if (type == ANNOTATION_ONE) {
+        return new VosAnnotationOneNode(node);
       }
       else if (type == ARRAY) {
         return new VosArrayNode(node);

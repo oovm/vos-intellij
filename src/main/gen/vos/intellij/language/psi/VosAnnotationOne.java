@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface VosAnnotation extends PsiElement {
+public interface VosAnnotationOne extends PsiElement {
 
   @Nullable
-  VosAnnotationOne getAnnotationOne();
+  VosAnnotationBlock getAnnotationBlock();
 
-  @Nullable
-  VosBracketBlock getBracketBlock();
+  @NotNull
+  VosIdentifier getIdentifier();
 
 }

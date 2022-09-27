@@ -34,6 +34,10 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
         }
     }
 
+    override fun visitAnnotation(o: VosAnnotation) {
+        highlight(o, VosColor.SYM_ANNO)
+    }
+
 //    override fun visitDefStatement(o: VosDefStatement) {
 //        //
 //        val head = o.firstChild;

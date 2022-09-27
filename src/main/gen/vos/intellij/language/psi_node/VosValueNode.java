@@ -42,6 +42,12 @@ public class VosValueNode extends MixinValue implements VosValue {
 
   @Override
   @Nullable
+  public VosNamespace getNamespace() {
+    return findChildByClass(VosNamespace.class);
+  }
+
+  @Override
+  @Nullable
   public VosNull getNull() {
     return findChildByClass(VosNull.class);
   }
