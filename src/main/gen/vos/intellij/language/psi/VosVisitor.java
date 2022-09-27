@@ -7,6 +7,14 @@ import com.intellij.psi.PsiElement;
 
 public class VosVisitor extends PsiElementVisitor {
 
+  public void visitAnnotation(@NotNull VosAnnotation o) {
+    visitPsiElement(o);
+  }
+
+  public void visitAnnotationBlock(@NotNull VosAnnotationBlock o) {
+    visitPsiElement(o);
+  }
+
   public void visitArray(@NotNull VosArray o) {
     visitPsiElement(o);
   }

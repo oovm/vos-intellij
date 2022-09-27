@@ -8,6 +8,8 @@ import vos.intellij.language.psi_node.*;
 
 public interface VosTypes {
 
+  IElementType ANNOTATION = new VosElementType("ANNOTATION");
+  IElementType ANNOTATION_BLOCK = new VosElementType("ANNOTATION_BLOCK");
   IElementType ARRAY = new VosElementType("ARRAY");
   IElementType BOOLEAN = new VosElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new VosElementType("BRACE_BLOCK");
@@ -47,8 +49,7 @@ public interface VosTypes {
   IElementType ACCENT = new VosElementType("^");
   IElementType ANGLE_L = new VosElementType("<");
   IElementType ANGLE_R = new VosElementType(">");
-  IElementType ANNOTATION = new VosElementType("annotation");
-  IElementType AT = new VosElementType("@");
+  IElementType ANNOTATION_MARK = new VosElementType("#");
   IElementType BRACE_L = new VosElementType("{");
   IElementType BRACE_R = new VosElementType("}");
   IElementType BRACKET_L = new VosElementType("[");
@@ -77,7 +78,6 @@ public interface VosTypes {
   IElementType RANGE_LE = new VosElementType("..<");
   IElementType RAW_STRING_1 = new VosElementType("RAW_STRING_1");
   IElementType RAW_STRING_2 = new VosElementType("RAW_STRING_2");
-  IElementType REFERENCE = new VosElementType("Reference");
   IElementType SEMICOLON = new VosElementType(";");
   IElementType SIGN = new VosElementType("SIGN");
   IElementType STAR = new VosElementType("*");
@@ -88,7 +88,13 @@ public interface VosTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ARRAY) {
+      if (type == ANNOTATION) {
+        return new VosAnnotationNode(node);
+      }
+      else if (type == ANNOTATION_BLOCK) {
+        return new VosAnnotationBlockNode(node);
+      }
+      else if (type == ARRAY) {
         return new VosArrayNode(node);
       }
       else if (type == BOOLEAN) {

@@ -38,7 +38,14 @@ class FoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>) : 
     }
 
     override fun visitUnionBlock(o: VosUnionBlock) {
-        fold(o, o.firstChild.endOffset, o.lastChild.startOffset)
+        val variant = o.unionInnerList.count { it.unionField != null }
+        val placeholder = if (variant > 1) {
+            "$variant variants"
+        }
+        else {
+            "$variant variant"
+        }
+        fold(o, o.firstChild.endOffset, o.lastChild.startOffset, placeholder)
     }
 
     private fun fold(element: PsiElement, placeholder: String = "...", collapse: Boolean = false) {

@@ -5,15 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface VosUnionInner extends PsiElement {
-
-  @Nullable
-  VosAnnotation getAnnotation();
-
-  @Nullable
-  VosClassBound getClassBound();
-
-  @Nullable
-  VosUnionField getUnionField();
+public interface VosAnnotationBlock extends PsiElement {
 
 }

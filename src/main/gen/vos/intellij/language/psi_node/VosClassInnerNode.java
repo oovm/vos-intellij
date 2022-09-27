@@ -30,6 +30,12 @@ public class VosClassInnerNode extends ASTWrapperPsiElement implements VosClassI
 
   @Override
   @Nullable
+  public VosAnnotation getAnnotation() {
+    return findChildByClass(VosAnnotation.class);
+  }
+
+  @Override
+  @Nullable
   public VosClassBound getClassBound() {
     return findChildByClass(VosClassBound.class);
   }

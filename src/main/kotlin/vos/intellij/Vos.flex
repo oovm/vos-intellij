@@ -30,7 +30,6 @@ COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 URL= [A-Za-z0-9]+:"//"[\-\p{XID_Continue}./?&#]+
 SYMBOL=[\p{XID_Start}_$][\p{XID_Continue}_$]*
-REFERENCE=#[\p{XID_Continue}_$/]*
 STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
@@ -49,12 +48,13 @@ LEQ = <=|≤|⩽
 GEQ = >=|≥|⩾
 RANGE_LE = [.]{2}<
 RANGE_EQ = [.]{2}=
-
+ANNOTATION_MARK = [@#]
 %%
 <YYINITIAL> {
     {WHITE_SPACE}           { return WHITE_SPACE; }
     ";"                     { return SEMICOLON; }
     ","                     { return COMMA; }
+    {ANNOTATION_MARK}       { return ANNOTATION_MARK; }
 }
 
 <YYINITIAL> {
@@ -83,13 +83,12 @@ RANGE_EQ = [.]{2}=
     ":"                     { return COLON; }
     "."                     { return DOT; }
     "*"                     { return STAR; }
-    "@"                     { return AT; }
+
 
     {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
     {COMMENT}               { return COMMENT; }
     {COMMENT_BLOCK}         { return COMMENT_BLOCK; }
     {URL}                   { return URL; }
-    {REFERENCE}             { return REFERENCE; }
     {SYMBOL}                { return SYMBOL; }
     {STRING}                { return STRING; }
     {BYTE}                  { return BYTE; }

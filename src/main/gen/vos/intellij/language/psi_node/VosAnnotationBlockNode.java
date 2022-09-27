@@ -12,38 +12,20 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class VosUnionFieldNode extends ASTWrapperPsiElement implements VosUnionField {
+public class VosAnnotationBlockNode extends ASTWrapperPsiElement implements VosAnnotationBlock {
 
-  public VosUnionFieldNode(@NotNull ASTNode node) {
+  public VosAnnotationBlockNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull VosVisitor visitor) {
-    visitor.visitUnionField(this);
+    visitor.visitAnnotationBlock(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof VosVisitor) accept((VosVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public VosClassBlock getClassBlock() {
-    return findChildByClass(VosClassBlock.class);
-  }
-
-  @Override
-  @NotNull
-  public VosIdentifier getIdentifier() {
-    return findNotNullChildByClass(VosIdentifier.class);
-  }
-
-  @Override
-  @Nullable
-  public VosIntegerSigned getIntegerSigned() {
-    return findChildByClass(VosIntegerSigned.class);
   }
 
 }

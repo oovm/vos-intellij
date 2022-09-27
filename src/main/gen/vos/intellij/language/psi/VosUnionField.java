@@ -7,6 +7,9 @@ import com.intellij.psi.PsiElement;
 
 public interface VosUnionField extends PsiElement {
 
+  @Nullable
+  VosClassBlock getClassBlock();
+
   @NotNull
   VosIdentifier getIdentifier();
 

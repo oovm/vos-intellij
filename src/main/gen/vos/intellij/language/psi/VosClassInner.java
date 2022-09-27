@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface VosClassInner extends PsiElement {
 
   @Nullable
+  VosAnnotation getAnnotation();
+
+  @Nullable
   VosClassBound getClassBound();
 
   @Nullable

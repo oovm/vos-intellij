@@ -48,6 +48,47 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // ANNOTATION_MARK identifier [annotation_block] {
+  // }
+  public static boolean annotation(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation")) return false;
+    if (!nextTokenIs(b, ANNOTATION_MARK)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, ANNOTATION_MARK);
+    r = r && identifier(b, l + 1);
+    r = r && annotation_2(b, l + 1);
+    r = r && annotation_3(b, l + 1);
+    exit_section_(b, m, ANNOTATION, r);
+    return r;
+  }
+
+  // [annotation_block]
+  private static boolean annotation_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_2")) return false;
+    annotation_block(b, l + 1);
+    return true;
+  }
+
+  // {
+  // }
+  private static boolean annotation_3(PsiBuilder b, int l) {
+    return true;
+  }
+
+  /* ********************************************************** */
+  // PARENTHESIS_L PARENTHESIS_R
+  public static boolean annotation_block(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_block")) return false;
+    if (!nextTokenIs(b, PARENTHESIS_L)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, PARENTHESIS_L, PARENTHESIS_R);
+    exit_section_(b, m, ANNOTATION_BLOCK, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // <<bracket_block value ignore>>
   public static boolean array(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "array")) return false;
@@ -306,13 +347,13 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // class_field|class_bound
+  // annotation|class_field|class_bound
   public static boolean class_inner(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_inner")) return false;
-    if (!nextTokenIs(b, "<class inner>", ACCENT, SYMBOL)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CLASS_INNER, "<class inner>");
-    r = class_field(b, l + 1);
+    r = annotation(b, l + 1);
+    if (!r) r = class_field(b, l + 1);
     if (!r) r = class_bound(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -723,7 +764,7 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!r) r = class_statement(b, l + 1);
     if (!r) r = union_statement(b, l + 1);
     if (!r) r = let_statement(b, l + 1);
-    if (!r) r = consumeToken(b, ANNOTATION);
+    if (!r) r = annotation(b, l + 1);
     if (!r) r = ignore(b, l + 1);
     return r;
   }
@@ -909,7 +950,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // identifier [EQ integer_signed] {
+  // identifier [EQ integer_signed] [class_block] {
   // //    mixin = "vos.intellij.language.mixin.MixinClassField"
   // }
   public static boolean union_field(PsiBuilder b, int l) {
@@ -920,6 +961,7 @@ public class VosParser implements PsiParser, LightPsiParser {
     r = identifier(b, l + 1);
     r = r && union_field_1(b, l + 1);
     r = r && union_field_2(b, l + 1);
+    r = r && union_field_3(b, l + 1);
     exit_section_(b, m, UNION_FIELD, r);
     return r;
   }
@@ -942,21 +984,28 @@ public class VosParser implements PsiParser, LightPsiParser {
     return r;
   }
 
+  // [class_block]
+  private static boolean union_field_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "union_field_2")) return false;
+    class_block(b, l + 1);
+    return true;
+  }
+
   // {
   // //    mixin = "vos.intellij.language.mixin.MixinClassField"
   // }
-  private static boolean union_field_2(PsiBuilder b, int l) {
+  private static boolean union_field_3(PsiBuilder b, int l) {
     return true;
   }
 
   /* ********************************************************** */
-  // union_field|class_bound
+  // annotation|union_field|class_bound
   public static boolean union_inner(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "union_inner")) return false;
-    if (!nextTokenIs(b, "<union inner>", ACCENT, SYMBOL)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, UNION_INNER, "<union inner>");
-    r = union_field(b, l + 1);
+    r = annotation(b, l + 1);
+    if (!r) r = union_field(b, l + 1);
     if (!r) r = class_bound(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
