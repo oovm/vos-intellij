@@ -8,7 +8,7 @@ import vos.intellij.ide.view.JssViewElement
 import vos.intellij.language.VosLanguage
 import vos.intellij.language.psi.searchChildrenOfType
 
-class JssFileNode(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VosLanguage) {
+class VosFileNode(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VosLanguage) {
     override fun getFileType(): FileType = VosFileType
 
     override fun toString(): String = VosBundle.message("filetype.description")

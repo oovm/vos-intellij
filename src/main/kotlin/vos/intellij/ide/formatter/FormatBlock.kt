@@ -1,11 +1,11 @@
 package vos.intellij.ide.formatter
 
-import vos.intellij.language.psi.VosTypes
 import com.intellij.formatting.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.formatter.FormatterUtil
+import vos.intellij.language.psi.VosTypes
 import vos.intellij.language.psi.computeSpacing
 import vos.intellij.language.psi.isWhitespaceOrEmpty
 
@@ -63,14 +63,22 @@ class FormatBlock(
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }
+
             VosTypes.BRACE_BLOCK -> when {
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }
+
             VosTypes.CLASS_BLOCK -> when {
                 isCornerChild -> Indent.getNoneIndent()
                 else -> Indent.getNormalIndent()
             }
+
+            VosTypes.UNION_BLOCK -> when {
+                isCornerChild -> Indent.getNoneIndent()
+                else -> Indent.getNormalIndent()
+            }
+
             else -> Indent.getNoneIndent()
         }
     }

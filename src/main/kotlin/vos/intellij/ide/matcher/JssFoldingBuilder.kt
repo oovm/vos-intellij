@@ -1,6 +1,6 @@
 package vos.intellij.ide.matcher
 
-import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.file.VosFileNode
 import vos.intellij.language.psi.VosTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.folding.CustomFoldingBuilder
@@ -18,8 +18,8 @@ class JssFoldingBuilder : CustomFoldingBuilder(), DumbAware {
         document: Document,
         quick: Boolean
     ) {
-        if (root !is JssFileNode) return
-        val visitor = JssFoldingVisitor(descriptors)
+        if (root !is VosFileNode) return
+        val visitor = FoldingVisitor(descriptors)
         PsiTreeUtil.processElements(root) {
             it.accept(visitor);
             true

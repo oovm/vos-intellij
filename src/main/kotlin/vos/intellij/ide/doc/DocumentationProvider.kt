@@ -13,7 +13,7 @@ import com.intellij.psi.PsiDocCommentBase
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.SyntaxTraverser
-import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.file.VosFileNode
 import java.util.function.Consumer
 
 
@@ -49,7 +49,7 @@ class DocumentationProvider : DocumentationProvider {
 
 
     override fun collectDocComments(file: PsiFile, sink: Consumer<in PsiDocCommentBase>) {
-        if (file !is JssFileNode) return
+        if (file !is VosFileNode) return
         for (element in SyntaxTraverser.psiTraverser(file)) {
             when (element) {
                 is PsiDocCommentBase -> sink.accept(element)

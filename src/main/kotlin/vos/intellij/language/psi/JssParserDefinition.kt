@@ -1,6 +1,6 @@
 package vos.intellij.language.psi
 
-import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.file.VosFileNode
 import vos.intellij.language.VosLanguage
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
@@ -38,7 +38,7 @@ object JssParserDefinition : ParserDefinition {
 
     override fun createElement(node: ASTNode): PsiElement = VosTypes.Factory.createElement(node)
 
-    override fun createFile(viewProvider: FileViewProvider): PsiFile = JssFileNode(viewProvider)
+    override fun createFile(viewProvider: FileViewProvider): PsiFile = VosFileNode(viewProvider)
 
     override fun spaceExistenceTypeBetweenTokens(left: ASTNode, right: ASTNode): ParserDefinition.SpaceRequirements {
         return ParserDefinition.SpaceRequirements.MAY

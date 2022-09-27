@@ -48,46 +48,6 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ANNOTATION_SYMBOL
-  public static boolean annotation(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "annotation")) return false;
-    if (!nextTokenIs(b, ANNOTATION_SYMBOL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, ANNOTATION_SYMBOL);
-    exit_section_(b, m, ANNOTATION, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // "annotation_block"
-  static boolean annotation_block(PsiBuilder b, int l) {
-    return consumeToken(b, "annotation_block");
-  }
-
-  /* ********************************************************** */
-  // annotation identifier [type_expression] annotation_block
-  public static boolean annotation_statement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "annotation_statement")) return false;
-    if (!nextTokenIs(b, ANNOTATION_SYMBOL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = annotation(b, l + 1);
-    r = r && identifier(b, l + 1);
-    r = r && annotation_statement_2(b, l + 1);
-    r = r && annotation_block(b, l + 1);
-    exit_section_(b, m, ANNOTATION_STATEMENT, r);
-    return r;
-  }
-
-  // [type_expression]
-  private static boolean annotation_statement_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "annotation_statement_2")) return false;
-    type_expression(b, l + 1);
-    return true;
-  }
-
-  /* ********************************************************** */
   // <<bracket_block value ignore>>
   public static boolean array(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "array")) return false;
@@ -96,19 +56,6 @@ public class VosParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = bracket_block(b, l + 1, VosParser::value, VosParser::ignore);
     exit_section_(b, m, ARRAY, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // key set value
-  public static boolean attribute_statement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "attribute_statement")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, ATTRIBUTE_STATEMENT, "<attribute statement>");
-    r = key(b, l + 1);
-    r = r && set(b, l + 1);
-    r = r && value(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -422,44 +369,6 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ("def"|"define"|"definition") key [type_expression] [properties_block]
-  public static boolean def_statement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "def_statement")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, DEF_STATEMENT, "<def statement>");
-    r = def_statement_0(b, l + 1);
-    r = r && key(b, l + 1);
-    r = r && def_statement_2(b, l + 1);
-    r = r && def_statement_3(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // "def"|"define"|"definition"
-  private static boolean def_statement_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "def_statement_0")) return false;
-    boolean r;
-    r = consumeToken(b, "def");
-    if (!r) r = consumeToken(b, "define");
-    if (!r) r = consumeToken(b, "definition");
-    return r;
-  }
-
-  // [type_expression]
-  private static boolean def_statement_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "def_statement_2")) return false;
-    type_expression(b, l + 1);
-    return true;
-  }
-
-  // [properties_block]
-  private static boolean def_statement_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "def_statement_3")) return false;
-    properties_block(b, l + 1);
-    return true;
-  }
-
-  /* ********************************************************** */
   // SYMBOL
   public static boolean identifier(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "identifier")) return false;
@@ -749,66 +658,6 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // <<brace_block properties_inner ignore>>
-  static boolean properties_block(PsiBuilder b, int l) {
-    return brace_block(b, l + 1, VosParser::properties_inner, VosParser::ignore);
-  }
-
-  /* ********************************************************** */
-  // property_statement
-  //   | attribute_statement
-  static boolean properties_inner(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "properties_inner")) return false;
-    boolean r;
-    r = property_statement(b, l + 1);
-    if (!r) r = attribute_statement(b, l + 1);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // "properties" | "property" | "prop" | "field" | DOT
-  public static boolean property(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
-    r = consumeToken(b, "properties");
-    if (!r) r = consumeToken(b, "property");
-    if (!r) r = consumeToken(b, "prop");
-    if (!r) r = consumeToken(b, "field");
-    if (!r) r = consumeToken(b, DOT);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // property key [type_expression] [properties_block]
-  public static boolean property_statement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_statement")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, PROPERTY_STATEMENT, "<property statement>");
-    r = property(b, l + 1);
-    r = r && key(b, l + 1);
-    r = r && property_statement_2(b, l + 1);
-    r = r && property_statement_3(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // [type_expression]
-  private static boolean property_statement_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_statement_2")) return false;
-    type_expression(b, l + 1);
-    return true;
-  }
-
-  // [properties_block]
-  private static boolean property_statement_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_statement_3")) return false;
-    properties_block(b, l + 1);
-    return true;
-  }
-
-  /* ********************************************************** */
   // "schema"
   public static boolean schema(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "schema")) return false;
@@ -822,7 +671,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // <<brace_block properties_inner ignore>>
   static boolean schema_block(PsiBuilder b, int l) {
-    return brace_block(b, l + 1, VosParser::properties_inner, VosParser::ignore);
+    return brace_block(b, l + 1, PROPERTIES_INNER_parser_, VosParser::ignore);
   }
 
   /* ********************************************************** */
@@ -874,7 +723,7 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!r) r = class_statement(b, l + 1);
     if (!r) r = union_statement(b, l + 1);
     if (!r) r = let_statement(b, l + 1);
-    if (!r) r = annotation(b, l + 1);
+    if (!r) r = consumeToken(b, ANNOTATION);
     if (!r) r = ignore(b, l + 1);
     return r;
   }
@@ -1176,4 +1025,5 @@ public class VosParser implements PsiParser, LightPsiParser {
     return r;
   }
 
+  static final Parser PROPERTIES_INNER_parser_ = (b, l) -> consumeToken(b, PROPERTIES_INNER);
 }

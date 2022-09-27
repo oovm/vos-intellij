@@ -7,19 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public class VosVisitor extends PsiElementVisitor {
 
-  public void visitAnnotation(@NotNull VosAnnotation o) {
-    visitPsiElement(o);
-  }
-
-  public void visitAnnotationStatement(@NotNull VosAnnotationStatement o) {
-    visitPsiElement(o);
-  }
-
   public void visitArray(@NotNull VosArray o) {
-    visitPsiElement(o);
-  }
-
-  public void visitAttributeStatement(@NotNull VosAttributeStatement o) {
     visitPsiElement(o);
   }
 
@@ -59,10 +47,6 @@ public class VosVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitDefStatement(@NotNull VosDefStatement o) {
-    visitPsiElement(o);
-  }
-
   public void visitIdentifier(@NotNull VosIdentifier o) {
     visitPsiElement(o);
   }
@@ -96,14 +80,6 @@ public class VosVisitor extends PsiElementVisitor {
   }
 
   public void visitObject(@NotNull VosObject o) {
-    visitPsiElement(o);
-  }
-
-  public void visitProperty(@NotNull VosProperty o) {
-    visitPsiElement(o);
-  }
-
-  public void visitPropertyStatement(@NotNull VosPropertyStatement o) {
     visitPsiElement(o);
   }
 

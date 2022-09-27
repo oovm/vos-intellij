@@ -8,14 +8,14 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
-import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.file.VosFileNode
 import vos.intellij.language.psi.*
 
 
 class HighlightAST : VosVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
-    override fun visitSchemaStatement(o: JssSchemaStatement) {
+    override fun visitSchemaStatement(o: VosSchemaStatement) {
         //
         val head = o.firstChild;
         highlight(head, VosColor.KEYWORD)
@@ -24,7 +24,7 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
         highlight(prop, VosColor.SYM_SCHEMA)
     }
 
-    override fun visitTypeSymbol(o: JssTypeSymbol) {
+    override fun visitTypeSymbol(o: VosTypeSymbol) {
         val head = o.text.first();
         if (head.isLowerCase()) {
             highlight(o, VosColor.KEYWORD)
@@ -34,54 +34,39 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
         }
     }
 
-    override fun visitDefStatement(o: JssDefStatement) {
-        //
-        val head = o.firstChild;
-        when (head.elementType) {
-            VosTypes.SYMBOL -> highlight(head, VosColor.KEYWORD)
-        }
-        //
-        val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
-        highlight(prop, VosColor.SYM_FIELD)
-    }
+//    override fun visitDefStatement(o: VosDefStatement) {
+//        //
+//        val head = o.firstChild;
+//        when (head.elementType) {
+//            VosTypes.SYMBOL -> highlight(head, VosColor.KEYWORD)
+//        }
+//        //
+//        val prop = head.nextLeaf { it.elementType == VosTypes.SYMBOL }!!
+//        highlight(prop, VosColor.SYM_FIELD)
+//    }
 
-    override fun visitClassStatement(o: JssClassStatement) {
+    override fun visitClassStatement(o: VosClassStatement) {
         highlight(o.identifier, VosColor.SYM_CLASS)
     }
 
-    override fun visitClassField(o: JssClassField) {
+    override fun visitClassField(o: VosClassField) {
         highlight(o.identifier, VosColor.SYM_FIELD)
     }
 
-    override fun visitUnionStatement(o: JssUnionStatement) {
+    override fun visitUnionStatement(o: VosUnionStatement) {
         highlight(o.identifier, VosColor.SYM_CLASS)
     }
 
-    override fun visitUnionField(o: JssUnionField) {
+    override fun visitUnionField(o: VosUnionField) {
         highlight(o.identifier, VosColor.SYM_FIELD)
     }
 
 
-//    override fun visitTypeHint(o: vos.intellij.language.psi.JssTypeHint) {
-//        val ty = o.lastChild;
-//        highlight(ty, JssColor.TYPE_HINT)
-//    }
-
-    override fun visitPropertyStatement(o: JssPropertyStatement) {
-        highlight(o.property, VosColor.KEYWORD)
-        highlight(o.key, VosColor.SYM_FIELD)
-    }
-
-//    override fun visitAttributeStatement(o: JssAttributeStatement) {
-//        val o = o as vos.intellij.language.psi_node.JssAttributeStatementNode;
-//        highlight(o.firstChild, VosColor.SYM_ANNO)
-//    }
-
-    override fun visitKvPair(o: JssKvPair) {
+    override fun visitKvPair(o: VosKvPair) {
         highlight(o.firstChild, VosColor.SYM_FIELD)
     }
 
-    override fun visitValue(o: JssValue) {
+    override fun visitValue(o: VosValue) {
         val head = o.firstChild;
         when (head.elementType) {
             VosTypes.NULL -> highlight(head, VosColor.NULL)
@@ -90,7 +75,7 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
         }
     }
 
-    override fun visitModifiers(o: JssModifiers) {
+    override fun visitModifiers(o: VosModifiers) {
         for (child in o.children) {
             highlight(child, VosColor.MODIFIER)
         }
@@ -116,7 +101,7 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
 
     override fun clone(): HighlightVisitor = HighlightAST()
 
-    override fun suitableForFile(file: PsiFile): Boolean = file is JssFileNode
+    override fun suitableForFile(file: PsiFile): Boolean = file is VosFileNode
 
     override fun visit(element: PsiElement) = element.accept(this)
 }

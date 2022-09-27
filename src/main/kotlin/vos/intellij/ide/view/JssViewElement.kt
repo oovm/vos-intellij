@@ -8,7 +8,7 @@ import com.intellij.ide.util.treeView.smartTree.TreeElement
 import com.intellij.navigation.ItemPresentation
 import com.intellij.psi.NavigatablePsiElement
 import vos.intellij.language.ast.DeclareNode
-import vos.intellij.language.file.JssFileNode
+import vos.intellij.language.file.VosFileNode
 
 class JssViewElement(private val self: NavigatablePsiElement) :
     StructureViewTreeElement,
@@ -27,7 +27,7 @@ class JssViewElement(private val self: NavigatablePsiElement) :
 
     override fun getChildren(): Array<out TreeElement> {
         return when (self) {
-            is JssFileNode -> self.getChildrenView()
+            is VosFileNode -> self.getChildrenView()
             is DeclareNode -> self.getChildrenView()
             else -> arrayOf()
         }
