@@ -3,12 +3,12 @@ package vos.intellij.ide.view.grouper
 import com.intellij.icons.AllIcons
 import com.intellij.ide.util.treeView.AbstractTreeNode
 import com.intellij.ide.util.treeView.smartTree.*
-import vos.intellij.language.file.VosBundle
+import vos.intellij.language.file.MessageBundle
 
 object PropertiesGrouper : Grouper {
     override fun getName(): String = "action.view.grouper.properties"
     override fun getPresentation(): ActionPresentation = ActionPresentationData(
-        VosBundle.message(name),
+        MessageBundle.message(name),
         null,
         AllIcons.Nodes.AbstractClass
     )

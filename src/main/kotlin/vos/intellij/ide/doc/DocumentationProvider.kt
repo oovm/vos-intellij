@@ -18,7 +18,6 @@ import java.util.function.Consumer
 
 
 class DocumentationProvider : DocumentationProvider {
-
     override fun generateDoc(element: PsiElement?, originalElement: PsiElement?): String? {
         return "<h1>generateDoc</h1>"
     }

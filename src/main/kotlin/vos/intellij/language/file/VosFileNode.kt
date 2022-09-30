@@ -11,7 +11,7 @@ import vos.intellij.language.psi.searchChildrenOfType
 class VosFileNode(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VosLanguage) {
     override fun getFileType(): FileType = VosFileType
 
-    override fun toString(): String = VosBundle.message("filetype.description")
+    override fun toString(): String = MessageBundle.message("filetype.description")
     
     fun getChildrenView(): Array<JssViewElement> {
         return this.searchChildrenOfType(NavigatablePsiElement::class.java)

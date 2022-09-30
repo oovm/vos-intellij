@@ -7,7 +7,7 @@ import java.util.function.Supplier
 
 private const val BUNDLE = "messages.VosBundle"
 
-object VosBundle : DynamicBundle(BUNDLE) {
+object MessageBundle : DynamicBundle(BUNDLE) {
     @Suppress("SpreadOperator")
     @JvmStatic
     fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): @Nls String {

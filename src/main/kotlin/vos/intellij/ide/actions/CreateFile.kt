@@ -4,13 +4,13 @@ import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog.Builder
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
-import vos.intellij.language.file.VosBundle
+import vos.intellij.language.file.MessageBundle
 import vos.intellij.language.file.VosIcons
 
 class CreateFile : CreateFileFromTemplateAction(name, description, VosIcons.FILE) {
     companion object {
-        private val name = VosBundle.message("action.create_file")
-        private val description = VosBundle.message("action.create_file.description")
+        private val name = MessageBundle.message("action.create_file")
+        private val description = MessageBundle.message("action.create_file.description")
     }
 
 

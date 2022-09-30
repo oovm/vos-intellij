@@ -4,9 +4,10 @@ import com.intellij.application.options.CodeStyleAbstractConfigurable
 import com.intellij.application.options.CodeStyleAbstractPanel
 import com.intellij.application.options.SmartIndentOptionsEditor
 import com.intellij.psi.codeStyle.*
+import com.intellij.psi.codeStyle.CodeStyleSettings
 import vos.intellij.language.VosLanguage
 
-class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider() {
+class CodeStyleSettingProvider : LanguageCodeStyleSettingsProvider() {
     override fun getLanguage() = VosLanguage
 
     override fun getIndentOptionsEditor() = SmartIndentOptionsEditor()
@@ -64,59 +65,7 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
         indentOptions.CONTINUATION_INDENT_SIZE = indentOptions.INDENT_SIZE
     }
 
-    override fun getCodeSample(settingsType: SettingsType) =
-        """@inherit user;
-
-@include json "some/path/test.json" as json;
-@include "https://example.org/test.voml" {
-	external_key as external
-}
-
-[literals]
-boolean = [true, false]
-
-[literals.number]
-integer  = 10cm
-decimal  = 0.1m
-
-[literals.string]
-string   = "string"
-escape   = "\n"
-
-[keywords]
-// remove this key-value pair
-key = null
-
-[scopes]
-	[>a1]
-	key1 = "scopes.a1.key1"
-	[^a2]
-	key2 = "scopes.a2.key2"
-		[>b1]
-		key3 = "a.a2.b1.key3"
-	[<]
-	key4 = "scopes.a2.key4"
-		[>b1]
-		key5 = "a.a2.b1.key5"
-	[<a3]
-	key = "scopes.a3.key"
-
----
-
-connection_max.a = 5cm
-v = [
-	@merge(override)
-	@merge_as_source(unset)
-	@merge_as_target(ignore)
-	a = Some(1)
-    b = None()
-]
-
-[name]
-  . a = 2
-  * a
-  * b
-"""
+    override fun getCodeSample(settingsType: SettingsType) = javaClass.getResource("/fileTemplates/demoCodeStyle.vos")!!.readText()
 
     companion object {
         const val DEFAULT_RIGHT_MARGIN = 100

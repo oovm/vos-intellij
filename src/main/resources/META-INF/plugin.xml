@@ -17,12 +17,12 @@
 		<lang.parserDefinition
 			language="VOS"
 			implementationClass="vos.intellij.language.psi.JssParserDefinition"/>
-		<projectViewNestingRulesProvider implementation="vos.intellij.language.file.JssFileGroup"/>
+		<projectViewNestingRulesProvider implementation="vos.intellij.language.file.FileGroup"/>
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
 		<annotator language="VOS" implementationClass="vos.intellij.ide.annotator.EscapeAnnotator"/>
-		<colorSettingsPage implementation="vos.intellij.ide.highlight.JssColorSettingsPage"/>
+		<colorSettingsPage implementation="vos.intellij.ide.highlight.ColorSettings"/>
 		<highlightVisitor implementation="vos.intellij.ide.highlight.HighlightAST"/>
 		<lang.syntaxHighlighter
 			language="VOS"
@@ -40,7 +40,7 @@
 			implementationClass="vos.intellij.ide.formatter.Commenter"/>
 		<lang.smartEnterProcessor
 			language="VOS"
-			implementationClass="vos.intellij.ide.formatter.JssSmartEnter"/>
+			implementationClass="vos.intellij.ide.formatter.SmartEnter"/>
 		<!-- Document -->
 		<!--documentationProvider implementation="vos.intellij.ide.doc.JssDocumentationExtender"-->
 		<!--		<psi.referenceContributor implementation="vos.intellij.ide.doc.JssUrlReferenceContributor"/>-->
@@ -57,17 +57,17 @@
 			language="VOS"
 			implementationClass="vos.intellij.ide.matcher.JssFoldingBuilder"/>
 		<indexPatternBuilder
-			implementation="vos.intellij.ide.todo.VomlTodoIndexPatternBuilder"/>
+			implementation="vos.intellij.ide.todo.TodoIndexPatternBuilder"/>
 		<todoIndexer
 			filetype="JSS"
-			implementationClass="vos.intellij.ide.todo.VomlTodoIndexer"/>
+			implementationClass="vos.intellij.ide.todo.TodoIndexer"/>
 		<completion.contributor
 			language="VOS"
 			implementationClass="vos.intellij.ide.completion.CompletionContributor"/>
 
 
 		<langCodeStyleSettingsProvider
-			implementation="vos.intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"/>
+			implementation="vos.intellij.ide.codeStyle.CodeStyleSettingProvider"/>
 
 	</extensions>
 	<actions>

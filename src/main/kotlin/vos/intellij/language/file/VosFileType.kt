@@ -7,7 +7,7 @@ import javax.swing.Icon
 object VosFileType : LanguageFileType(VosLanguage) {
     override fun getName(): String = VosLanguage.id
 
-    override fun getDescription(): String = VosBundle.message("filetype.description")
+    override fun getDescription(): String = MessageBundle.message("filetype.description")
 
     override fun getDefaultExtension(): String = "vos"
 

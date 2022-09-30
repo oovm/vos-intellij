@@ -10,10 +10,10 @@ import com.intellij.patterns.PlatformPatterns
 import com.intellij.patterns.PsiElementPattern
 import com.intellij.psi.PsiReferenceContributor
 import com.intellij.psi.PsiReferenceRegistrar
+import vos.intellij.language.psi.VosUrlMaybeValid
 
 
 class JssUrlReferenceContributor : PsiReferenceContributor() {
-
     override fun registerReferenceProviders(registrar: PsiReferenceRegistrar) {
 //        if (tomlPluginIsAbiCompatible()) {
 //            registrar.registerReferenceProvider(
@@ -24,8 +24,8 @@ class JssUrlReferenceContributor : PsiReferenceContributor() {
 //                registrar.registerReferenceProvider(type.pattern, CargoTomlFileReferenceProvider(type))
 //            }
 //        }
-        val psiLiteralExpressionCapture: PsiElementPattern.Capture<vos.intellij.language.psi.VosUrlMaybeValid> = PlatformPatterns.psiElement(
-            vos.intellij.language.psi.VosUrlMaybeValid::class.java
+        val psiLiteralExpressionCapture: PsiElementPattern.Capture<VosUrlMaybeValid> = PlatformPatterns.psiElement(
+            VosUrlMaybeValid::class.java
         )
         registrar.registerReferenceProvider(psiLiteralExpressionCapture, JssUrlReferenceProvider())
     }
