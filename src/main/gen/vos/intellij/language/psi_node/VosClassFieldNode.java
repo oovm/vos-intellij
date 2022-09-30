@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static vos.intellij.language.psi.VosTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import vos.intellij.language.mixin.MixinClassField;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class VosClassFieldNode extends ASTWrapperPsiElement implements VosClassField {
+public class VosClassFieldNode extends MixinClassField implements VosClassField {
 
   public VosClassFieldNode(@NotNull ASTNode node) {
     super(node);

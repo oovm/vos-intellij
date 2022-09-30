@@ -6,7 +6,7 @@ import com.intellij.openapi.util.IconLoader
 object VosIcons {
     val FILE = IconLoader.getIcon("/icons/jssIcon.svg", VosIcons::class.java)
     val SCHEMA = AllIcons.Actions.Annotate
-    val IDIOM = AllIcons.Nodes.Gvariable
+    val CLASS = AllIcons.Nodes.Class
     val PROPERTY = AllIcons.Nodes.Property
     val ANNOTATION = AllIcons.Nodes.ObjectTypeAttribute
 }

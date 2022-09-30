@@ -310,9 +310,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // identifier [COLON type_expression] [EQ value] {
-  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
-  // }
+  // identifier [COLON type_expression] [EQ value]
   public static boolean class_field(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_field")) return false;
     if (!nextTokenIs(b, SYMBOL)) return false;
@@ -321,7 +319,6 @@ public class VosParser implements PsiParser, LightPsiParser {
     r = identifier(b, l + 1);
     r = r && class_field_1(b, l + 1);
     r = r && class_field_2(b, l + 1);
-    r = r && class_field_3(b, l + 1);
     exit_section_(b, m, CLASS_FIELD, r);
     return r;
   }
@@ -360,13 +357,6 @@ public class VosParser implements PsiParser, LightPsiParser {
     r = r && value(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
-  }
-
-  // {
-  // //    mixin = "vos.intellij.language.mixin.MixinClassField"
-  // }
-  private static boolean class_field_3(PsiBuilder b, int l) {
-    return true;
   }
 
   /* ********************************************************** */

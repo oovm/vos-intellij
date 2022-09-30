@@ -90,12 +90,12 @@ let_statement ::= KW_LET identifier [type_expression] [EQ] [value] {
 // ---------------------------------------------------------------------------------------------------------------------
 class_statement ::= KW_CLASS modifiers identifier [COLON type_expression] class_block {
     pin = identifier
-    mixin = "vos.intellij.language.mixin.MixinClass"
+    mixin = "vos.intellij.language.mixin.MixinClassStatement"
 };
 class_block ::= BRACE_L (class_inner|ignore)* BRACE_R;
 class_inner ::= annotation|class_field|class_bound;
 class_field ::= identifier [COLON type_expression] [EQ value] {
-//    mixin = "vos.intellij.language.mixin.MixinClassField"
+    mixin = "vos.intellij.language.mixin.MixinClassField"
 };
 class_bound ::= ACCENT identifier [(COLON|EQ) value] {
     pin = identifier
