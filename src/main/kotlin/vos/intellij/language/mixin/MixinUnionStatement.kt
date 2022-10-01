@@ -4,17 +4,18 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import vos.intellij.language.ast.DeclareNode
 import vos.intellij.language.file.VosIcons
-import vos.intellij.language.psi_node.VosClassFieldNode
+import vos.intellij.language.psi_node.VosClassStatementNode
 import vos.intellij.language.psi_node.VosIdentifierNode
+import vos.intellij.language.psi_node.VosUnionStatementNode
 import javax.swing.Icon
 
-open class MixinClassField(node: ASTNode) : DeclareNode(node) {
-    override fun getOriginalElement(): VosClassFieldNode {
-        return this as VosClassFieldNode
+open class MixinUnionStatement(node: ASTNode) : DeclareNode(node) {
+    override fun getOriginalElement(): VosUnionStatementNode {
+        return this as VosUnionStatementNode
     }
 
     override fun getIcon(flags: Int): Icon {
-        return VosIcons.FIELD
+        return VosIcons.UNION
     }
 
     override fun getNameIdentifier(): VosIdentifierNode {

@@ -2,8 +2,6 @@ package vos.intellij.language.mixin
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import vos.intellij.ide.view.JssViewElement
-import vos.intellij.language.file.VosIcons
 import vos.intellij.language.ast.DeclareNode
 import javax.swing.Icon
 

@@ -104,7 +104,7 @@ class_bound ::= ACCENT identifier [(COLON|EQ) value] {
 // ---------------------------------------------------------------------------------------------------------------------
 union_statement ::= KW_UNION modifiers identifier [COLON type_expression] union_block {
     pin = identifier
-//    mixin = "vos.intellij.language.mixin.MixinClass"
+    mixin = "vos.intellij.language.mixin.MixinUnionStatement"
 };
 union_block ::= BRACE_L (union_inner|ignore)* BRACE_R;
 union_inner ::= annotation|union_field|class_bound;

@@ -8,7 +8,7 @@ import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.PsiWhiteSpace
-import vos.intellij.ide.view.JssViewElement
+import vos.intellij.ide.view.ViewElement
 import javax.swing.Icon
 
 abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
@@ -41,7 +41,7 @@ abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
 
     abstract override fun getIcon(flags: Int): Icon;
 
-    open fun getChildrenView(): Array<JssViewElement> {
+    open fun getChildrenView(): Array<ViewElement> {
         return arrayOf()
     }
 

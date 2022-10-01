@@ -11,7 +11,7 @@ import vos.intellij.ide.view.filter.PublicElementsFilter
 import vos.intellij.ide.view.grouper.PropertiesGrouper
 
 
-class ViewModel(psiFile: PsiFile?) : StructureViewModelBase(psiFile!!, JssViewElement(psiFile)),
+class ViewModel(psiFile: PsiFile?) : StructureViewModelBase(psiFile!!, ViewElement(psiFile)),
     ElementInfoProvider {
     override fun getSorters() = arrayOf(Sorter.ALPHA_SORTER)
 

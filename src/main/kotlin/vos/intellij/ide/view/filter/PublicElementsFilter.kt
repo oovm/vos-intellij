@@ -1,7 +1,7 @@
 package vos.intellij.ide.view.filter
 
 
-import vos.intellij.ide.view.JssViewElement
+import vos.intellij.ide.view.ViewElement
 import com.intellij.icons.AllIcons
 import com.intellij.ide.util.treeView.smartTree.ActionPresentation
 import com.intellij.ide.util.treeView.smartTree.ActionPresentationData
@@ -21,6 +21,6 @@ object PublicElementsFilter : Filter {
         AllIcons.Nodes.Public
     )
     override fun isVisible(treeNode: TreeElement): Boolean {
-        return (treeNode as? JssViewElement)?.getVisibility() ?: true
+        return (treeNode as? ViewElement)?.getVisibility() ?: true
     }
 }

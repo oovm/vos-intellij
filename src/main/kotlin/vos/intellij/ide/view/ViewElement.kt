@@ -10,7 +10,7 @@ import com.intellij.psi.NavigatablePsiElement
 import vos.intellij.language.ast.DeclareNode
 import vos.intellij.language.file.VosFileNode
 
-class JssViewElement(private val self: NavigatablePsiElement) :
+class ViewElement(private val self: NavigatablePsiElement) :
     StructureViewTreeElement,
     SortableTreeElement {
     override fun getValue(): Any = self
