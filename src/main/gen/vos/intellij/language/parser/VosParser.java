@@ -361,14 +361,12 @@ public class VosParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // annotation|class_field|class_bound
-  public static boolean class_inner(PsiBuilder b, int l) {
+  static boolean class_inner(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_inner")) return false;
     boolean r;
-    Marker m = enter_section_(b, l, _NONE_, CLASS_INNER, "<class inner>");
     r = annotation(b, l + 1);
     if (!r) r = class_field(b, l + 1);
     if (!r) r = class_bound(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -492,9 +490,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KW_LET identifier [type_expression] [EQ] [value] {
-  // //    mixin = "vos.intellij.language.mixin.MixinLet"
-  // }
+  // KW_LET identifier [type_expression] [EQ] [value]
   public static boolean let_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "let_statement")) return false;
     if (!nextTokenIs(b, KW_LET)) return false;
@@ -505,7 +501,6 @@ public class VosParser implements PsiParser, LightPsiParser {
     r = r && let_statement_2(b, l + 1);
     r = r && let_statement_3(b, l + 1);
     r = r && let_statement_4(b, l + 1);
-    r = r && let_statement_5(b, l + 1);
     exit_section_(b, m, LET_STATEMENT, r);
     return r;
   }
@@ -528,13 +523,6 @@ public class VosParser implements PsiParser, LightPsiParser {
   private static boolean let_statement_4(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "let_statement_4")) return false;
     value(b, l + 1);
-    return true;
-  }
-
-  // {
-  // //    mixin = "vos.intellij.language.mixin.MixinLet"
-  // }
-  private static boolean let_statement_5(PsiBuilder b, int l) {
     return true;
   }
 

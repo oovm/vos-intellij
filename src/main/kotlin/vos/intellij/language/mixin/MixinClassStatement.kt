@@ -2,8 +2,10 @@ package vos.intellij.language.mixin
 
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import vos.intellij.ide.view.ViewElement
 import vos.intellij.language.ast.DeclareNode
 import vos.intellij.language.file.VosIcons
+import vos.intellij.language.psi.searchChildrenOfType
 import vos.intellij.language.psi_node.VosClassStatementNode
 import vos.intellij.language.psi_node.VosIdentifierNode
 import javax.swing.Icon
@@ -23,6 +25,12 @@ open class MixinClassStatement(node: ASTNode) : DeclareNode(node) {
 
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
+    }
+
+    override fun getChildrenView(): Array<ViewElement> {
+        return originalElement.classBlock.searchChildrenOfType(DeclareNode::class.java)
+            .map { ViewElement(it) }
+            .toTypedArray()
     }
 }
 

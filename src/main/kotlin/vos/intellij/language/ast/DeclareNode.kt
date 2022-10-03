@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.PsiWhiteSpace
 import vos.intellij.ide.view.ViewElement
+import vos.intellij.language.psi.searchChildrenOfType
 import javax.swing.Icon
 
 abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),

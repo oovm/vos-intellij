@@ -85,7 +85,7 @@ annotation_one ::= identifier [annotation_block];
 annotation_block ::= PARENTHESIS_L PARENTHESIS_R;
 // ---------------------------------------------------------------------------------------------------------------------
 let_statement ::= KW_LET identifier [type_expression] [EQ] [value] {
-//    mixin = "vos.intellij.language.mixin.MixinLet"
+    mixin = "vos.intellij.language.mixin.MixinLet"
 };
 // ---------------------------------------------------------------------------------------------------------------------
 class_statement ::= KW_CLASS modifiers identifier [COLON type_expression] class_block {
@@ -93,7 +93,7 @@ class_statement ::= KW_CLASS modifiers identifier [COLON type_expression] class_
     mixin = "vos.intellij.language.mixin.MixinClassStatement"
 };
 class_block ::= BRACE_L (class_inner|ignore)* BRACE_R;
-class_inner ::= annotation|class_field|class_bound;
+private class_inner ::= annotation|class_field|class_bound;
 class_field ::= identifier [COLON type_expression] [EQ value] {
     mixin = "vos.intellij.language.mixin.MixinClassField"
 };

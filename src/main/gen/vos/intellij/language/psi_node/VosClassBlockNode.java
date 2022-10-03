@@ -30,8 +30,20 @@ public class VosClassBlockNode extends ASTWrapperPsiElement implements VosClassB
 
   @Override
   @NotNull
-  public List<VosClassInner> getClassInnerList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, VosClassInner.class);
+  public List<VosAnnotation> getAnnotationList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, VosAnnotation.class);
+  }
+
+  @Override
+  @NotNull
+  public List<VosClassBound> getClassBoundList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, VosClassBound.class);
+  }
+
+  @Override
+  @NotNull
+  public List<VosClassField> getClassFieldList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, VosClassField.class);
   }
 
 }

@@ -27,7 +27,7 @@ class FoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>) : 
     }
 
     override fun visitClassBlock(o: VosClassBlock) {
-        val field = o.classInnerList.count { it.classField != null }
+        val field = o.classFieldList.count()
         val placeholder = if (field > 1) {
             "$field fields"
         }

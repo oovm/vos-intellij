@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface VosClassBlock extends PsiElement {
 
   @NotNull
-  List<VosClassInner> getClassInnerList();
+  List<VosAnnotation> getAnnotationList();
+
+  @NotNull
+  List<VosClassBound> getClassBoundList();
+
+  @NotNull
+  List<VosClassField> getClassFieldList();
 
 }

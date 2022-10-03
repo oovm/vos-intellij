@@ -18,7 +18,6 @@ public interface VosTypes {
   IElementType CLASS_BLOCK = new VosElementType("CLASS_BLOCK");
   IElementType CLASS_BOUND = new VosElementType("CLASS_BOUND");
   IElementType CLASS_FIELD = new VosElementType("CLASS_FIELD");
-  IElementType CLASS_INNER = new VosElementType("CLASS_INNER");
   IElementType CLASS_STATEMENT = new VosElementType("CLASS_STATEMENT");
   IElementType COMPARE = new VosElementType("COMPARE");
   IElementType IDENTIFIER = new VosElementType("IDENTIFIER");
@@ -118,9 +117,6 @@ public interface VosTypes {
       }
       else if (type == CLASS_FIELD) {
         return new VosClassFieldNode(node);
-      }
-      else if (type == CLASS_INNER) {
-        return new VosClassInnerNode(node);
       }
       else if (type == CLASS_STATEMENT) {
         return new VosClassStatementNode(node);

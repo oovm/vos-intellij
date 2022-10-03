@@ -47,10 +47,6 @@ public class VosVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitClassInner(@NotNull VosClassInner o) {
-    visitPsiElement(o);
-  }
-
   public void visitClassStatement(@NotNull VosClassStatement o) {
     visitPsiElement(o);
   }
