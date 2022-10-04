@@ -11,8 +11,7 @@ import vos.intellij.language.ast.DeclareNode
 import vos.intellij.language.file.VosFileNode
 
 class ViewElement(private val self: NavigatablePsiElement) :
-    StructureViewTreeElement,
-    SortableTreeElement {
+    StructureViewTreeElement, SortableTreeElement {
     override fun getValue(): Any = self
 
     override fun navigate(requestFocus: Boolean) = self.navigate(requestFocus)

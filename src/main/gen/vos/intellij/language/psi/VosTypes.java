@@ -27,11 +27,13 @@ public interface VosTypes {
   IElementType LET_STATEMENT = new VosElementType("LET_STATEMENT");
   IElementType MODIFIERS = new VosElementType("MODIFIERS");
   IElementType NAMESPACE = new VosElementType("NAMESPACE");
+  IElementType NAMESPACE_STATEMENT = new VosElementType("NAMESPACE_STATEMENT");
   IElementType NULL = new VosElementType("NULL");
   IElementType OBJECT = new VosElementType("OBJECT");
   IElementType SCHEMA = new VosElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new VosElementType("SCHEMA_STATEMENT");
   IElementType SET = new VosElementType("SET");
+  IElementType STRING_LITERAL = new VosElementType("STRING_LITERAL");
   IElementType TYPE_EXPRESSION = new VosElementType("TYPE_EXPRESSION");
   IElementType TYPE_GENERIC = new VosElementType("TYPE_GENERIC");
   IElementType TYPE_GENERIC_BOUND = new VosElementType("TYPE_GENERIC_BOUND");
@@ -55,6 +57,7 @@ public interface VosTypes {
   IElementType BRACKET_L = new VosElementType("[");
   IElementType BRACKET_R = new VosElementType("]");
   IElementType BYTE = new VosElementType("Byte");
+  IElementType CHARACTER = new VosElementType("CHARACTER");
   IElementType COLON = new VosElementType(":");
   IElementType COMMA = new VosElementType(",");
   IElementType COMMENT = new VosElementType("DocumentInline");
@@ -64,11 +67,14 @@ public interface VosTypes {
   IElementType DOLLAR = new VosElementType("$");
   IElementType DOT = new VosElementType(".");
   IElementType EQ = new VosElementType("=");
+  IElementType ESCAPE_SPECIAL = new VosElementType("ESCAPE_SPECIAL");
+  IElementType ESCAPE_UNICODE = new VosElementType("ESCAPE_UNICODE");
   IElementType GEQ = new VosElementType(">=");
   IElementType INTEGER = new VosElementType("Integer");
   IElementType KW_CLASS = new VosElementType("class");
   IElementType KW_DEFINE = new VosElementType("function");
   IElementType KW_LET = new VosElementType("let");
+  IElementType KW_NAMESPACE = new VosElementType("namespace");
   IElementType KW_UNION = new VosElementType("union");
   IElementType LEQ = new VosElementType("<=");
   IElementType PARENTHESIS_L = new VosElementType("(");
@@ -82,6 +88,8 @@ public interface VosTypes {
   IElementType SIGN = new VosElementType("SIGN");
   IElementType STAR = new VosElementType("*");
   IElementType STRING = new VosElementType("String");
+  IElementType STRING_DQ = new VosElementType("STRING_DQ");
+  IElementType STRING_SQ = new VosElementType("STRING_SQ");
   IElementType SYMBOL = new VosElementType("Symbol");
   IElementType URL = new VosElementType("Url");
 
@@ -145,6 +153,9 @@ public interface VosTypes {
       else if (type == NAMESPACE) {
         return new VosNamespaceNode(node);
       }
+      else if (type == NAMESPACE_STATEMENT) {
+        return new VosNamespaceStatementNode(node);
+      }
       else if (type == NULL) {
         return new VosNullNode(node);
       }
@@ -159,6 +170,9 @@ public interface VosTypes {
       }
       else if (type == SET) {
         return new VosSetNode(node);
+      }
+      else if (type == STRING_LITERAL) {
+        return new VosStringLiteralNode(node);
       }
       else if (type == TYPE_EXPRESSION) {
         return new VosTypeExpressionNode(node);

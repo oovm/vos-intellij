@@ -34,11 +34,11 @@ class FormatBlock(
     override fun getSubBlocks(): List<Block> = mySubBlocks
 
     override fun getChildAttributes(newChildIndex: Int): ChildAttributes {
-//        val indent = when (node.elementType) {
-//            VosTypes.ARRAY -> Indent.getNormalIndent()
-//            else -> Indent.getNoneIndent()
-//        }
-        return ChildAttributes(Indent.getNormalIndent(), Alignment.createAlignment())
+        val indent = when (node.elementType) {
+            VosTypes.ARRAY -> Indent.getNormalIndent()
+            else -> Indent.getNoneIndent()
+        }
+        return ChildAttributes(indent, null)
     }
 
     override fun isIncomplete(): Boolean = myIsIncomplete

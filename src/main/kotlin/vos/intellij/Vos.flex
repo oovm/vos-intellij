@@ -22,6 +22,9 @@ import static vos.intellij.language.psi.VosTypes.*;
 %type IElementType
 %unicode
 
+%state StringSQ
+%state StringDQ
+
 EOL=\R
 WHITE_SPACE=\s+
 
@@ -36,12 +39,15 @@ INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*(([*]{2}|[eE])[+-]?[0-9]+)?)
 SIGN=[+-]
 
+ESCAPE_SPECIAL = \\[^xuU]
+ESCAPE_UNICODE = \\(x{HEX}{2}|u{HEX}{4}|U\{{HEX}+\})
+HEX = [0-9a-fA-F]
+
 KW_LET = let|var|const|object
 KW_UNION = union|enum|enumerate|tagged
-//KW_DENSE = struct|structure|compact|dense
-KW_CLASS = class|table
+KW_CLASS = class|table|primitive|struct|structure
 KW_DEFINE = define|def|function|fun|fn
-
+KW_NAMESPACE = namespace|package
 
 EQ  = =
 LEQ = <=|≤|⩽
@@ -58,6 +64,7 @@ ANNOTATION_MARK = [@#]
 }
 
 <YYINITIAL> {
+    {KW_NAMESPACE}        { return KW_NAMESPACE; }
     {KW_LET}              { return KW_LET; }
     {KW_DEFINE}           { return KW_DEFINE; }
     {KW_CLASS}            { return KW_CLASS; }
@@ -96,5 +103,23 @@ ANNOTATION_MARK = [@#]
     {DECIMAL}               { return DECIMAL; }
     {SIGN}                  { return SIGN; }
 }
-
+// String Mode =========================================================================================================
+<YYINITIAL> {
+    \'            { yybegin(StringSQ); return STRING_SQ; }
+    \"            { yybegin(StringDQ); return STRING_DQ; }
+}
+<StringSQ, StringDQ, YYINITIAL> {ESCAPE_SPECIAL} {
+    return ESCAPE_SPECIAL;
+}
+<StringSQ, StringDQ, YYINITIAL> {ESCAPE_UNICODE} {
+    return ESCAPE_UNICODE;
+}
+<StringSQ> {
+    [^\\\'] {return CHARACTER;}
+    \' {yybegin(YYINITIAL);return STRING_SQ;}
+}
+<StringDQ> {
+    [^\\\"] {return CHARACTER;}
+    \" {yybegin(YYINITIAL);return STRING_DQ;}
+}
 [^] { return BAD_CHARACTER; }

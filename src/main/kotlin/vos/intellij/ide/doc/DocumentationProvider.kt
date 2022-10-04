@@ -14,35 +14,48 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.SyntaxTraverser
 import vos.intellij.language.file.VosFileNode
+import vos.intellij.language.mixin.MixinClassStatement
 import java.util.function.Consumer
 
 
 class DocumentationProvider : DocumentationProvider {
     override fun generateDoc(element: PsiElement?, originalElement: PsiElement?): String? {
-        return "<h1>generateDoc</h1>"
+        return when (element) {
+            is MixinClassStatement -> {
+                "class ${element.name}"
+            }
+            else -> {
+                "<h1>generateDoc Unknown</h1>"
+            }
+        }
     }
 
-//    override fun generateHoverDoc(element: PsiElement, originalElement: PsiElement?): String? {
-//        return super.generateDoc(element, originalElement);
-//        // return "<h1>generateHoverDoc</h1>"
-//    }
+    override fun generateHoverDoc(element: PsiElement, originalElement: PsiElement?): String? {
+        return super.generateDoc(element, originalElement);
+        // return "<h1>generateHoverDoc</h1>"
+    }
 
     override fun generateRenderedDoc(comment: PsiDocCommentBase): String? {
         return DocumentationMarkup.DEFINITION_ELEMENT.addRaw("generateRenderedDoc").toString()
     }
 
-    //    override fun getQuickNavigateInfo(element: PsiElement?, originalElement: PsiElement?): String? {
-//
-//        return "<h1>getQuickNavigateInfo</h1>"
-//    }
-//
+    override fun getQuickNavigateInfo(element: PsiElement?, originalElement: PsiElement?): String? {
+
+        return "<h1>getQuickNavigateInfo</h1>"
+    }
+
 
     override fun findDocComment(file: PsiFile, range: TextRange): PsiDocCommentBase? {
         return super.findDocComment(file, range)
     }
 
 
-    override fun getCustomDocumentationElement(editor: Editor, file: PsiFile, contextElement: PsiElement?, targetOffset: Int): PsiElement? {
+    override fun getCustomDocumentationElement(
+        editor: Editor,
+        file: PsiFile,
+        contextElement: PsiElement?,
+        targetOffset: Int
+    ): PsiElement? {
         return super.getCustomDocumentationElement(editor, file, contextElement, targetOffset)
     }
 
@@ -52,7 +65,7 @@ class DocumentationProvider : DocumentationProvider {
         for (element in SyntaxTraverser.psiTraverser(file)) {
             when (element) {
                 is PsiDocCommentBase -> sink.accept(element)
-               // else -> break
+                // else -> break
             }
         }
     }

@@ -21,9 +21,7 @@ class HighlightToken : SyntaxHighlighterBase() {
     private fun getTokenColor(tokenType: IElementType): VosColor? {
         return when (tokenType) {
             //
-            // AS, SCHEMA, PROP -> JssColor.KEYWORD
-            // ANNOTATION -> JssColor.ANNOTATION
-            KW_LET, KW_DEFINE, KW_CLASS, KW_UNION -> VosColor.KEYWORD
+            KW_NAMESPACE, KW_LET, KW_DEFINE, KW_CLASS, KW_UNION -> VosColor.KEYWORD
             //
             ANGLE_L, ANGLE_R , LEQ , GEQ , EQ -> VosColor.OPERATOR
             ANNOTATION_MARK -> VosColor.SYM_ANNO

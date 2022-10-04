@@ -8,18 +8,18 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static vos.intellij.language.psi.VosTypes.*;
-import vos.intellij.language.mixin.MixinClassBound;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
 
-public class VosClassBoundNode extends MixinClassBound implements VosClassBound {
+public class VosNamespaceStatementNode extends ASTWrapperPsiElement implements VosNamespaceStatement {
 
-  public VosClassBoundNode(@NotNull ASTNode node) {
+  public VosNamespaceStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull VosVisitor visitor) {
-    visitor.visitClassBound(this);
+    visitor.visitNamespaceStatement(this);
   }
 
   @Override
@@ -30,14 +30,8 @@ public class VosClassBoundNode extends MixinClassBound implements VosClassBound 
 
   @Override
   @NotNull
-  public VosIdentifier getIdentifier() {
-    return findNotNullChildByClass(VosIdentifier.class);
-  }
-
-  @Override
-  @Nullable
-  public VosValue getValue() {
-    return findChildByClass(VosValue.class);
+  public VosNamespace getNamespace() {
+    return findNotNullChildByClass(VosNamespace.class);
   }
 
 }

@@ -11,6 +11,7 @@ object VosIcons {
     val CONSTANT = AllIcons.Nodes.Constant
     val MUTABLE = AllIcons.Nodes.Variable
     val FIELD = AllIcons.Nodes.Field
+    val BOUND = AllIcons.Nodes.ObjectTypeAttribute
     val PROPERTY = AllIcons.Nodes.Property
     val ANNOTATION = AllIcons.Nodes.ObjectTypeAttribute
 }

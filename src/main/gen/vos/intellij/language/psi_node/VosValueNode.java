@@ -60,6 +60,12 @@ public class VosValueNode extends MixinValue implements VosValue {
 
   @Override
   @Nullable
+  public VosStringLiteral getStringLiteral() {
+    return findChildByClass(VosStringLiteral.class);
+  }
+
+  @Override
+  @Nullable
   public VosUrlMaybeValid getUrlMaybeValid() {
     return findChildByClass(VosUrlMaybeValid.class);
   }

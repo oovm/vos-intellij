@@ -23,6 +23,9 @@ public interface VosValue extends PsiElement {
   VosObject getObject();
 
   @Nullable
+  VosStringLiteral getStringLiteral();
+
+  @Nullable
   VosUrlMaybeValid getUrlMaybeValid();
 
 }

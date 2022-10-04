@@ -5,7 +5,7 @@ import com.intellij.psi.PsiElement
 import vos.intellij.language.ast.DeclareNode
 import javax.swing.Icon
 
-open class MixinAttribute(node: ASTNode) : DeclareNode(node) {
+open class MixinModifier(node: ASTNode) : DeclareNode(node) {
     override fun getOriginalElement(): PsiElement {
         TODO("Not yet implemented")
     }

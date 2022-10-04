@@ -83,6 +83,10 @@ public class VosVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitNamespaceStatement(@NotNull VosNamespaceStatement o) {
+    visitPsiElement(o);
+  }
+
   public void visitNull(@NotNull VosNull o) {
     visitPsiElement(o);
   }
@@ -100,6 +104,10 @@ public class VosVisitor extends PsiElementVisitor {
   }
 
   public void visitSet(@NotNull VosSet o) {
+    visitPsiElement(o);
+  }
+
+  public void visitStringLiteral(@NotNull VosStringLiteral o) {
     visitPsiElement(o);
   }
 

@@ -234,6 +234,16 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // CHARACTER | esc
+  static boolean char_$(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "char_$")) return false;
+    boolean r;
+    r = consumeToken(b, CHARACTER);
+    if (!r) r = esc(b, l + 1);
+    return r;
+  }
+
+  /* ********************************************************** */
   // BRACE_L (class_inner|ignore)* BRACE_R
   public static boolean class_block(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "class_block")) return false;
@@ -417,6 +427,17 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, GEQ);
     if (!r) r = consumeToken(b, EQ);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // ESCAPE_UNICODE | ESCAPE_SPECIAL
+  static boolean esc(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "esc")) return false;
+    if (!nextTokenIs(b, "", ESCAPE_SPECIAL, ESCAPE_UNICODE)) return false;
+    boolean r;
+    r = consumeToken(b, ESCAPE_UNICODE);
+    if (!r) r = consumeToken(b, ESCAPE_SPECIAL);
     return r;
   }
 
@@ -606,6 +627,19 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // KW_NAMESPACE namespace
+  public static boolean namespace_statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "namespace_statement")) return false;
+    if (!nextTokenIs(b, KW_NAMESPACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, KW_NAMESPACE);
+    r = r && namespace(b, l + 1);
+    exit_section_(b, m, NAMESPACE_STATEMENT, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // "null"
   public static boolean null_$(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "null_$")) return false;
@@ -752,6 +786,7 @@ public class VosParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // schema_statement
+  //   | namespace_statement
   //   | class_statement
   //   | union_statement
   //   | let_statement
@@ -762,12 +797,72 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "statement")) return false;
     boolean r;
     r = schema_statement(b, l + 1);
+    if (!r) r = namespace_statement(b, l + 1);
     if (!r) r = class_statement(b, l + 1);
     if (!r) r = union_statement(b, l + 1);
     if (!r) r = let_statement(b, l + 1);
     if (!r) r = annotation(b, l + 1);
     if (!r) r = ignore(b, l + 1);
     return r;
+  }
+
+  /* ********************************************************** */
+  // esc | STRING_SQ char* STRING_SQ | STRING_DQ char* STRING_DQ
+  public static boolean string_literal(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "string_literal")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, STRING_LITERAL, "<string literal>");
+    r = esc(b, l + 1);
+    if (!r) r = string_literal_1(b, l + 1);
+    if (!r) r = string_literal_2(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // STRING_SQ char* STRING_SQ
+  private static boolean string_literal_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "string_literal_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, STRING_SQ);
+    r = r && string_literal_1_1(b, l + 1);
+    r = r && consumeToken(b, STRING_SQ);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // char*
+  private static boolean string_literal_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "string_literal_1_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!char_$(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "string_literal_1_1", c)) break;
+    }
+    return true;
+  }
+
+  // STRING_DQ char* STRING_DQ
+  private static boolean string_literal_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "string_literal_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, STRING_DQ);
+    r = r && string_literal_2_1(b, l + 1);
+    r = r && consumeToken(b, STRING_DQ);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // char*
+  private static boolean string_literal_2_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "string_literal_2_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!char_$(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "string_literal_2_1", c)) break;
+    }
+    return true;
   }
 
   /* ********************************************************** */
@@ -1060,7 +1155,7 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // null | boolean | num | array | object | namespace | url_maybe_valid
+  // null | boolean | num | array | object |string_literal| namespace | url_maybe_valid
   public static boolean value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value")) return false;
     boolean r;
@@ -1070,6 +1165,7 @@ public class VosParser implements PsiParser, LightPsiParser {
     if (!r) r = num(b, l + 1);
     if (!r) r = array(b, l + 1);
     if (!r) r = object(b, l + 1);
+    if (!r) r = string_literal(b, l + 1);
     if (!r) r = namespace(b, l + 1);
     if (!r) r = url_maybe_valid(b, l + 1);
     exit_section_(b, l, m, r, false, null);

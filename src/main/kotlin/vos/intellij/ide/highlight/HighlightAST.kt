@@ -50,7 +50,13 @@ class HighlightAST : VosVisitor(), HighlightVisitor {
 //    }
 
     override fun visitClassStatement(o: VosClassStatement) {
-        highlight(o.identifier, VosColor.SYM_CLASS)
+        val head = o.identifier.text.first();
+        if (head.isLowerCase()) {
+            highlight(o.identifier, VosColor.KEYWORD)
+        }
+        else {
+            highlight(o.identifier, VosColor.SYM_CLASS)
+        }
     }
 
     override fun visitClassField(o: VosClassField) {

@@ -18,4 +18,3 @@ class Colors {
     colors: List[u8, u8] = [1, 2, 3]
     ^a = a
 }
-
