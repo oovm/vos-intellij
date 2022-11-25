@@ -28,4 +28,16 @@ public class VosKeyNode extends MixinKey implements VosKey {
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public VosIdentifier getIdentifier() {
+    return findChildByClass(VosIdentifier.class);
+  }
+
+  @Override
+  @Nullable
+  public VosStringLiteral getStringLiteral() {
+    return findChildByClass(VosStringLiteral.class);
+  }
+
 }

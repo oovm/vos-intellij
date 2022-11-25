@@ -82,8 +82,6 @@ public interface VosTypes {
   IElementType PROPERTIES_INNER = new VosElementType("properties_inner");
   IElementType RANGE_EQ = new VosElementType("..=");
   IElementType RANGE_LE = new VosElementType("..<");
-  IElementType RAW_STRING_1 = new VosElementType("RAW_STRING_1");
-  IElementType RAW_STRING_2 = new VosElementType("RAW_STRING_2");
   IElementType SEMICOLON = new VosElementType(";");
   IElementType SIGN = new VosElementType("SIGN");
   IElementType STAR = new VosElementType("*");

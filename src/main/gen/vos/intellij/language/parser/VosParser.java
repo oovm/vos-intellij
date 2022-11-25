@@ -485,14 +485,13 @@ public class VosParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // RAW_STRING_1|RAW_STRING_2 | SYMBOL
+  // identifier | string_literal
   public static boolean key(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "key")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, KEY, "<key>");
-    r = consumeToken(b, RAW_STRING_1);
-    if (!r) r = consumeToken(b, RAW_STRING_2);
-    if (!r) r = consumeToken(b, SYMBOL);
+    r = identifier(b, l + 1);
+    if (!r) r = string_literal(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

@@ -117,11 +117,11 @@ union_field ::= identifier [EQ integer_signed] [class_block] {
 };
 // ---------------------------------------------------------------------------------------------------------------------
 kv_pair ::= key set value;
-key ::= RAW_STRING_1|RAW_STRING_2 | SYMBOL {
+key ::= identifier | string_literal {
     mixin = "vos.intellij.language.mixin.MixinKey"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-value ::= null | boolean | num | array | object |string_literal| namespace | url_maybe_valid {
+value ::= null | boolean | num | array | object | string_literal | namespace | url_maybe_valid {
     mixin = "vos.intellij.language.mixin.MixinValue"
 };
 null ::= "null";

@@ -55,6 +55,7 @@ GEQ = >=|≥|⩾
 RANGE_LE = [.]{2}<
 RANGE_EQ = [.]{2}=
 ANNOTATION_MARK = [@#]
+
 %%
 <YYINITIAL> {
     {WHITE_SPACE}           { return WHITE_SPACE; }

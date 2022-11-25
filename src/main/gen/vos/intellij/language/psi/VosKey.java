@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface VosKey extends PsiElement {
 
+  @Nullable
+  VosIdentifier getIdentifier();
+
+  @Nullable
+  VosStringLiteral getStringLiteral();
+
 }
