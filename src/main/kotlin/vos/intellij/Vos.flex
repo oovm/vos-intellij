@@ -10,13 +10,13 @@ import static vos.intellij.language.psi.VosTypes.*;
 %%
 
 %{
-  public _JssLexer() {
+  public _VosLexer() {
     this((java.io.Reader)null);
   }
 %}
 
 %public
-%class _JssLexer
+%class _VosLexer
 %implements FlexLexer
 %function advance
 %type IElementType
@@ -33,7 +33,6 @@ COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 URL= [A-Za-z0-9]+:"//"[\-\p{XID_Continue}./?&#]+
 SYMBOL=[\p{XID_Start}_$][\p{XID_Continue}_$]*
-STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*(([*]{2}|[eE])[+-]?[0-9]+)?)
@@ -98,7 +97,6 @@ ANNOTATION_MARK = [@#]
     {COMMENT_BLOCK}         { return COMMENT_BLOCK; }
     {URL}                   { return URL; }
     {SYMBOL}                { return SYMBOL; }
-    {STRING}                { return STRING; }
     {BYTE}                  { return BYTE; }
     {INTEGER}               { return INTEGER; }
     {DECIMAL}               { return DECIMAL; }
