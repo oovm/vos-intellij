@@ -11,11 +11,11 @@ import static vos.intellij.language.psi.VosTypes.*;
 import vos.intellij.language.mixin.MixinArray;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
-import error.NonExistentClass;
+
 
 public class VosArrayNode extends MixinArray implements VosArray {
 
-  public VosArrayNode(NonExistentClass node) {
+  public VosArrayNode(@NotNull ASTNode node) {
     super(node);
   }
 

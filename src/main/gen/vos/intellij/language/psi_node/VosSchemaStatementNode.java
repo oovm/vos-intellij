@@ -11,11 +11,11 @@ import static vos.intellij.language.psi.VosTypes.*;
 import vos.intellij.language.mixin.MixinSchema;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
-import error.NonExistentClass;
+
 
 public class VosSchemaStatementNode extends MixinSchema implements VosSchemaStatement {
 
-  public VosSchemaStatementNode(NonExistentClass node) {
+  public VosSchemaStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
