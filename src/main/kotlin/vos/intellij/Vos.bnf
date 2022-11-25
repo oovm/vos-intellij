@@ -144,7 +144,7 @@ set ::= EQ | COLON;
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
 integer_signed ::= [SIGN] INTEGER;
 // ---------------------------------------------------------------------------------------------------------------------
-string_literal ::= esc | STRING_SQ char* STRING_SQ | STRING_DQ char* STRING_DQ;
+string_literal ::= STRING_SQ char* STRING_SQ | STRING_DQ char* STRING_DQ;
 private char ::= CHARACTER | esc;
 private esc ::= ESCAPE_UNICODE | ESCAPE_SPECIAL;
 // ---------------------------------------------------------------------------------------------------------------------

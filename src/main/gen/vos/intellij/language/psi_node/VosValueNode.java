@@ -11,10 +11,11 @@ import static vos.intellij.language.psi.VosTypes.*;
 import vos.intellij.language.mixin.MixinValue;
 import vos.intellij.language.psi.*;
 import vos.intellij.language.mixin.NodeExtension;
+import error.NonExistentClass;
 
 public class VosValueNode extends MixinValue implements VosValue {
 
-  public VosValueNode(@NotNull ASTNode node) {
+  public VosValueNode(NonExistentClass node) {
     super(node);
   }
 

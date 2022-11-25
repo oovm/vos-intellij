@@ -26,12 +26,7 @@ class JssFoldingBuilder : CustomFoldingBuilder(), DumbAware {
         }
     }
 
-    override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) =
-        when (node.elementType) {
-            VosTypes.BRACKET_BLOCK -> "[...]"
-            VosTypes.BRACE_BLOCK -> "{...}"
-            else -> "..."
-        }
+    override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) = "..."
 
     override fun isRegionCollapsedByDefault(node: ASTNode) = false
 }

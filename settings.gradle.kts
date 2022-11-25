@@ -1,1 +1,1 @@
-rootProject.name = "Vos Intellij"
+rootProject.name = "Virtual Object Schema"

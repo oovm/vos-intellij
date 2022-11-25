@@ -1,8 +1,4 @@
-schema std {
-
-}
-
-namespace .;
+namespace root;
 
 primitive u8 {
     bind.rust: {
