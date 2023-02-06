@@ -6,7 +6,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     kotlin("jvm") version "1.8.0"
-    id("com.google.protobuf") version "0.9.2"
+
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.12.0"
     // Gradle Changelog Plugin
@@ -117,6 +117,8 @@ tasks {
 }
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation("com.google.protobuf:protobuf-java:3.19.6")
+    implementation("com.google.protobuf:protobuf-kotlin:3.19.6")
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
