@@ -47,7 +47,94 @@ public object HelloRequestKt {
     public fun clearName() {
       _builder.clearName()
     }
-  }
+
+    /**
+     * `int32 age = 2;`
+     */
+    public var age: kotlin.Int
+      @JvmName("getAge")
+      get() = _builder.getAge()
+      @JvmName("setAge")
+      set(value) {
+        _builder.setAge(value)
+      }
+    /**
+     * `int32 age = 2;`
+     */
+    public fun clearAge() {
+      _builder.clearAge()
+    }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class HobbiesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `repeated string hobbies = 3;`
+     * @return A list containing the hobbies.
+     */
+    public val hobbies: com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getHobbiesList()
+      )
+    /**
+     * `repeated string hobbies = 3;`
+     * @param value The hobbies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addHobbies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.add(value: kotlin.String) {
+      _builder.addHobbies(value)
+    }
+    /**
+     * `repeated string hobbies = 3;`
+     * @param value The hobbies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignHobbies")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * `repeated string hobbies = 3;`
+     * @param values The hobbies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllHobbies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllHobbies(values)
+    }
+    /**
+     * `repeated string hobbies = 3;`
+     * @param values The hobbies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllHobbies")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * `repeated string hobbies = 3;`
+     * @param index The index to set the value at.
+     * @param value The hobbies to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setHobbies")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setHobbies(index, value)
+    }/**
+     * `repeated string hobbies = 3;`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearHobbies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, HobbiesProxy>.clear() {
+      _builder.clearHobbies()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 @com.google.errorprone.annotations.CheckReturnValue

@@ -14,8 +14,8 @@ public final class Main {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface PersonOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:vos.lsp.Person)
+  public interface HelloRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:vos.lsp.HelloRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -31,859 +31,75 @@ public final class Main {
         getNameBytes();
 
     /**
-     * <pre>
-     * Unique ID number for this person.
-     * </pre>
-     *
-     * <code>int32 id = 2;</code>
-     * @return The id.
+     * <code>int32 age = 2;</code>
+     * @return The age.
      */
-    int getId();
+    int getAge();
 
     /**
-     * <code>string email = 3;</code>
-     * @return The email.
+     * <code>repeated string hobbies = 3;</code>
+     * @return A list containing the hobbies.
      */
-    java.lang.String getEmail();
+    java.util.List<java.lang.String>
+        getHobbiesList();
     /**
-     * <code>string email = 3;</code>
-     * @return The bytes for email.
+     * <code>repeated string hobbies = 3;</code>
+     * @return The count of hobbies.
+     */
+    int getHobbiesCount();
+    /**
+     * <code>repeated string hobbies = 3;</code>
+     * @param index The index of the element to return.
+     * @return The hobbies at the given index.
+     */
+    java.lang.String getHobbies(int index);
+    /**
+     * <code>repeated string hobbies = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the hobbies at the given index.
      */
     com.google.protobuf.ByteString
-        getEmailBytes();
-
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    java.util.List<vos.lsp.Main.Person.PhoneNumber> 
-        getPhonesList();
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    vos.lsp.Main.Person.PhoneNumber getPhones(int index);
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    int getPhonesCount();
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    java.util.List<? extends vos.lsp.Main.Person.PhoneNumberOrBuilder> 
-        getPhonesOrBuilderList();
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    vos.lsp.Main.Person.PhoneNumberOrBuilder getPhonesOrBuilder(
-        int index);
+        getHobbiesBytes(int index);
   }
   /**
-   * Protobuf type {@code vos.lsp.Person}
+   * <pre>
+   * The request message containing the user's name.
+   * </pre>
+   *
+   * Protobuf type {@code vos.lsp.HelloRequest}
    */
-  public static final class Person extends
+  public static final class HelloRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:vos.lsp.Person)
-      PersonOrBuilder {
+      // @@protoc_insertion_point(message_implements:vos.lsp.HelloRequest)
+      HelloRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Person.newBuilder() to construct.
-    private Person(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use HelloRequest.newBuilder() to construct.
+    private HelloRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Person() {
+    private HelloRequest() {
       name_ = "";
-      email_ = "";
-      phones_ = java.util.Collections.emptyList();
+      hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Person();
+      return new HelloRequest();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return vos.lsp.Main.internal_static_vos_lsp_Person_descriptor;
+      return vos.lsp.Main.internal_static_vos_lsp_HelloRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return vos.lsp.Main.internal_static_vos_lsp_Person_fieldAccessorTable
+      return vos.lsp.Main.internal_static_vos_lsp_HelloRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              vos.lsp.Main.Person.class, vos.lsp.Main.Person.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code vos.lsp.Person.PhoneType}
-     */
-    public enum PhoneType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>MOBILE = 0;</code>
-       */
-      MOBILE(0),
-      /**
-       * <code>HOME = 1;</code>
-       */
-      HOME(1),
-      /**
-       * <code>WORK = 2;</code>
-       */
-      WORK(2),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>MOBILE = 0;</code>
-       */
-      public static final int MOBILE_VALUE = 0;
-      /**
-       * <code>HOME = 1;</code>
-       */
-      public static final int HOME_VALUE = 1;
-      /**
-       * <code>WORK = 2;</code>
-       */
-      public static final int WORK_VALUE = 2;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static PhoneType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static PhoneType forNumber(int value) {
-        switch (value) {
-          case 0: return MOBILE;
-          case 1: return HOME;
-          case 2: return WORK;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<PhoneType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          PhoneType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<PhoneType>() {
-              public PhoneType findValueByNumber(int number) {
-                return PhoneType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return vos.lsp.Main.Person.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final PhoneType[] VALUES = values();
-
-      public static PhoneType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private PhoneType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:vos.lsp.Person.PhoneType)
-    }
-
-    public interface PhoneNumberOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:vos.lsp.Person.PhoneNumber)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>string number = 1;</code>
-       * @return The number.
-       */
-      java.lang.String getNumber();
-      /**
-       * <code>string number = 1;</code>
-       * @return The bytes for number.
-       */
-      com.google.protobuf.ByteString
-          getNumberBytes();
-
-      /**
-       * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-       * @return The enum numeric value on the wire for type.
-       */
-      int getTypeValue();
-      /**
-       * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-       * @return The type.
-       */
-      vos.lsp.Main.Person.PhoneType getType();
-    }
-    /**
-     * Protobuf type {@code vos.lsp.Person.PhoneNumber}
-     */
-    public static final class PhoneNumber extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:vos.lsp.Person.PhoneNumber)
-        PhoneNumberOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use PhoneNumber.newBuilder() to construct.
-      private PhoneNumber(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private PhoneNumber() {
-        number_ = "";
-        type_ = 0;
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new PhoneNumber();
-      }
-
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return vos.lsp.Main.internal_static_vos_lsp_Person_PhoneNumber_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return vos.lsp.Main.internal_static_vos_lsp_Person_PhoneNumber_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                vos.lsp.Main.Person.PhoneNumber.class, vos.lsp.Main.Person.PhoneNumber.Builder.class);
-      }
-
-      public static final int NUMBER_FIELD_NUMBER = 1;
-      @SuppressWarnings("serial")
-      private volatile java.lang.Object number_ = "";
-      /**
-       * <code>string number = 1;</code>
-       * @return The number.
-       */
-      @java.lang.Override
-      public java.lang.String getNumber() {
-        java.lang.Object ref = number_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          number_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string number = 1;</code>
-       * @return The bytes for number.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getNumberBytes() {
-        java.lang.Object ref = number_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          number_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int TYPE_FIELD_NUMBER = 2;
-      private int type_ = 0;
-      /**
-       * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-       * @return The enum numeric value on the wire for type.
-       */
-      @java.lang.Override public int getTypeValue() {
-        return type_;
-      }
-      /**
-       * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-       * @return The type.
-       */
-      @java.lang.Override public vos.lsp.Main.Person.PhoneType getType() {
-        vos.lsp.Main.Person.PhoneType result = vos.lsp.Main.Person.PhoneType.forNumber(type_);
-        return result == null ? vos.lsp.Main.Person.PhoneType.UNRECOGNIZED : result;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(number_)) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, number_);
-        }
-        if (type_ != vos.lsp.Main.Person.PhoneType.MOBILE.getNumber()) {
-          output.writeEnum(2, type_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(number_)) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, number_);
-        }
-        if (type_ != vos.lsp.Main.Person.PhoneType.MOBILE.getNumber()) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(2, type_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof vos.lsp.Main.Person.PhoneNumber)) {
-          return super.equals(obj);
-        }
-        vos.lsp.Main.Person.PhoneNumber other = (vos.lsp.Main.Person.PhoneNumber) obj;
-
-        if (!getNumber()
-            .equals(other.getNumber())) return false;
-        if (type_ != other.type_) return false;
-        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getNumber().hashCode();
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_;
-        hash = (29 * hash) + getUnknownFields().hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static vos.lsp.Main.Person.PhoneNumber parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(vos.lsp.Main.Person.PhoneNumber prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code vos.lsp.Person.PhoneNumber}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:vos.lsp.Person.PhoneNumber)
-          vos.lsp.Main.Person.PhoneNumberOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return vos.lsp.Main.internal_static_vos_lsp_Person_PhoneNumber_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return vos.lsp.Main.internal_static_vos_lsp_Person_PhoneNumber_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  vos.lsp.Main.Person.PhoneNumber.class, vos.lsp.Main.Person.PhoneNumber.Builder.class);
-        }
-
-        // Construct using vos.lsp.Main.Person.PhoneNumber.newBuilder()
-        private Builder() {
-
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          bitField0_ = 0;
-          number_ = "";
-          type_ = 0;
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return vos.lsp.Main.internal_static_vos_lsp_Person_PhoneNumber_descriptor;
-        }
-
-        @java.lang.Override
-        public vos.lsp.Main.Person.PhoneNumber getDefaultInstanceForType() {
-          return vos.lsp.Main.Person.PhoneNumber.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public vos.lsp.Main.Person.PhoneNumber build() {
-          vos.lsp.Main.Person.PhoneNumber result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public vos.lsp.Main.Person.PhoneNumber buildPartial() {
-          vos.lsp.Main.Person.PhoneNumber result = new vos.lsp.Main.Person.PhoneNumber(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
-          onBuilt();
-          return result;
-        }
-
-        private void buildPartial0(vos.lsp.Main.Person.PhoneNumber result) {
-          int from_bitField0_ = bitField0_;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.number_ = number_;
-          }
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.type_ = type_;
-          }
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof vos.lsp.Main.Person.PhoneNumber) {
-            return mergeFrom((vos.lsp.Main.Person.PhoneNumber)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(vos.lsp.Main.Person.PhoneNumber other) {
-          if (other == vos.lsp.Main.Person.PhoneNumber.getDefaultInstance()) return this;
-          if (!other.getNumber().isEmpty()) {
-            number_ = other.number_;
-            bitField0_ |= 0x00000001;
-            onChanged();
-          }
-          if (other.type_ != 0) {
-            setTypeValue(other.getTypeValue());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  number_ = input.readStringRequireUtf8();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 10
-                case 16: {
-                  type_ = input.readEnum();
-                  bitField0_ |= 0x00000002;
-                  break;
-                } // case 16
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-              } // switch (tag)
-            } // while (!done)
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.unwrapIOException();
-          } finally {
-            onChanged();
-          } // finally
-          return this;
-        }
-        private int bitField0_;
-
-        private java.lang.Object number_ = "";
-        /**
-         * <code>string number = 1;</code>
-         * @return The number.
-         */
-        public java.lang.String getNumber() {
-          java.lang.Object ref = number_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            number_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string number = 1;</code>
-         * @return The bytes for number.
-         */
-        public com.google.protobuf.ByteString
-            getNumberBytes() {
-          java.lang.Object ref = number_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            number_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string number = 1;</code>
-         * @param value The number to set.
-         * @return This builder for chaining.
-         */
-        public Builder setNumber(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
-          number_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string number = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearNumber() {
-          number_ = getDefaultInstance().getNumber();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string number = 1;</code>
-         * @param value The bytes for number to set.
-         * @return This builder for chaining.
-         */
-        public Builder setNumberBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          checkByteStringIsUtf8(value);
-          number_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-
-        private int type_ = 0;
-        /**
-         * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-         * @return The enum numeric value on the wire for type.
-         */
-        @java.lang.Override public int getTypeValue() {
-          return type_;
-        }
-        /**
-         * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-         * @param value The enum numeric value on the wire for type to set.
-         * @return This builder for chaining.
-         */
-        public Builder setTypeValue(int value) {
-          type_ = value;
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-         * @return The type.
-         */
-        @java.lang.Override
-        public vos.lsp.Main.Person.PhoneType getType() {
-          vos.lsp.Main.Person.PhoneType result = vos.lsp.Main.Person.PhoneType.forNumber(type_);
-          return result == null ? vos.lsp.Main.Person.PhoneType.UNRECOGNIZED : result;
-        }
-        /**
-         * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-         * @param value The type to set.
-         * @return This builder for chaining.
-         */
-        public Builder setType(vos.lsp.Main.Person.PhoneType value) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bitField0_ |= 0x00000002;
-          type_ = value.getNumber();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>.vos.lsp.Person.PhoneType type = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearType() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          type_ = 0;
-          onChanged();
-          return this;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:vos.lsp.Person.PhoneNumber)
-      }
-
-      // @@protoc_insertion_point(class_scope:vos.lsp.Person.PhoneNumber)
-      private static final vos.lsp.Main.Person.PhoneNumber DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new vos.lsp.Main.Person.PhoneNumber();
-      }
-
-      public static vos.lsp.Main.Person.PhoneNumber getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<PhoneNumber>
-          PARSER = new com.google.protobuf.AbstractParser<PhoneNumber>() {
-        @java.lang.Override
-        public PhoneNumber parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
-
-      public static com.google.protobuf.Parser<PhoneNumber> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<PhoneNumber> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public vos.lsp.Main.Person.PhoneNumber getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
+              vos.lsp.Main.HelloRequest.class, vos.lsp.Main.HelloRequest.Builder.class);
     }
 
     public static final int NAME_FIELD_NUMBER = 1;
@@ -925,99 +141,51 @@ public final class Main {
       }
     }
 
-    public static final int ID_FIELD_NUMBER = 2;
-    private int id_ = 0;
+    public static final int AGE_FIELD_NUMBER = 2;
+    private int age_ = 0;
     /**
-     * <pre>
-     * Unique ID number for this person.
-     * </pre>
-     *
-     * <code>int32 id = 2;</code>
-     * @return The id.
+     * <code>int32 age = 2;</code>
+     * @return The age.
      */
     @java.lang.Override
-    public int getId() {
-      return id_;
+    public int getAge() {
+      return age_;
     }
 
-    public static final int EMAIL_FIELD_NUMBER = 3;
+    public static final int HOBBIES_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object email_ = "";
+    private com.google.protobuf.LazyStringList hobbies_;
     /**
-     * <code>string email = 3;</code>
-     * @return The email.
+     * <code>repeated string hobbies = 3;</code>
+     * @return A list containing the hobbies.
      */
-    @java.lang.Override
-    public java.lang.String getEmail() {
-      java.lang.Object ref = email_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        email_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getHobbiesList() {
+      return hobbies_;
     }
     /**
-     * <code>string email = 3;</code>
-     * @return The bytes for email.
+     * <code>repeated string hobbies = 3;</code>
+     * @return The count of hobbies.
      */
-    @java.lang.Override
+    public int getHobbiesCount() {
+      return hobbies_.size();
+    }
+    /**
+     * <code>repeated string hobbies = 3;</code>
+     * @param index The index of the element to return.
+     * @return The hobbies at the given index.
+     */
+    public java.lang.String getHobbies(int index) {
+      return hobbies_.get(index);
+    }
+    /**
+     * <code>repeated string hobbies = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the hobbies at the given index.
+     */
     public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = email_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        email_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PHONES_FIELD_NUMBER = 4;
-    @SuppressWarnings("serial")
-    private java.util.List<vos.lsp.Main.Person.PhoneNumber> phones_;
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    @java.lang.Override
-    public java.util.List<vos.lsp.Main.Person.PhoneNumber> getPhonesList() {
-      return phones_;
-    }
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends vos.lsp.Main.Person.PhoneNumberOrBuilder> 
-        getPhonesOrBuilderList() {
-      return phones_;
-    }
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    @java.lang.Override
-    public int getPhonesCount() {
-      return phones_.size();
-    }
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    @java.lang.Override
-    public vos.lsp.Main.Person.PhoneNumber getPhones(int index) {
-      return phones_.get(index);
-    }
-    /**
-     * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-     */
-    @java.lang.Override
-    public vos.lsp.Main.Person.PhoneNumberOrBuilder getPhonesOrBuilder(
-        int index) {
-      return phones_.get(index);
+        getHobbiesBytes(int index) {
+      return hobbies_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1037,14 +205,11 @@ public final class Main {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (id_ != 0) {
-        output.writeInt32(2, id_);
+      if (age_ != 0) {
+        output.writeInt32(2, age_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
-      }
-      for (int i = 0; i < phones_.size(); i++) {
-        output.writeMessage(4, phones_.get(i));
+      for (int i = 0; i < hobbies_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, hobbies_.getRaw(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1058,16 +223,17 @@ public final class Main {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (id_ != 0) {
+      if (age_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, id_);
+          .computeInt32Size(2, age_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
-      }
-      for (int i = 0; i < phones_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, phones_.get(i));
+      {
+        int dataSize = 0;
+        for (int i = 0; i < hobbies_.size(); i++) {
+          dataSize += computeStringSizeNoTag(hobbies_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getHobbiesList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1079,19 +245,17 @@ public final class Main {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof vos.lsp.Main.Person)) {
+      if (!(obj instanceof vos.lsp.Main.HelloRequest)) {
         return super.equals(obj);
       }
-      vos.lsp.Main.Person other = (vos.lsp.Main.Person) obj;
+      vos.lsp.Main.HelloRequest other = (vos.lsp.Main.HelloRequest) obj;
 
       if (!getName()
           .equals(other.getName())) return false;
-      if (getId()
-          != other.getId()) return false;
-      if (!getEmail()
-          .equals(other.getEmail())) return false;
-      if (!getPhonesList()
-          .equals(other.getPhonesList())) return false;
+      if (getAge()
+          != other.getAge()) return false;
+      if (!getHobbiesList()
+          .equals(other.getHobbiesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1105,82 +269,80 @@ public final class Main {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-      hash = (53 * hash) + getEmail().hashCode();
-      if (getPhonesCount() > 0) {
-        hash = (37 * hash) + PHONES_FIELD_NUMBER;
-        hash = (53 * hash) + getPhonesList().hashCode();
+      hash = (37 * hash) + AGE_FIELD_NUMBER;
+      hash = (53 * hash) + getAge();
+      if (getHobbiesCount() > 0) {
+        hash = (37 * hash) + HOBBIES_FIELD_NUMBER;
+        hash = (53 * hash) + getHobbiesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.Person parseFrom(byte[] data)
+    public static vos.lsp.Main.HelloRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.Person parseFrom(java.io.InputStream input)
+    public static vos.lsp.Main.HelloRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static vos.lsp.Main.Person parseDelimitedFrom(java.io.InputStream input)
+    public static vos.lsp.Main.HelloRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.Person parseDelimitedFrom(
+    public static vos.lsp.Main.HelloRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.Person parseFrom(
+    public static vos.lsp.Main.HelloRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1193,7 +355,7 @@ public final class Main {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(vos.lsp.Main.Person prototype) {
+    public static Builder newBuilder(vos.lsp.Main.HelloRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1209,26 +371,30 @@ public final class Main {
       return builder;
     }
     /**
-     * Protobuf type {@code vos.lsp.Person}
+     * <pre>
+     * The request message containing the user's name.
+     * </pre>
+     *
+     * Protobuf type {@code vos.lsp.HelloRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:vos.lsp.Person)
-        vos.lsp.Main.PersonOrBuilder {
+        // @@protoc_insertion_point(builder_implements:vos.lsp.HelloRequest)
+        vos.lsp.Main.HelloRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return vos.lsp.Main.internal_static_vos_lsp_Person_descriptor;
+        return vos.lsp.Main.internal_static_vos_lsp_HelloRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return vos.lsp.Main.internal_static_vos_lsp_Person_fieldAccessorTable
+        return vos.lsp.Main.internal_static_vos_lsp_HelloRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                vos.lsp.Main.Person.class, vos.lsp.Main.Person.Builder.class);
+                vos.lsp.Main.HelloRequest.class, vos.lsp.Main.HelloRequest.Builder.class);
       }
 
-      // Construct using vos.lsp.Main.Person.newBuilder()
+      // Construct using vos.lsp.Main.HelloRequest.newBuilder()
       private Builder() {
 
       }
@@ -1243,32 +409,26 @@ public final class Main {
         super.clear();
         bitField0_ = 0;
         name_ = "";
-        id_ = 0;
-        email_ = "";
-        if (phonesBuilder_ == null) {
-          phones_ = java.util.Collections.emptyList();
-        } else {
-          phones_ = null;
-          phonesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        age_ = 0;
+        hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return vos.lsp.Main.internal_static_vos_lsp_Person_descriptor;
+        return vos.lsp.Main.internal_static_vos_lsp_HelloRequest_descriptor;
       }
 
       @java.lang.Override
-      public vos.lsp.Main.Person getDefaultInstanceForType() {
-        return vos.lsp.Main.Person.getDefaultInstance();
+      public vos.lsp.Main.HelloRequest getDefaultInstanceForType() {
+        return vos.lsp.Main.HelloRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public vos.lsp.Main.Person build() {
-        vos.lsp.Main.Person result = buildPartial();
+      public vos.lsp.Main.HelloRequest build() {
+        vos.lsp.Main.HelloRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1276,36 +436,29 @@ public final class Main {
       }
 
       @java.lang.Override
-      public vos.lsp.Main.Person buildPartial() {
-        vos.lsp.Main.Person result = new vos.lsp.Main.Person(this);
+      public vos.lsp.Main.HelloRequest buildPartial() {
+        vos.lsp.Main.HelloRequest result = new vos.lsp.Main.HelloRequest(this);
         buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartialRepeatedFields(vos.lsp.Main.Person result) {
-        if (phonesBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
-            phones_ = java.util.Collections.unmodifiableList(phones_);
-            bitField0_ = (bitField0_ & ~0x00000008);
-          }
-          result.phones_ = phones_;
-        } else {
-          result.phones_ = phonesBuilder_.build();
+      private void buildPartialRepeatedFields(vos.lsp.Main.HelloRequest result) {
+        if (((bitField0_ & 0x00000004) != 0)) {
+          hobbies_ = hobbies_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
+        result.hobbies_ = hobbies_;
       }
 
-      private void buildPartial0(vos.lsp.Main.Person result) {
+      private void buildPartial0(vos.lsp.Main.HelloRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.name_ = name_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.id_ = id_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.email_ = email_;
+          result.age_ = age_;
         }
       }
 
@@ -1343,54 +496,33 @@ public final class Main {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof vos.lsp.Main.Person) {
-          return mergeFrom((vos.lsp.Main.Person)other);
+        if (other instanceof vos.lsp.Main.HelloRequest) {
+          return mergeFrom((vos.lsp.Main.HelloRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(vos.lsp.Main.Person other) {
-        if (other == vos.lsp.Main.Person.getDefaultInstance()) return this;
+      public Builder mergeFrom(vos.lsp.Main.HelloRequest other) {
+        if (other == vos.lsp.Main.HelloRequest.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
-        if (other.getId() != 0) {
-          setId(other.getId());
+        if (other.getAge() != 0) {
+          setAge(other.getAge());
         }
-        if (!other.getEmail().isEmpty()) {
-          email_ = other.email_;
-          bitField0_ |= 0x00000004;
+        if (!other.hobbies_.isEmpty()) {
+          if (hobbies_.isEmpty()) {
+            hobbies_ = other.hobbies_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureHobbiesIsMutable();
+            hobbies_.addAll(other.hobbies_);
+          }
           onChanged();
-        }
-        if (phonesBuilder_ == null) {
-          if (!other.phones_.isEmpty()) {
-            if (phones_.isEmpty()) {
-              phones_ = other.phones_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-            } else {
-              ensurePhonesIsMutable();
-              phones_.addAll(other.phones_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.phones_.isEmpty()) {
-            if (phonesBuilder_.isEmpty()) {
-              phonesBuilder_.dispose();
-              phonesBuilder_ = null;
-              phones_ = other.phones_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-              phonesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPhonesFieldBuilder() : null;
-            } else {
-              phonesBuilder_.addAllMessages(other.phones_);
-            }
-          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1424,28 +556,16 @@ public final class Main {
                 break;
               } // case 10
               case 16: {
-                id_ = input.readInt32();
+                age_ = input.readInt32();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
               case 26: {
-                email_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000004;
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureHobbiesIsMutable();
+                hobbies_.add(s);
                 break;
               } // case 26
-              case 34: {
-                vos.lsp.Main.Person.PhoneNumber m =
-                    input.readMessage(
-                        vos.lsp.Main.Person.PhoneNumber.parser(),
-                        extensionRegistry);
-                if (phonesBuilder_ == null) {
-                  ensurePhonesIsMutable();
-                  phones_.add(m);
-                } else {
-                  phonesBuilder_.addMessage(m);
-                }
-                break;
-              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1535,360 +655,140 @@ public final class Main {
         return this;
       }
 
-      private int id_ ;
+      private int age_ ;
       /**
-       * <pre>
-       * Unique ID number for this person.
-       * </pre>
-       *
-       * <code>int32 id = 2;</code>
-       * @return The id.
+       * <code>int32 age = 2;</code>
+       * @return The age.
        */
       @java.lang.Override
-      public int getId() {
-        return id_;
+      public int getAge() {
+        return age_;
       }
       /**
-       * <pre>
-       * Unique ID number for this person.
-       * </pre>
-       *
-       * <code>int32 id = 2;</code>
-       * @param value The id to set.
+       * <code>int32 age = 2;</code>
+       * @param value The age to set.
        * @return This builder for chaining.
        */
-      public Builder setId(int value) {
+      public Builder setAge(int value) {
 
-        id_ = value;
+        age_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * Unique ID number for this person.
-       * </pre>
-       *
-       * <code>int32 id = 2;</code>
+       * <code>int32 age = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearAge() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        id_ = 0;
+        age_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object email_ = "";
-      /**
-       * <code>string email = 3;</code>
-       * @return The email.
-       */
-      public java.lang.String getEmail() {
-        java.lang.Object ref = email_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          email_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureHobbiesIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          hobbies_ = new com.google.protobuf.LazyStringArrayList(hobbies_);
+          bitField0_ |= 0x00000004;
+         }
       }
       /**
-       * <code>string email = 3;</code>
-       * @return The bytes for email.
+       * <code>repeated string hobbies = 3;</code>
+       * @return A list containing the hobbies.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getHobbiesList() {
+        return hobbies_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string hobbies = 3;</code>
+       * @return The count of hobbies.
+       */
+      public int getHobbiesCount() {
+        return hobbies_.size();
+      }
+      /**
+       * <code>repeated string hobbies = 3;</code>
+       * @param index The index of the element to return.
+       * @return The hobbies at the given index.
+       */
+      public java.lang.String getHobbies(int index) {
+        return hobbies_.get(index);
+      }
+      /**
+       * <code>repeated string hobbies = 3;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the hobbies at the given index.
        */
       public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = email_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          email_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getHobbiesBytes(int index) {
+        return hobbies_.getByteString(index);
       }
       /**
-       * <code>string email = 3;</code>
-       * @param value The email to set.
+       * <code>repeated string hobbies = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The hobbies to set.
        * @return This builder for chaining.
        */
-      public Builder setEmail(
-          java.lang.String value) {
+      public Builder setHobbies(
+          int index, java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        email_ = value;
-        bitField0_ |= 0x00000004;
+        ensureHobbiesIsMutable();
+        hobbies_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>string email = 3;</code>
+       * <code>repeated string hobbies = 3;</code>
+       * @param value The hobbies to add.
        * @return This builder for chaining.
        */
-      public Builder clearEmail() {
-        email_ = getDefaultInstance().getEmail();
+      public Builder addHobbies(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureHobbiesIsMutable();
+        hobbies_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string hobbies = 3;</code>
+       * @param values The hobbies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllHobbies(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureHobbiesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, hobbies_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string hobbies = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHobbies() {
+        hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
-       * <code>string email = 3;</code>
-       * @param value The bytes for email to set.
+       * <code>repeated string hobbies = 3;</code>
+       * @param value The bytes of the hobbies to add.
        * @return This builder for chaining.
        */
-      public Builder setEmailBytes(
+      public Builder addHobbiesBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        email_ = value;
-        bitField0_ |= 0x00000004;
+        ensureHobbiesIsMutable();
+        hobbies_.add(value);
         onChanged();
         return this;
-      }
-
-      private java.util.List<vos.lsp.Main.Person.PhoneNumber> phones_ =
-        java.util.Collections.emptyList();
-      private void ensurePhonesIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
-          phones_ = new java.util.ArrayList<vos.lsp.Main.Person.PhoneNumber>(phones_);
-          bitField0_ |= 0x00000008;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          vos.lsp.Main.Person.PhoneNumber, vos.lsp.Main.Person.PhoneNumber.Builder, vos.lsp.Main.Person.PhoneNumberOrBuilder> phonesBuilder_;
-
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public java.util.List<vos.lsp.Main.Person.PhoneNumber> getPhonesList() {
-        if (phonesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(phones_);
-        } else {
-          return phonesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public int getPhonesCount() {
-        if (phonesBuilder_ == null) {
-          return phones_.size();
-        } else {
-          return phonesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public vos.lsp.Main.Person.PhoneNumber getPhones(int index) {
-        if (phonesBuilder_ == null) {
-          return phones_.get(index);
-        } else {
-          return phonesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder setPhones(
-          int index, vos.lsp.Main.Person.PhoneNumber value) {
-        if (phonesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePhonesIsMutable();
-          phones_.set(index, value);
-          onChanged();
-        } else {
-          phonesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder setPhones(
-          int index, vos.lsp.Main.Person.PhoneNumber.Builder builderForValue) {
-        if (phonesBuilder_ == null) {
-          ensurePhonesIsMutable();
-          phones_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          phonesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder addPhones(vos.lsp.Main.Person.PhoneNumber value) {
-        if (phonesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePhonesIsMutable();
-          phones_.add(value);
-          onChanged();
-        } else {
-          phonesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder addPhones(
-          int index, vos.lsp.Main.Person.PhoneNumber value) {
-        if (phonesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePhonesIsMutable();
-          phones_.add(index, value);
-          onChanged();
-        } else {
-          phonesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder addPhones(
-          vos.lsp.Main.Person.PhoneNumber.Builder builderForValue) {
-        if (phonesBuilder_ == null) {
-          ensurePhonesIsMutable();
-          phones_.add(builderForValue.build());
-          onChanged();
-        } else {
-          phonesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder addPhones(
-          int index, vos.lsp.Main.Person.PhoneNumber.Builder builderForValue) {
-        if (phonesBuilder_ == null) {
-          ensurePhonesIsMutable();
-          phones_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          phonesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder addAllPhones(
-          java.lang.Iterable<? extends vos.lsp.Main.Person.PhoneNumber> values) {
-        if (phonesBuilder_ == null) {
-          ensurePhonesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, phones_);
-          onChanged();
-        } else {
-          phonesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder clearPhones() {
-        if (phonesBuilder_ == null) {
-          phones_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-          onChanged();
-        } else {
-          phonesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public Builder removePhones(int index) {
-        if (phonesBuilder_ == null) {
-          ensurePhonesIsMutable();
-          phones_.remove(index);
-          onChanged();
-        } else {
-          phonesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public vos.lsp.Main.Person.PhoneNumber.Builder getPhonesBuilder(
-          int index) {
-        return getPhonesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public vos.lsp.Main.Person.PhoneNumberOrBuilder getPhonesOrBuilder(
-          int index) {
-        if (phonesBuilder_ == null) {
-          return phones_.get(index);  } else {
-          return phonesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public java.util.List<? extends vos.lsp.Main.Person.PhoneNumberOrBuilder> 
-           getPhonesOrBuilderList() {
-        if (phonesBuilder_ != null) {
-          return phonesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(phones_);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public vos.lsp.Main.Person.PhoneNumber.Builder addPhonesBuilder() {
-        return getPhonesFieldBuilder().addBuilder(
-            vos.lsp.Main.Person.PhoneNumber.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public vos.lsp.Main.Person.PhoneNumber.Builder addPhonesBuilder(
-          int index) {
-        return getPhonesFieldBuilder().addBuilder(
-            index, vos.lsp.Main.Person.PhoneNumber.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .vos.lsp.Person.PhoneNumber phones = 4;</code>
-       */
-      public java.util.List<vos.lsp.Main.Person.PhoneNumber.Builder> 
-           getPhonesBuilderList() {
-        return getPhonesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          vos.lsp.Main.Person.PhoneNumber, vos.lsp.Main.Person.PhoneNumber.Builder, vos.lsp.Main.Person.PhoneNumberOrBuilder> 
-          getPhonesFieldBuilder() {
-        if (phonesBuilder_ == null) {
-          phonesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              vos.lsp.Main.Person.PhoneNumber, vos.lsp.Main.Person.PhoneNumber.Builder, vos.lsp.Main.Person.PhoneNumberOrBuilder>(
-                  phones_,
-                  ((bitField0_ & 0x00000008) != 0),
-                  getParentForChildren(),
-                  isClean());
-          phones_ = null;
-        }
-        return phonesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1903,23 +803,23 @@ public final class Main {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:vos.lsp.Person)
+      // @@protoc_insertion_point(builder_scope:vos.lsp.HelloRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:vos.lsp.Person)
-    private static final vos.lsp.Main.Person DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:vos.lsp.HelloRequest)
+    private static final vos.lsp.Main.HelloRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new vos.lsp.Main.Person();
+      DEFAULT_INSTANCE = new vos.lsp.Main.HelloRequest();
     }
 
-    public static vos.lsp.Main.Person getDefaultInstance() {
+    public static vos.lsp.Main.HelloRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Person>
-        PARSER = new com.google.protobuf.AbstractParser<Person>() {
+    private static final com.google.protobuf.Parser<HelloRequest>
+        PARSER = new com.google.protobuf.AbstractParser<HelloRequest>() {
       @java.lang.Override
-      public Person parsePartialFrom(
+      public HelloRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1938,129 +838,115 @@ public final class Main {
       }
     };
 
-    public static com.google.protobuf.Parser<Person> parser() {
+    public static com.google.protobuf.Parser<HelloRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Person> getParserForType() {
+    public com.google.protobuf.Parser<HelloRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public vos.lsp.Main.Person getDefaultInstanceForType() {
+    public vos.lsp.Main.HelloRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface AddressBookOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:vos.lsp.AddressBook)
+  public interface HelloReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:vos.lsp.HelloReply)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
+     * <code>string message = 1;</code>
+     * @return The message.
      */
-    java.util.List<vos.lsp.Main.Person> 
-        getPeopleList();
+    java.lang.String getMessage();
     /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
-    vos.lsp.Main.Person getPeople(int index);
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    int getPeopleCount();
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    java.util.List<? extends vos.lsp.Main.PersonOrBuilder> 
-        getPeopleOrBuilderList();
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    vos.lsp.Main.PersonOrBuilder getPeopleOrBuilder(
-        int index);
+    com.google.protobuf.ByteString
+        getMessageBytes();
   }
   /**
    * <pre>
-   * Our address book file is just one of these.
+   * The response message containing the greetings
    * </pre>
    *
-   * Protobuf type {@code vos.lsp.AddressBook}
+   * Protobuf type {@code vos.lsp.HelloReply}
    */
-  public static final class AddressBook extends
+  public static final class HelloReply extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:vos.lsp.AddressBook)
-      AddressBookOrBuilder {
+      // @@protoc_insertion_point(message_implements:vos.lsp.HelloReply)
+      HelloReplyOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use AddressBook.newBuilder() to construct.
-    private AddressBook(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use HelloReply.newBuilder() to construct.
+    private HelloReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private AddressBook() {
-      people_ = java.util.Collections.emptyList();
+    private HelloReply() {
+      message_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new AddressBook();
+      return new HelloReply();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return vos.lsp.Main.internal_static_vos_lsp_AddressBook_descriptor;
+      return vos.lsp.Main.internal_static_vos_lsp_HelloReply_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return vos.lsp.Main.internal_static_vos_lsp_AddressBook_fieldAccessorTable
+      return vos.lsp.Main.internal_static_vos_lsp_HelloReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              vos.lsp.Main.AddressBook.class, vos.lsp.Main.AddressBook.Builder.class);
+              vos.lsp.Main.HelloReply.class, vos.lsp.Main.HelloReply.Builder.class);
     }
 
-    public static final int PEOPLE_FIELD_NUMBER = 1;
+    public static final int MESSAGE_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private java.util.List<vos.lsp.Main.Person> people_;
+    private volatile java.lang.Object message_ = "";
     /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
+     * <code>string message = 1;</code>
+     * @return The message.
      */
     @java.lang.Override
-    public java.util.List<vos.lsp.Main.Person> getPeopleList() {
-      return people_;
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
      */
     @java.lang.Override
-    public java.util.List<? extends vos.lsp.Main.PersonOrBuilder> 
-        getPeopleOrBuilderList() {
-      return people_;
-    }
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    @java.lang.Override
-    public int getPeopleCount() {
-      return people_.size();
-    }
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    @java.lang.Override
-    public vos.lsp.Main.Person getPeople(int index) {
-      return people_.get(index);
-    }
-    /**
-     * <code>repeated .vos.lsp.Person people = 1;</code>
-     */
-    @java.lang.Override
-    public vos.lsp.Main.PersonOrBuilder getPeopleOrBuilder(
-        int index) {
-      return people_.get(index);
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2077,8 +963,8 @@ public final class Main {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < people_.size(); i++) {
-        output.writeMessage(1, people_.get(i));
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2089,9 +975,8 @@ public final class Main {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < people_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, people_.get(i));
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -2103,13 +988,13 @@ public final class Main {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof vos.lsp.Main.AddressBook)) {
+      if (!(obj instanceof vos.lsp.Main.HelloReply)) {
         return super.equals(obj);
       }
-      vos.lsp.Main.AddressBook other = (vos.lsp.Main.AddressBook) obj;
+      vos.lsp.Main.HelloReply other = (vos.lsp.Main.HelloReply) obj;
 
-      if (!getPeopleList()
-          .equals(other.getPeopleList())) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2121,78 +1006,76 @@ public final class Main {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getPeopleCount() > 0) {
-        hash = (37 * hash) + PEOPLE_FIELD_NUMBER;
-        hash = (53 * hash) + getPeopleList().hashCode();
-      }
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(byte[] data)
+    public static vos.lsp.Main.HelloReply parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(java.io.InputStream input)
+    public static vos.lsp.Main.HelloReply parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static vos.lsp.Main.AddressBook parseDelimitedFrom(java.io.InputStream input)
+    public static vos.lsp.Main.HelloReply parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.AddressBook parseDelimitedFrom(
+    public static vos.lsp.Main.HelloReply parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static vos.lsp.Main.AddressBook parseFrom(
+    public static vos.lsp.Main.HelloReply parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2205,7 +1088,7 @@ public final class Main {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(vos.lsp.Main.AddressBook prototype) {
+    public static Builder newBuilder(vos.lsp.Main.HelloReply prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2222,29 +1105,29 @@ public final class Main {
     }
     /**
      * <pre>
-     * Our address book file is just one of these.
+     * The response message containing the greetings
      * </pre>
      *
-     * Protobuf type {@code vos.lsp.AddressBook}
+     * Protobuf type {@code vos.lsp.HelloReply}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:vos.lsp.AddressBook)
-        vos.lsp.Main.AddressBookOrBuilder {
+        // @@protoc_insertion_point(builder_implements:vos.lsp.HelloReply)
+        vos.lsp.Main.HelloReplyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return vos.lsp.Main.internal_static_vos_lsp_AddressBook_descriptor;
+        return vos.lsp.Main.internal_static_vos_lsp_HelloReply_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return vos.lsp.Main.internal_static_vos_lsp_AddressBook_fieldAccessorTable
+        return vos.lsp.Main.internal_static_vos_lsp_HelloReply_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                vos.lsp.Main.AddressBook.class, vos.lsp.Main.AddressBook.Builder.class);
+                vos.lsp.Main.HelloReply.class, vos.lsp.Main.HelloReply.Builder.class);
       }
 
-      // Construct using vos.lsp.Main.AddressBook.newBuilder()
+      // Construct using vos.lsp.Main.HelloReply.newBuilder()
       private Builder() {
 
       }
@@ -2258,30 +1141,24 @@ public final class Main {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        if (peopleBuilder_ == null) {
-          people_ = java.util.Collections.emptyList();
-        } else {
-          people_ = null;
-          peopleBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
+        message_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return vos.lsp.Main.internal_static_vos_lsp_AddressBook_descriptor;
+        return vos.lsp.Main.internal_static_vos_lsp_HelloReply_descriptor;
       }
 
       @java.lang.Override
-      public vos.lsp.Main.AddressBook getDefaultInstanceForType() {
-        return vos.lsp.Main.AddressBook.getDefaultInstance();
+      public vos.lsp.Main.HelloReply getDefaultInstanceForType() {
+        return vos.lsp.Main.HelloReply.getDefaultInstance();
       }
 
       @java.lang.Override
-      public vos.lsp.Main.AddressBook build() {
-        vos.lsp.Main.AddressBook result = buildPartial();
+      public vos.lsp.Main.HelloReply build() {
+        vos.lsp.Main.HelloReply result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2289,28 +1166,18 @@ public final class Main {
       }
 
       @java.lang.Override
-      public vos.lsp.Main.AddressBook buildPartial() {
-        vos.lsp.Main.AddressBook result = new vos.lsp.Main.AddressBook(this);
-        buildPartialRepeatedFields(result);
+      public vos.lsp.Main.HelloReply buildPartial() {
+        vos.lsp.Main.HelloReply result = new vos.lsp.Main.HelloReply(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartialRepeatedFields(vos.lsp.Main.AddressBook result) {
-        if (peopleBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            people_ = java.util.Collections.unmodifiableList(people_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.people_ = people_;
-        } else {
-          result.people_ = peopleBuilder_.build();
-        }
-      }
-
-      private void buildPartial0(vos.lsp.Main.AddressBook result) {
+      private void buildPartial0(vos.lsp.Main.HelloReply result) {
         int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.message_ = message_;
+        }
       }
 
       @java.lang.Override
@@ -2347,41 +1214,20 @@ public final class Main {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof vos.lsp.Main.AddressBook) {
-          return mergeFrom((vos.lsp.Main.AddressBook)other);
+        if (other instanceof vos.lsp.Main.HelloReply) {
+          return mergeFrom((vos.lsp.Main.HelloReply)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(vos.lsp.Main.AddressBook other) {
-        if (other == vos.lsp.Main.AddressBook.getDefaultInstance()) return this;
-        if (peopleBuilder_ == null) {
-          if (!other.people_.isEmpty()) {
-            if (people_.isEmpty()) {
-              people_ = other.people_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensurePeopleIsMutable();
-              people_.addAll(other.people_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.people_.isEmpty()) {
-            if (peopleBuilder_.isEmpty()) {
-              peopleBuilder_.dispose();
-              peopleBuilder_ = null;
-              people_ = other.people_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              peopleBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPeopleFieldBuilder() : null;
-            } else {
-              peopleBuilder_.addAllMessages(other.people_);
-            }
-          }
+      public Builder mergeFrom(vos.lsp.Main.HelloReply other) {
+        if (other == vos.lsp.Main.HelloReply.getDefaultInstance()) return this;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          bitField0_ |= 0x00000001;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2410,16 +1256,8 @@ public final class Main {
                 done = true;
                 break;
               case 10: {
-                vos.lsp.Main.Person m =
-                    input.readMessage(
-                        vos.lsp.Main.Person.parser(),
-                        extensionRegistry);
-                if (peopleBuilder_ == null) {
-                  ensurePeopleIsMutable();
-                  people_.add(m);
-                } else {
-                  peopleBuilder_.addMessage(m);
-                }
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
                 break;
               } // case 10
               default: {
@@ -2439,244 +1277,76 @@ public final class Main {
       }
       private int bitField0_;
 
-      private java.util.List<vos.lsp.Main.Person> people_ =
-        java.util.Collections.emptyList();
-      private void ensurePeopleIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          people_ = new java.util.ArrayList<vos.lsp.Main.Person>(people_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          vos.lsp.Main.Person, vos.lsp.Main.Person.Builder, vos.lsp.Main.PersonOrBuilder> peopleBuilder_;
-
+      private java.lang.Object message_ = "";
       /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
+       * <code>string message = 1;</code>
+       * @return The message.
        */
-      public java.util.List<vos.lsp.Main.Person> getPeopleList() {
-        if (peopleBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(people_);
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
         } else {
-          return peopleBuilder_.getMessageList();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
+       * <code>string message = 1;</code>
+       * @return The bytes for message.
        */
-      public int getPeopleCount() {
-        if (peopleBuilder_ == null) {
-          return people_.size();
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
         } else {
-          return peopleBuilder_.getCount();
+          return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
+       * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
        */
-      public vos.lsp.Main.Person getPeople(int index) {
-        if (peopleBuilder_ == null) {
-          return people_.get(index);
-        } else {
-          return peopleBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder setPeople(
-          int index, vos.lsp.Main.Person value) {
-        if (peopleBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeopleIsMutable();
-          people_.set(index, value);
-          onChanged();
-        } else {
-          peopleBuilder_.setMessage(index, value);
-        }
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        message_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
+       * <code>string message = 1;</code>
+       * @return This builder for chaining.
        */
-      public Builder setPeople(
-          int index, vos.lsp.Main.Person.Builder builderForValue) {
-        if (peopleBuilder_ == null) {
-          ensurePeopleIsMutable();
-          people_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          peopleBuilder_.setMessage(index, builderForValue.build());
-        }
+      public Builder clearMessage() {
+        message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
+       * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
        */
-      public Builder addPeople(vos.lsp.Main.Person value) {
-        if (peopleBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeopleIsMutable();
-          people_.add(value);
-          onChanged();
-        } else {
-          peopleBuilder_.addMessage(value);
-        }
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        message_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder addPeople(
-          int index, vos.lsp.Main.Person value) {
-        if (peopleBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePeopleIsMutable();
-          people_.add(index, value);
-          onChanged();
-        } else {
-          peopleBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder addPeople(
-          vos.lsp.Main.Person.Builder builderForValue) {
-        if (peopleBuilder_ == null) {
-          ensurePeopleIsMutable();
-          people_.add(builderForValue.build());
-          onChanged();
-        } else {
-          peopleBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder addPeople(
-          int index, vos.lsp.Main.Person.Builder builderForValue) {
-        if (peopleBuilder_ == null) {
-          ensurePeopleIsMutable();
-          people_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          peopleBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder addAllPeople(
-          java.lang.Iterable<? extends vos.lsp.Main.Person> values) {
-        if (peopleBuilder_ == null) {
-          ensurePeopleIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, people_);
-          onChanged();
-        } else {
-          peopleBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder clearPeople() {
-        if (peopleBuilder_ == null) {
-          people_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          peopleBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public Builder removePeople(int index) {
-        if (peopleBuilder_ == null) {
-          ensurePeopleIsMutable();
-          people_.remove(index);
-          onChanged();
-        } else {
-          peopleBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public vos.lsp.Main.Person.Builder getPeopleBuilder(
-          int index) {
-        return getPeopleFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public vos.lsp.Main.PersonOrBuilder getPeopleOrBuilder(
-          int index) {
-        if (peopleBuilder_ == null) {
-          return people_.get(index);  } else {
-          return peopleBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public java.util.List<? extends vos.lsp.Main.PersonOrBuilder> 
-           getPeopleOrBuilderList() {
-        if (peopleBuilder_ != null) {
-          return peopleBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(people_);
-        }
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public vos.lsp.Main.Person.Builder addPeopleBuilder() {
-        return getPeopleFieldBuilder().addBuilder(
-            vos.lsp.Main.Person.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public vos.lsp.Main.Person.Builder addPeopleBuilder(
-          int index) {
-        return getPeopleFieldBuilder().addBuilder(
-            index, vos.lsp.Main.Person.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .vos.lsp.Person people = 1;</code>
-       */
-      public java.util.List<vos.lsp.Main.Person.Builder> 
-           getPeopleBuilderList() {
-        return getPeopleFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          vos.lsp.Main.Person, vos.lsp.Main.Person.Builder, vos.lsp.Main.PersonOrBuilder> 
-          getPeopleFieldBuilder() {
-        if (peopleBuilder_ == null) {
-          peopleBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              vos.lsp.Main.Person, vos.lsp.Main.Person.Builder, vos.lsp.Main.PersonOrBuilder>(
-                  people_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          people_ = null;
-        }
-        return peopleBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2691,23 +1361,23 @@ public final class Main {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:vos.lsp.AddressBook)
+      // @@protoc_insertion_point(builder_scope:vos.lsp.HelloReply)
     }
 
-    // @@protoc_insertion_point(class_scope:vos.lsp.AddressBook)
-    private static final vos.lsp.Main.AddressBook DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:vos.lsp.HelloReply)
+    private static final vos.lsp.Main.HelloReply DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new vos.lsp.Main.AddressBook();
+      DEFAULT_INSTANCE = new vos.lsp.Main.HelloReply();
     }
 
-    public static vos.lsp.Main.AddressBook getDefaultInstance() {
+    public static vos.lsp.Main.HelloReply getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<AddressBook>
-        PARSER = new com.google.protobuf.AbstractParser<AddressBook>() {
+    private static final com.google.protobuf.Parser<HelloReply>
+        PARSER = new com.google.protobuf.AbstractParser<HelloReply>() {
       @java.lang.Override
-      public AddressBook parsePartialFrom(
+      public HelloReply parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2726,37 +1396,32 @@ public final class Main {
       }
     };
 
-    public static com.google.protobuf.Parser<AddressBook> parser() {
+    public static com.google.protobuf.Parser<HelloReply> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<AddressBook> getParserForType() {
+    public com.google.protobuf.Parser<HelloReply> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public vos.lsp.Main.AddressBook getDefaultInstanceForType() {
+    public vos.lsp.Main.HelloReply getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_vos_lsp_Person_descriptor;
+    internal_static_vos_lsp_HelloRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_vos_lsp_Person_fieldAccessorTable;
+      internal_static_vos_lsp_HelloRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_vos_lsp_Person_PhoneNumber_descriptor;
+    internal_static_vos_lsp_HelloReply_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_vos_lsp_Person_PhoneNumber_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_vos_lsp_AddressBook_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_vos_lsp_AddressBook_fieldAccessorTable;
+      internal_static_vos_lsp_HelloReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2766,37 +1431,30 @@ public final class Main {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nmain.proto\022\007vos.lsp\"\323\001\n\006Person\022\014\n\004name" +
-      "\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022+\n\006pho" +
-      "nes\030\004 \003(\0132\033.vos.lsp.Person.PhoneNumber\032F" +
-      "\n\013PhoneNumber\022\016\n\006number\030\001 \001(\t\022\'\n\004type\030\002 " +
-      "\001(\0162\031.vos.lsp.Person.PhoneType\"+\n\tPhoneT" +
-      "ype\022\n\n\006MOBILE\020\000\022\010\n\004HOME\020\001\022\010\n\004WORK\020\002\".\n\013A" +
-      "ddressBook\022\037\n\006people\030\001 \003(\0132\017.vos.lsp.Per" +
-      "sonb\006proto3"
+      "\n\nmain.proto\022\007vos.lsp\":\n\014HelloRequest\022\014\n" +
+      "\004name\030\001 \001(\t\022\013\n\003age\030\002 \001(\005\022\017\n\007hobbies\030\003 \003(" +
+      "\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2\202\001\n\007Gre" +
+      "eter\0228\n\010SayHello\022\025.vos.lsp.HelloRequest\032" +
+      "\023.vos.lsp.HelloReply\"\000\022=\n\rSayHelloAgain\022" +
+      "\025.vos.lsp.HelloRequest\032\023.vos.lsp.HelloRe" +
+      "ply\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_vos_lsp_Person_descriptor =
+    internal_static_vos_lsp_HelloRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_vos_lsp_Person_fieldAccessorTable = new
+    internal_static_vos_lsp_HelloRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_vos_lsp_Person_descriptor,
-        new java.lang.String[] { "Name", "Id", "Email", "Phones", });
-    internal_static_vos_lsp_Person_PhoneNumber_descriptor =
-      internal_static_vos_lsp_Person_descriptor.getNestedTypes().get(0);
-    internal_static_vos_lsp_Person_PhoneNumber_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_vos_lsp_Person_PhoneNumber_descriptor,
-        new java.lang.String[] { "Number", "Type", });
-    internal_static_vos_lsp_AddressBook_descriptor =
+        internal_static_vos_lsp_HelloRequest_descriptor,
+        new java.lang.String[] { "Name", "Age", "Hobbies", });
+    internal_static_vos_lsp_HelloReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_vos_lsp_AddressBook_fieldAccessorTable = new
+    internal_static_vos_lsp_HelloReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_vos_lsp_AddressBook_descriptor,
-        new java.lang.String[] { "People", });
+        internal_static_vos_lsp_HelloReply_descriptor,
+        new java.lang.String[] { "Message", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
